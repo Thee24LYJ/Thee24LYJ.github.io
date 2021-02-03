@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Archives: 2021 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2021/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -152,143 +152,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-github搭建个人博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/02/03/github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2021-02-03T03:44:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/03/github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">github搭建个人博客</a>
+      <a class="archive-article-title" href="/2021/02/03/github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">github搭建个人博客</a>
     </h1>
   
 
-        
-        <a href="/2021/02/03/github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-02-03T03:44:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h1><h3 id="1-创建仓库"><a href="#1-创建仓库" class="headerlink" title="1.创建仓库"></a>1.创建仓库</h3><ul>
-<li>新建名为<code>username.github.io</code>的仓库，例如<code>Thee24LYJ.github.io</code></li>
-<li>创建成功后，博客网站访问地址就是<code>https://Thee24LYJ.github.io</code>(不区分大小写)</li>
-</ul>
-<h3 id="2-配置SSH-key"><a href="#2-配置SSH-key" class="headerlink" title="2.配置SSH key"></a>2.配置SSH key</h3><ul>
-<li><p>提交代码需要拥有github权限，但是直接使用用户名和密码不安全，所以我们使用ssh key来解决本地和服务器的连接问题</p>
-</li>
-<li><p>使用git bash执行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh    <span class="comment"># 检查本机已经存在的ssh密匙</span></span><br></pre></td></tr></table></figure>
-
-<p>如果提示<code>No such file or directory</code>说明是第一次使用git</p>
-</li>
-<li><p>执行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;邮件地址&quot;</span>    <span class="comment"># 邮件地址为GitHub绑定的邮箱</span></span><br></pre></td></tr></table></figure>
-
-<p>然后连续三次回车，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：输入刚才复制的Key，Title随意</p>
-</li>
-<li><p>测试是否成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com </span><br></pre></td></tr></table></figure>
-
-<p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入<code>yes</code>，然后会看到：</p>
-<figure class="highlight plain"><figcaption><span>Thee24LYJ! You've successfully authenticated, but GitHub does not provide shell access.```，说明SSH配置成功。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ 此时还需要配置：</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;markup</span><br><span class="line">  $ git config --global user.name &quot;Thee24LYJ&quot;&#x2F;&#x2F; 你的github用户名，非昵称</span><br><span class="line">  $ git config --global user.email  &quot;xxx@qq.com&quot;&#x2F;&#x2F; 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="3-使用hexo写博客"><a href="#3-使用hexo写博客" class="headerlink" title="3.使用hexo写博客"></a>3.使用hexo写博客</h3><ul>
-<li><p>hexo介绍</p>
-<ul>
-<li><p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题</p>
-</li>
-<li><p>官网： <a target="_blank" rel="noopener" href="http://hexo.io/">http://hexo.io</a></p>
-</li>
-<li><p>github: <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">https://github.com/hexojs/hexo</a></p>
-</li>
-</ul>
-</li>
-<li><p>原理</p>
-<p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github</p>
-</li>
-<li><p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化</p>
-<p>新建一个文件夹用来存放博客代码，名字任意</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /e/hexo/    <span class="comment">#文件夹目录</span></span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g <span class="comment"># 生成</span></span><br><span class="line">$ hexo s <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure>
-
-<p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 即可看到内容</p>
-</li>
-<li><p>修改主题</p>
-<ul>
-<li><p>下载自己喜欢的主题yilia</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /e/hexo/</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>修改<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: yilia</code>，然后重新执行<code>hexo g</code>来重新生成。</p>
-</li>
-<li><p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-上传代码"><a href="#4-上传代码" class="headerlink" title="4.上传代码"></a>4.上传代码</h3><ul>
-<li><p>在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉</p>
-</li>
-<li><p>使用命令<code>hexo d</code></p>
-<ul>
-<li><p><code>ssh key</code>要配置好</p>
-</li>
-<li><p><code>_config.yml</code>中deploy要配好</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Thee24LYJ&#x2F;Thee24LYJ.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行<code>hexo d</code>报错：<code>Deployer not found: github 或者 Deployer not found: git</code></p>
-<p>原因是还需要安装一个插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>保留CNAME、README.md文件</p>
-<ul>
-<li><p>提交之后网页上一看，发现以前其它代码都没了，此时不要慌，一些非md文件可以把他们放到source文件夹下，这里的所有文件都会原样复制（除了md文件）到public目录的：</p>
-</li>
-<li><p>由于hexo默认会把所有md文件都转换成html，包括README.md，所有需要每次生成之后、上传之前，手动将README.md复制到public目录，并删除README.html。</p>
-</li>
-</ul>
-</li>
-<li><p>常用hexo命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;postName&quot;</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">&quot;pageName&quot;</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#部署到GitHub</span></span><br><span class="line">hexo <span class="built_in">help</span>  <span class="comment"># 查看帮助</span></span><br><span class="line">hexo version  <span class="comment">#查看Hexo的版本</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="5-写博客"><a href="#5-写博客" class="headerlink" title="5.写博客"></a>5.写博客</h3><ul>
-<li><p>定位到我们的hexo根目录，执行命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;my-first-blog&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>hexo会帮我们在<code>_posts</code>下生成相关md文件，我们只需要打开这个文件就可以开始写博客了</p>
-<p>当然也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</p>
-<p>一般完整格式如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories: 默认分类 #分类</span><br><span class="line">tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格</span><br><span class="line">description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">以下是正文</span><br></pre></td></tr></table></figure>
-
-<p>那么<code>hexo new page &#39;postName&#39;</code>命令和<code>hexo new &#39;postName&#39;</code>有什么区别呢？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;my-second-blog&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>最终部署时生成：<code>hexo\public\my-second-blog\index.html</code>，但是它不会作为文章出现在博文目录。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -300,116 +191,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/03/github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/20/hello-world/" class="archive-article-date">
-  	<time datetime="2020-08-20T09:45:44.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/20/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -431,9 +225,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
