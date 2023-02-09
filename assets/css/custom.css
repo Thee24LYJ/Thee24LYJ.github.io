@@ -73,7 +73,6 @@
 	--trans-dark: rgba(25, 25, 25, 0.88);
 	--border-style: 1px solid rgb(169, 169, 169);
 	--backdrop-filter: blur(5px) saturate(150%);
-	--theme-color: rgb(33, 195, 245);
 }
 
 /* 首页文章卡片 */
@@ -154,6 +153,10 @@ div#archive {
 
 /* 文章页H1-H6图标样式效果 */
 /* 控制风车转动速度 4s那里可以自己调节快慢 */
+/*侧边卡片的透明度 */
+:root {
+	--theme-color: rgb(33, 195, 245);
+  }
 
 h1::before,
 h2::before,

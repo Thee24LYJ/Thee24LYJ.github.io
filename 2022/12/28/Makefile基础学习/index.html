@@ -1,0 +1,498 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Makefile基础学习 | LYJ's Blog 🎉</title><meta name="author" content="LYJ"><meta name="copyright" content="LYJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Makefile基础学习 Makefile：描述哪些文件需要编译、哪些文件需要重新编译的文件，使用make命令对工程进行编译 本篇文章参考《【正点原子】I.MX6U嵌入式Linux驱动开发指南V1.7》的3.3 Makefile基础部分  1.示例1.1 代码 main.c  12345678910111213#include&lt;stdio.h&gt;#include &quot;input.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makefile基础学习">
+<meta property="og:url" content="http://example.com/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="LYJ&#39;s Blog 🎉">
+<meta property="og:description" content="Makefile基础学习 Makefile：描述哪些文件需要编译、哪些文件需要重新编译的文件，使用make命令对工程进行编译 本篇文章参考《【正点原子】I.MX6U嵌入式Linux驱动开发指南V1.7》的3.3 Makefile基础部分  1.示例1.1 代码 main.c  12345678910111213#include&lt;stdio.h&gt;#include &quot;input.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png">
+<meta property="article:published_time" content="2022-12-28T09:01:45.000Z">
+<meta property="article:modified_time" content="2022-12-28T09:02:45.473Z">
+<meta property="article:author" content="LYJ">
+<meta property="article:tag" content="Makefile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"><link rel="shortcut icon" href="/assets/img/plane.png"><link rel="canonical" href="http://example.com/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: LYJ","link":"链接: ","source":"来源: LYJ's Blog 🎉","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Makefile基础学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-28 17:02:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LYJ's Blog 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Makefile基础学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-28T09:01:45.000Z" title="发表于 2022-12-28 17:01:45">2022-12-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-28T09:02:45.473Z" title="更新于 2022-12-28 17:02:45">2022-12-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Makefile基础学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Makefile基础学习"><a href="#Makefile基础学习" class="headerlink" title="Makefile基础学习"></a>Makefile基础学习</h1><blockquote>
+<p><code>Makefile</code>：描述哪些文件需要编译、哪些文件需要重新编译的文件，使用<code>make</code>命令对工程进行编译</p>
+<p>本篇文章参考《【正点原子】I.MX6U嵌入式Linux驱动开发指南V1.7》的<code>3.3</code> <code>Makefile</code>基础部分</p>
+</blockquote>
+<h2 id="1-示例"><a href="#1-示例" class="headerlink" title="1.示例"></a>1.示例</h2><h3 id="1-1-代码"><a href="#1-1-代码" class="headerlink" title="1.1 代码"></a>1.1 代码</h3><ul>
+<li><code>main.c</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;input.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;calcu.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a,b,num;</span><br><span class="line"></span><br><span class="line">    input_int(&amp;a,&amp;b);</span><br><span class="line">    num=calcu(a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d + %d =%d\r\n&quot;</span>,a,b,num);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>input.c</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;input.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">input_int</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> *b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;input two numbers:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>calcu.c</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;calcu.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">calcu</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>input.h</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _INPUT_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _INPUT_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">input_int</span><span class="params">(<span class="type">int</span> *a,<span class="type">int</span> *b)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// !_INPUT_H</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>calcu.h</code></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _CALCU_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _CALCU_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">calcu</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// !_CALCU_H</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-编译运行"><a href="#1-2-编译运行" class="headerlink" title="1.2 编译运行"></a>1.2 编译运行</h3><ul>
+<li><code>gcc</code>手动编译</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gcc main.c calcu.c input.c -o main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Makefile</code>编译</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">main: main.o input.o calcu.o</span></span><br><span class="line">	gcc -o main.o input.o calcu.o</span><br><span class="line"><span class="section">main.o: main.c</span></span><br><span class="line">	gcc -c main.c</span><br><span class="line"><span class="section">input.o: input.c</span></span><br><span class="line">	gcc -c input.c</span><br><span class="line"><span class="section">calcu.o: calcu.c</span></span><br><span class="line">	gcc -c calcu.c</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o</span><br><span class="line">	rm main</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>make</code>命令编译工程，<code>./main</code>执行可执行程序</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ make</span><br><span class="line">$ ./main</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、Makefile语法"><a href="#二、Makefile语法" class="headerlink" title="二、Makefile语法"></a>二、Makefile语法</h2><h3 id="2-1-Makefile规则格式"><a href="#2-1-Makefile规则格式" class="headerlink" title="2.1 Makefile规则格式"></a>2.1 Makefile规则格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">目标...: 依赖文件集合...</span><br><span class="line">	命令1</span><br><span class="line">	命令2</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>make</code> 命令会为 <code>Makefile</code> 中的每个以 <code>TAB</code> 开始的命令创建一个 <code>Shell</code> 进程去执行</p>
+</blockquote>
+<ul>
+<li>具体例子：</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">main: main.o input.o calcu.o</span></span><br><span class="line">	gcc -o main.o input.o calcu.o</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这条规则的目标是 <code>main</code>，&#96;&#96;main.o、input.o、calcu.o<code>是生成</code>main<code>的依赖文件，如果要更新目标</code>main&#96;，就必须先更新它的所有依赖文件，如果依赖文件中的任何一个有更新，那么目标也必须更新，“更新”就是执行一遍规则中的命令列表</p>
+</blockquote>
+<ul>
+<li><code>1.2</code>中<code>Makefile</code>解释如下：</li>
+</ul>
+<blockquote>
+<p>首先更新第一条规则中的 <code>main</code>，第一条规则的目标成为默认目标，只要默认目标更新了那么就认为<code>Makefile</code> 的工作完成。</p>
+<p>在第一次编译的时候由于 <code>main</code> 还不存在，因此第一条规则会执行，第一条规则依赖于文件 <code>main.o input.o 、calcu.o</code>这个三个<code>.o</code> 文件，这三个<code>.o</code> 文件目前还都没有，因此必须先更新这三个文件。<code>make</code> 会查找以这三个<code>.o</code> 文件为目标的规则并执行。</p>
+<p>以 <code>main.o</code>为例，发现更新 <code>main.o</code> 的是第二条规则，因此会执行第二条规则，第二条规则里面的命令为<code>gcc–c main.c</code>，不链接编译 <code>main.c</code>只是生成 <code>main.o</code>，其它两个<code>.o </code>文件同理。</p>
+<p>最后一个规则目标是 <code>clean</code>，它没有依赖文件，因此会默认为依赖文件都是最新的，所以其对应的命令不会执行，当我们想要执行 <code>clean</code> 的话可以直接使用命令<code>make clean</code>，执行以后就会删除当前目录下所有的<code>.o </code>文件以及 <code>main</code>，因此 <code>clean</code> 的功能就是清理工程</p>
+</blockquote>
+<ul>
+<li>综上，<code>Make</code>的执行过程如下：</li>
+</ul>
+<blockquote>
+<p>1、<code>make</code> 命令会在当前目录下查找以 <code>Makefile</code>(<code>makefile</code> 其实也可以)命名的文件。</p>
+<p>2、当找到 <code>Makefile</code> 文件以后就会按照 <code>Makefile</code> 中定义的规则去编译生成最终的目标文件。</p>
+<p>3、当发现目标文件不存在，或者目标所依赖的文件比目标文件新(也就是最后修改时间比目标文件晚)的话就会执行后面的命令来更新目标</p>
+</blockquote>
+<h3 id="2-2-Makefile变量及赋值"><a href="#2-2-Makefile变量及赋值" class="headerlink" title="2.2 Makefile变量及赋值"></a>2.2 Makefile变量及赋值</h3><h4 id="2-2-1-变量"><a href="#2-2-1-变量" class="headerlink" title="2.2.1 变量"></a>2.2.1 变量</h4><blockquote>
+<p><code>Makefile</code>变量都是字符串，类似于<code>C</code>语言中的宏</p>
+<p>这里使用变量<code>objects</code>表示<code>main.o input.o calcu.o</code>，引用变量的方式是<code>$(变量名)</code>，这里就是<code>$(objects)</code>来使用变量<code>objects</code></p>
+</blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &quot;#&quot;号开头表示注释</span></span><br><span class="line"><span class="comment"># Makefile变量使用</span></span><br><span class="line">objects = main.o input.o calcu.o</span><br><span class="line"><span class="section">main: <span class="variable">$(objects)</span></span></span><br><span class="line">	gcc -o main <span class="variable">$(objects)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-赋值"><a href="#2-2-2-赋值" class="headerlink" title="2.2.2 赋值"></a>2.2.2 赋值</h4><blockquote>
+<p><code>Makefile</code>赋值符有<code>=</code>、<code>:=</code>、<code>?=</code>以及<code>+=</code>四种，只不过第四种是变量追加</p>
+</blockquote>
+<ul>
+<li>赋值符<code>=</code></li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = lyj</span><br><span class="line">curname = <span class="variable">$(name)</span></span><br><span class="line">name = thee</span><br><span class="line"></span><br><span class="line"><span class="section">print:</span></span><br><span class="line">	@echo curname: <span class="variable">$(curname)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于<code>Make</code> 在执行过程中会自动输出命令执行过程，使用<code>@</code>表示不输出命令执行过程</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ make <span class="built_in">print</span></span><br><span class="line"><span class="comment"># 输出：thee</span></span><br><span class="line"><span class="comment"># 不加@输出结果如下</span></span><br><span class="line"><span class="comment"># echo curname: thee</span></span><br><span class="line"><span class="comment"># curname: thee</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里输出<code>thee</code>而不是<code>lyj</code>的原因是该赋值符<code>=</code>表示被赋值变量<code>curname</code>会根据赋值变量<code>name</code>的改变而改变即<code>name</code>最终的值(变量真实值取决于它所引用变量最后一次有效值)</p>
+</blockquote>
+<ul>
+<li>赋值符<code>:=</code></li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = lyj</span><br><span class="line">curname := <span class="variable">$(name)</span></span><br><span class="line">name = thee</span><br><span class="line"></span><br><span class="line"><span class="section">print:</span></span><br><span class="line">	@echo curname: <span class="variable">$(curname)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ make <span class="built_in">print</span></span><br><span class="line"><span class="comment"># 输出：lyj</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里输出<code>lyj</code>是因为赋值符<code>:=</code>不会使用后面的定义的变量，只能使用前面已经定义好的(类似于<code>C</code>语言中变量的赋值，赋值结束后就不能更改了)</p>
+</blockquote>
+<ul>
+<li>赋值符<code>?=</code></li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curname ?= jack</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该赋值符<code>?=</code>表示如果变量 <code>curname</code> 前面没有被赋值，那么此变量就赋值为<code>jack</code>，否则该变量的值不变</p>
+</blockquote>
+<ul>
+<li>变量追加<code>+=</code></li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = lyj</span><br><span class="line">name += thee</span><br><span class="line"></span><br><span class="line"><span class="section">print:</span></span><br><span class="line">	@echo name: <span class="variable">$(name)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ make</span><br><span class="line"><span class="comment"># 输出：lyj thee</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-3-Makefile模式规则"><a href="#2-2-3-Makefile模式规则" class="headerlink" title="2.2.3 Makefile模式规则"></a>2.2.3 Makefile模式规则</h4><ul>
+<li><code>%</code>表示任意长度的非空字符串，类似于通配符，如<code>%.c</code>表示所有以<code>.c</code>结尾的文件</li>
+</ul>
+<h4 id="2-2-4-Makefile自动化变量"><a href="#2-2-4-Makefile自动化变量" class="headerlink" title="2.2.4 Makefile自动化变量"></a>2.2.4 Makefile自动化变量</h4><blockquote>
+<p>自动化变量就是这种变量会把模式中所定义的一系列的文件自动的挨个取出，直至所有的符合模式的文件都取完</p>
+</blockquote>
+<ul>
+<li>常用自动化变量(其中<code>$@/$&lt;/$^</code>较常用)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">自动化变量</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>$@</code></td>
+<td align="center">规则中的目标集合，在模式规则中，如果有多个目标的话，<code>$@</code>表示匹配模式中定义的目标集合</td>
+</tr>
+<tr>
+<td align="center"><code>$%</code></td>
+<td align="center">当目标是函数库的时候表示规则中的目标成员名，如果目标不是函数库文件，那么其值为空</td>
+</tr>
+<tr>
+<td align="center"><code>$&lt;</code></td>
+<td align="center">依赖文件集合中的第一个文件，如果依赖文件是以模式(即<code>%</code>)定义的，那么<code>$&lt;</code>就是符合模式的一系列的文件集合</td>
+</tr>
+<tr>
+<td align="center"><code>$?</code></td>
+<td align="center">所有比目标新的依赖目标集合，以空格分开</td>
+</tr>
+<tr>
+<td align="center"><code>$^</code></td>
+<td align="center">所有依赖文件的集合，使用空格分开，如果在依赖文件中有多个重复的文件，<code>$^</code>会去除重复的依赖文件，只保留一份</td>
+</tr>
+<tr>
+<td align="center"><code>$+</code></td>
+<td align="center">和<code>$^</code>类似，但是当依赖文件存在重复的话不会去除重复的依赖文件</td>
+</tr>
+<tr>
+<td align="center"><code>$*</code></td>
+<td align="center">这个变量表示目标模式中<code>%</code>及其之前的部分，如果目标是 <code>test/a.test.c</code>，目标模式为<code>a.%.c</code>，那么<code>$*</code>就是<code>test/a.test</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o input.o calcu.o</span><br><span class="line"><span class="section">main: <span class="variable">$(objects)</span></span></span><br><span class="line">	gcc -o main <span class="variable">$(objects)</span></span><br><span class="line"></span><br><span class="line"><span class="section">%.o: %.c	# 使用模式规则</span></span><br><span class="line">	gcc -c <span class="variable">$&lt;</span>	<span class="comment"># 使用自动化变量</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm *.o</span><br><span class="line">	rm main</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里使用模式规则和自动化变量将<code>1.2</code>中<code>Makefile</code>简化如上</p>
+</blockquote>
+<h4 id="2-2-5-Makefile伪目标"><a href="#2-2-5-Makefile伪目标" class="headerlink" title="2.2.5 Makefile伪目标"></a>2.2.5 Makefile伪目标</h4><blockquote>
+<p><code>Makefile</code>中一般的目标名都是要生成的文件，而伪目标不代表真正的目标名，在执行 <code>make</code> 命令的时候通过指定这个伪目标来执行其所在规则的定义的命令</p>
+</blockquote>
+<blockquote>
+<p>使用伪目标主要是为了避免 <code>Makefile</code> 中定义的执行命令的目标和工作目录下的实际文件出现名字冲突，有时候我们需要编写一个规则用来执行一些命令，但是这个规则不是用来创建文件的</p>
+</blockquote>
+<blockquote>
+<p>例如对于<code>clean</code>这个工程清理的代码，如果工作目录中存在<code>clean</code>的文件，此时执行<code>make clean</code>则会因为没有依赖文件而认定目标是最新的，后面的命令也不会执行，预先设想的清理功能也无法实现，为避免这个问题，将<code>clean</code>声明为伪目标，声明方式如下：</p>
+<figure class="highlight make"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: clean</span></span><br></pre></td></tr></table></figure>
+
+<p>这样不管当前工作目录是否存在名为<code>clean</code>的文件，执行<code>make clean</code>都会执行工程清理</p>
+</blockquote>
+<h4 id="2-2-6-Makefile条件判断"><a href="#2-2-6-Makefile条件判断" class="headerlink" title="2.2.6 Makefile条件判断"></a>2.2.6 Makefile条件判断</h4><ul>
+<li>语法<code>1</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;条件关键字&gt;</span><br><span class="line">&lt;条件为真时执行的语句&gt;</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>语法<code>2</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;条件关键字&gt;</span><br><span class="line">	&lt;条件为真时执行的语句&gt;</span><br><span class="line">else</span><br><span class="line">	&lt;条件为假时执行的语句&gt;</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>条件关键词</li>
+</ul>
+<blockquote>
+<p><code>ifeq/ifneq</code>、<code>ifdef/ifndef</code></p>
+<ul>
+<li><p><code>ifeq</code>使用方法(相同为真) 参数可以为函数返回值</p>
+  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ifeq</span> (&lt;参数 1&gt;, &lt;参数 2&gt;)</span><br><span class="line"><span class="keyword">ifeq</span> &#x27;&lt;参数 1&gt;&#x27;,&#x27;&lt;参数 2&gt;&#x27;</span><br><span class="line"><span class="keyword">ifeq</span> <span class="string">&quot;&lt;参数 1&gt;&quot;</span>,<span class="string">&quot;&lt;参数 2&gt;&quot;</span></span><br><span class="line"><span class="keyword">ifeq</span> <span class="string">&quot;&lt;参数 1&gt;&quot;</span>,&#x27;&lt;参数 2&gt;&#x27;</span><br><span class="line"><span class="keyword">ifeq</span> &#x27;&lt;参数 1&gt;&#x27;,<span class="string">&quot;&lt;参数 2&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>ifneq</code>使用方法同<code>ifeq</code>(不相同为真)</p>
+</li>
+<li><p><code>ifdef</code>使用方法</p>
+  <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ifdef</span> &lt;变量名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>  如果”变量名”值非空，那么表达式为真，否则为假，”变量名”也可以是函数返回值</p>
+</li>
+<li><p><code>ifndef</code>使用方法同<code>ifdef</code>，但是含义与之相反</p>
+</li>
+</ul>
+<blockquote>
+<p>这里的<code>ifdef</code>和<code>ifndef</code>与<code>C</code>语言中含义类似</p>
+</blockquote>
+</blockquote>
+<h4 id="2-2-7-Makefile函数使用"><a href="#2-2-7-Makefile函数使用" class="headerlink" title="2.2.7 Makefile函数使用"></a>2.2.7 Makefile函数使用</h4><blockquote>
+<p><code>Makefile</code>支持函数，但无法自定义函数</p>
+<p>函数用法如下：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(函数名 参数集合)</span><br><span class="line"><span class="comment"># 或者是如下：</span></span><br><span class="line">$&#123;函数名 参数集合&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来是常用的几个函数</p>
+</blockquote>
+<ul>
+<li><code>subst</code>函数：字符串替换</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">subst</span> &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)</span></span><br><span class="line"><span class="comment"># 该函数功能是将字符串&lt;text&gt;中的&lt;from&gt;内容替换为&lt;to&gt;，返回被替换后的字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">subst</span> thee,lyj,hello thee!)</span></span><br><span class="line"><span class="comment"># 这里将thee替换为lyj,替换后的字符串为hello lyj!</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>patsubst</code>函数：模式字符串替换</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">patsubst</span> &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)</span></span><br><span class="line"><span class="comment"># 此函数查找字符串&lt;text&gt;中的单词是否符合模式&lt;pattern&gt;，如果匹配就用&lt;replacement&gt;来替换掉，&lt;pattern&gt;可以使用通配符&quot;%&quot;，表示任意长度的字符串，函数返回值就是替换后的字符串。如果&lt;replacement&gt;中也包涵&quot;%&quot;，那么&lt;replacement&gt;中的&quot;%&quot;将是&lt;pattern&gt;中的那个&quot;%&quot;所代表的字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">patsubst</span> %.c,%.o,a.c b.c c.c d.c)</span></span><br><span class="line"><span class="comment"># 这里将a.c b.c c.c d.c替换为a.o b.o c.o d.o</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>dir</code>函数：获取目录</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">dir</span> &lt;names...&gt;)</span></span><br><span class="line"><span class="comment"># 此函数用来从文件名序列&lt;names&gt;中提取出目录部分，返回值是文件名序列&lt;names&gt;的目录部分</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">dir</span> &lt;src/a.c&gt;)</span></span><br><span class="line"><span class="comment"># 返回目录部分即src/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>notdir</code>函数：去除文件中的目录部分</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(notdir &lt;names...&gt;)</span><br><span class="line"># 此函数用与从文件名序列&lt;names&gt;中提取出文件名非目录部分</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">dir</span> &lt;src/a.c&gt;)</span></span><br><span class="line"><span class="comment"># 返回非目录部分即a.c</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>foreach</code>函数：循环</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">foreach</span> &lt;var&gt;,&lt;list&gt;,&lt;text&gt;)</span></span><br><span class="line"><span class="comment"># 把参数&lt;list&gt;中的单词逐一取出来放到参数&lt;var&gt;中，然后再执行&lt;text&gt;所包含的表达式。每次&lt;text&gt;都会返回一个字符串，循环的过程中，&lt;text&gt;中所包含的每个字符串会以空格隔开，最后当整个循环结束时，&lt;text&gt;所返回的每个字符串所组成的整个字符串将会是函数 foreach 函数的返回值</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>wildcard</code>函数</li>
+</ul>
+<blockquote>
+<p>通配符<code>%</code>只能用在规则中，只有在规则中它才会展开，如果在变量定义和函数使用时，通配符不会自动展开，这个时候就要用到函数 <code>wildcard</code>将其展开</p>
+</blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">wildcard</span> PATTERN...)</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">wildcard</span> *.c)</span></span><br><span class="line"><span class="comment"># 获取当前目录所有.c文件，类似于%</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">LYJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">http://example.com/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">LYJ's Blog 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Makefile/">Makefile</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0"><span class="toc-text">Makefile基础学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A4%BA%E4%BE%8B"><span class="toc-text">1.示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%A3%E7%A0%81"><span class="toc-text">1.1 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C"><span class="toc-text">1.2 编译运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Makefile%E8%AF%AD%E6%B3%95"><span class="toc-text">二、Makefile语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Makefile%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F"><span class="toc-text">2.1 Makefile规则格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Makefile%E5%8F%98%E9%87%8F%E5%8F%8A%E8%B5%8B%E5%80%BC"><span class="toc-text">2.2 Makefile变量及赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E5%8F%98%E9%87%8F"><span class="toc-text">2.2.1 变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E8%B5%8B%E5%80%BC"><span class="toc-text">2.2.2 赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-Makefile%E6%A8%A1%E5%BC%8F%E8%A7%84%E5%88%99"><span class="toc-text">2.2.3 Makefile模式规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-Makefile%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%98%E9%87%8F"><span class="toc-text">2.2.4 Makefile自动化变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-5-Makefile%E4%BC%AA%E7%9B%AE%E6%A0%87"><span class="toc-text">2.2.5 Makefile伪目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-6-Makefile%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">2.2.6 Makefile条件判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-7-Makefile%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8"><span class="toc-text">2.2.7 Makefile函数使用</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By LYJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
