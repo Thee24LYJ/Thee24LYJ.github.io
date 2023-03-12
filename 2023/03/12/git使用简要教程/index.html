@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>git使用简要教程 | LYJ's Blog 🎉</title><meta name="author" content="LYJ"><meta name="copyright" content="LYJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、基本操作 git init – 初始化仓库 初始化成功后该目录下会生成.git目录(也称为附属于该仓库的工作树)，储存管理当前目录内容所需的仓库数据     文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开  123G3@DESKTOP-OM3KFRO MINGW64 ~&#x2F;Desktop&#x2F;git">
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>git使用简要教程 | LYJ's Blog 🎉</title><meta name="author" content="LYJ"><meta name="copyright" content="LYJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、基本操作 git init – 初始化仓库   初始化成功后该目录下会生成.git目录(也称为附属于该仓库的工作树)，储存管理当前目录内容所需的仓库数据   文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开  123G3@DESKTOP-OM3KFRO MINGW64 ~&#x2F;Desktop&#x2F;git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git使用简要教程">
 <meta property="og:url" content="http://example.com/2023/03/12/git%E4%BD%BF%E7%94%A8%E7%AE%80%E8%A6%81%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="LYJ&#39;s Blog 🎉">
-<meta property="og:description" content="1、基本操作 git init – 初始化仓库 初始化成功后该目录下会生成.git目录(也称为附属于该仓库的工作树)，储存管理当前目录内容所需的仓库数据     文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开  123G3@DESKTOP-OM3KFRO MINGW64 ~&#x2F;Desktop&#x2F;git">
+<meta property="og:description" content="1、基本操作 git init – 初始化仓库   初始化成功后该目录下会生成.git目录(也称为附属于该仓库的工作树)，储存管理当前目录内容所需的仓库数据   文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开  123G3@DESKTOP-OM3KFRO MINGW64 ~&#x2F;Desktop&#x2F;git">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/wallpaper.jpeg">
 <meta property="article:published_time" content="2023-03-12T09:12:15.000Z">
-<meta property="article:modified_time" content="2023-03-12T09:13:35.822Z">
+<meta property="article:modified_time" content="2023-03-12T09:19:12.501Z">
 <meta property="article:author" content="LYJ">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-03-12 17:13:35'
+  postUpdate: '2023-03-12 17:19:12'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -142,46 +142,46 @@
       }
     }
     detectApple()
-    })(window)</script><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/wallpaper.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LYJ's Blog 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git使用简要教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-12T09:12:15.000Z" title="发表于 2023-03-12 17:12:15">2023-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-12T09:13:35.822Z" title="更新于 2023-03-12 17:13:35">2023-03-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git使用简要教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1、基本操作"><a href="#1、基本操作" class="headerlink" title="1、基本操作"></a>1、基本操作</h1><ul>
-<li>git init – 初始化仓库<blockquote>
+    })(window)</script><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/wallpaper.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LYJ's Blog 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git使用简要教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-12T09:12:15.000Z" title="发表于 2023-03-12 17:12:15">2023-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-12T09:19:12.501Z" title="更新于 2023-03-12 17:19:12">2023-03-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git使用简要教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1、基本操作"><a href="#1、基本操作" class="headerlink" title="1、基本操作"></a>1、基本操作</h1><ul>
+<li>git init – 初始化仓库</li>
+</ul>
+<blockquote>
 <p>初始化成功后该目录下会生成.git目录(也称为<strong>附属于该仓库的工作树</strong>)，储存管理当前目录内容所需的仓库数据</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test</span><br><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in C:/Users/G3/Desktop/git test/.git/</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git status –查看仓库的状态<blockquote>
+<li>git status –查看仓库的状态</li>
+</ul>
+<blockquote>
 <p>工作树和仓库在被操作的过程中，状态会不断发生变化</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">nothing to commit (create/copy files and use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>所谓提交（Commit），是指“记录工作树中所有文件的当前状态”</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>新建README.md文件后的status如下：</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ touch README.md</span><br><span class="line"></span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        README.md</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git add –向暂存区中添加文件<blockquote>
+<li>git add –向暂存区中添加文件</li>
+</ul>
+<blockquote>
 <p>只是用Git仓库的工作树创建了文件，那么该文件并不会被记入Git仓库的版本管理对象当中。因此我们用git status命令查看README.md文件时，它会显示在Untracked files里。</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>要想让文件成为Git仓库的管理对象，就需要用gitadd命令将其加入暂存区（Stage或者Index）中。暂存区是提交之前的一个临时区域</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git add README.md</span><br><span class="line"></span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README.md</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git commit –保存仓库的历史记录<blockquote>
+<li>git commit –保存仓库的历史记录</li>
+</ul>
+<blockquote>
 <p>该命令将当前暂存区中的文件实际保存到仓库的历史记录中。通过这些记录，我们就可以在工作树中复原文件</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>-m参数后的称为提交信息，是对该提交的概述</p>
 </blockquote>
@@ -197,15 +197,16 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git log –查看提交日志<blockquote>
+<li>git log –查看提交日志</li>
+</ul>
+<blockquote>
 <p>查看以往仓库中提交的日志。包括可以查看什么人在什么时候进行了提交或合并，以及操作前后有怎样的差别<br><strong>注：若日志较长无法完全显示，可回车往下显示一行，并且按”q”正常退出，若非正常退出则会造成继续输入命令时无法正常显示出来；若出现这样的情况可以输入<code>reset</code>命令重置git bash，也可关闭当前终端重新打开</strong></p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git log</span><br><span class="line">commit 02117edd38575da4a4de7a40be083cef2e7883b2 (HEAD -&gt; master)</span><br><span class="line">Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">Date:   Mon Feb 21 14:32:23 2022 +0800</span><br><span class="line"></span><br><span class="line">    file context changed.</span><br><span class="line"></span><br><span class="line">    I am trying to change this context of the README.md file</span><br><span class="line">    changed by LYJ</span><br><span class="line"></span><br><span class="line">commit 066eaf72002d80f78d7031f22e38db8c87f03a9e</span><br><span class="line">Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">Date:   Mon Feb 21 14:25:49 2022 +0800</span><br><span class="line"></span><br><span class="line">    First commit</span><br></pre></td></tr></table></figure>
-<strong>只显示提交信息第一行</strong><blockquote>
+<p><strong>只显示提交信息第一行</strong></p>
+<blockquote>
 <p>使用命令<code>git log --pretty=short</code>即可<br><strong>只显示指定目录、文件日志</strong><br>使用命令<code>git log filename</code>即可</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git log README.md</span><br><span class="line">commit 02117edd38575da4a4de7a40be083cef2e7883b2 (HEAD -&gt; master)</span><br><span class="line">Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">Date:   Mon Feb 21 14:32:23 2022 +0800</span><br><span class="line"></span><br><span class="line">    file context changed.</span><br><span class="line"></span><br><span class="line">    I am trying to change this context of the README.md file</span><br><span class="line">    changed by LYJ</span><br><span class="line"></span><br><span class="line">commit 066eaf72002d80f78d7031f22e38db8c87f03a9e</span><br><span class="line">Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">Date:   Mon Feb 21 14:25:49 2022 +0800</span><br><span class="line"></span><br><span class="line">    First commit</span><br></pre></td></tr></table></figure>
 <p><strong>显示文件改动</strong></p>
 <blockquote>
@@ -213,16 +214,14 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p</span><br><span class="line">commit 02117edd38575da4a4de7a40be083cef2e7883b2 (HEAD -&gt; master)</span><br><span class="line">Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">Date:   Mon Feb 21 14:32:23 2022 +0800</span><br><span class="line"></span><br><span class="line">    file context changed.</span><br><span class="line"></span><br><span class="line">    I am trying to change this context of the README.md file</span><br><span class="line">    changed by LYJ</span><br><span class="line"></span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index e69de29..71b6fb7 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -0,0 +1,5 @@</span><br><span class="line">+# hello world</span><br><span class="line">+</span><br><span class="line">+This is a test, I am trying to learn git and do some excise(maybe).</span><br><span class="line">+</span><br><span class="line">+And this is a test file.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git diff –查看更改前后的差别<blockquote>
+<li>git diff –查看更改前后的差别</li>
+</ul>
+<blockquote>
 <p>git diff命令可以查看工作树、暂存区、最新提交之间的差别</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index 71b6fb7..5b82da4 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -2,4 +2,6 @@</span><br><span class="line"></span><br><span class="line"> This is a test, I am trying to learn git and do some excise(maybe).</span><br><span class="line"></span><br><span class="line">-And this is a test file.</span><br><span class="line">\ No newline at end of file</span><br><span class="line">+The line be deleted. This is a description.</span><br><span class="line">+</span><br><span class="line">+And this is a new line.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>由于我们尚未用git add命令向暂存区添加任何东西，所以程序只会显示工作树与最新提交状态之间的差别</p>
-</blockquote>
-<blockquote>
 <p>+”号标出的是新添加的行，被删除的行则用“-”号标出</p>
 </blockquote>
 <p><em>使用git add README.md将README.md文件加入暂存区</em></p>
@@ -245,14 +244,12 @@
 <p>标 * 表示当前所在分支</p>
 </blockquote>
 <ul>
-<li>git checkout –创建(添加参数-b)、切换分支<blockquote>
+<li>git checkout –创建(添加参数-b)、切换分支</li>
+</ul>
+<blockquote>
 <p>使用如下命令进行切换：</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature-A</span><br></pre></td></tr></table></figure>
-
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git checkout -b feature-A</span><br><span class="line">Switched to a new branch &#x27;feature-A&#x27;</span><br><span class="line"></span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (feature-A)</span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (feature-A)</span><br><span class="line">$ git branch</span><br><span class="line">* feature-A</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>此时修改代码、执行git add命令提交，代码会提交到feature-A分支，像这样不断对一个分支（例如feature-A）进行提交的操作，我们称为“培育分支”</p>
@@ -272,25 +269,25 @@
 <p>主干分支是刚才我们讲解的特性分支的原点，同时也是合并的终点。通常人们会用master分支作为主干分支</p>
 </blockquote>
 <ul>
-<li>git merge –合并分支<blockquote>
+<li>git merge –合并分支</li>
+</ul>
+<blockquote>
 <p>使用命令<code>git merge --no-ff feature-A</code>，参数–no-ff是为了在历史记录中明确记录下本次分支合并</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git merge --no-ff feature-A</span><br><span class="line">hint: Waiting for your editor to close the file...</span><br><span class="line">[main 2022-02-22T06:12:20.690Z] update#setState idle</span><br><span class="line">[main 2022-02-22T06:12:21.135Z] ExtensionHostStarterWorker created</span><br><span class="line">[main 2022-02-22T06:12:23.323Z] Starting extension host with pid 13468 (fork() took 103 ms).</span><br><span class="line">[main 2022-02-22T06:12:23.324Z] ExtensionHostStarterWorker.start() took 106 ms.</span><br><span class="line">[main 2022-02-22T06:12:50.696Z] update#setState checking for updates</span><br><span class="line">[main 2022-02-22T06:12:50.792Z] update#setState idle</span><br><span class="line">[main 2022-02-22T06:13:03.000Z] Extension host with pid 13468 exited with code: 0, signal: null.</span><br><span class="line">Merge made by the &#x27;recursive&#x27; strategy.</span><br><span class="line"> README.md | 6 +++++-</span><br><span class="line"> 1 file changed, 5 insertions(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git log –graph 以图表形式查看分支<blockquote>
+<li>git log –graph 以图表形式查看分支</li>
+</ul>
+<blockquote>
 <p>用git log –graph命令进行查看的话，能很清楚地看到特性分支（feature-A）提交的内容已被合并。除此以外，特性分支的创建以及合并也都清楚明了</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br><span class="line">*   commit 4c6d8896e9e288b21a36aa840f0c536d8154d683 (HEAD -&gt; master)</span><br><span class="line">|\  Merge: a071997 40d98e7</span><br><span class="line">| | Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">| | Date:   Tue Feb 22 14:12:18 2022 +0800</span><br><span class="line">| |</span><br><span class="line">| |     Merge branch &#x27;feature-A&#x27; into master</span><br><span class="line">| |</span><br><span class="line">| * commit 40d98e76c16be3748c4cc78d178049b579450e13 (feature-A)</span><br><span class="line">|/  Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">|   Date:   Tue Feb 22 14:01:11 2022 +0800</span><br><span class="line">|</span><br><span class="line">|       add to feature-A</span><br><span class="line">|</span><br><span class="line">* commit a07199771e6436b72a32b6fec45b90caf4ed8c1b</span><br><span class="line">| Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">| Date:   Mon Feb 21 14:51:20 2022 +0800</span><br><span class="line">|</span><br><span class="line">|     Add something new and delete something old</span><br><span class="line">|</span><br><span class="line">* commit 02117edd38575da4a4de7a40be083cef2e7883b2</span><br><span class="line">| Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">| Date:   Mon Feb 21 14:32:23 2022 +0800</span><br><span class="line">|</span><br><span class="line">|     file context changed.</span><br><span class="line">|</span><br><span class="line">|     I am trying to change this context of the README.md file</span><br><span class="line">|     changed by LYJ</span><br><span class="line">|</span><br><span class="line">* commit 066eaf72002d80f78d7031f22e38db8c87f03a9e</span><br><span class="line">  Author: Thee24LYJ &lt;1579290423@qq.com&gt;</span><br><span class="line">  Date:   Mon Feb 21 14:25:49 2022 +0800</span><br><span class="line"></span><br><span class="line">      First commit</span><br></pre></td></tr></table></figure>
 <h1 id="3、更改提交操作"><a href="#3、更改提交操作" class="headerlink" title="3、更改提交操作"></a>3、更改提交操作</h1><ul>
-<li>git reset –回溯历史版本<blockquote>
+<li>git reset –回溯历史版本</li>
+</ul>
+<blockquote>
 <p>这里为熟悉对历史版本的操作，先回溯历史版本，创建一个名为fix-B的特性分支</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master)</span><br><span class="line">$ git checkout -b fix-B</span><br><span class="line">Switched to a new branch &#x27;fix-B&#x27;</span><br><span class="line"></span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (fix-B)</span><br><span class="line">$ git branch</span><br><span class="line">  feature-A</span><br><span class="line">* fix-B</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
 <p><strong>回溯到创建feature-A分支前</strong></p>
 <blockquote>
@@ -329,11 +326,11 @@
 <p><strong>提交解决后结果</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master|MERGING)</span><br><span class="line">$ git add README.md</span><br><span class="line"></span><br><span class="line">G3@DESKTOP-OM3KFRO MINGW64 ~/Desktop/git test (master|MERGING)</span><br><span class="line">$ git commit -m &quot;Fix conflict by LYJ&quot;</span><br><span class="line">[master 898df01] Fix conflict by LYJ</span><br></pre></td></tr></table></figure>
 <ul>
-<li>git commit –amend 修改提交信息<blockquote>
+<li>git commit –amend 修改提交信息</li>
+</ul>
+<blockquote>
 <p>要修改上一条提交信息，可以使用git commit –amend命令。我们将上一条提交信息记为了”Fix conflict”，但它其实是fix-B分支的合并，解决合并时发生的冲突只是过程之一，这样标记实在不妥。于是，我们要修改这条提交信息</p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p>执行上述命令后再打开的编辑器中修改之前提交信息，之后保存文件并关闭编辑器</p>
 </blockquote>
@@ -364,11 +361,11 @@
 <p>错字漏字等失误称作typo，所以我们将提交信息记为”Fix typo”。实际上，我们不希望在历史记录中看到这类提交，因为健全的历史记录并不需要它们</p>
 </blockquote>
 <ul>
-<li>3.更改历史<blockquote>
+<li>3.更改历史</li>
+</ul>
+<blockquote>
 <p>将”Fix typo”修正的内容与之前一次的提交合并，在历史记录中合并为一次完美的提交</p>
 </blockquote>
-</li>
-</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>用上述方式执行git rebase命令，可以选定当前分支中包含HEAD（最新提交）在内的两个最新历史记录为对象，并在编辑器中打开</p>
