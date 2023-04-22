@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>深入理解C指针 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇文章是《深入理解C指针》的阅读笔记。   printf函数的格式     格式控制符 说明    %d 按照十进制整型数据实际长度输出   %ld 输出长整形数据   %md m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出   %u 输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要   %c 输出一个字符   %f 以小数形式输">
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>深入理解C指针 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇文章是《深入理解C指针》的阅读笔记。   printf函数的格式      格式控制符 说明     %d 按照十进制整型数据实际长度输出   %ld 输出长整形数据   %md m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出   %u 输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要   %c 输出一个字符   %f 以小数形">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解C指针">
 <meta property="og:url" content="http://example.com/2022/12/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="theeの博客 🎉">
-<meta property="og:description" content="本篇文章是《深入理解C指针》的阅读笔记。   printf函数的格式     格式控制符 说明    %d 按照十进制整型数据实际长度输出   %ld 输出长整形数据   %md m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出   %u 输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要   %c 输出一个字符   %f 以小数形式输">
+<meta property="og:description" content="本篇文章是《深入理解C指针》的阅读笔记。   printf函数的格式      格式控制符 说明     %d 按照十进制整型数据实际长度输出   %ld 输出长整形数据   %md m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出   %u 输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要   %c 输出一个字符   %f 以小数形">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg">
 <meta property="article:published_time" content="2022-12-04T08:03:47.000Z">
@@ -142,118 +142,125 @@
       }
     }
     detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">深入理解C指针</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-04T08:03:47.000Z" title="发表于 2022-12-04 16:03:47">2022-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-23T07:21:01.000Z" title="更新于 2022-12-23 15:21:01">2022-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">15.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>49分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="深入理解C指针"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">深入理解C指针</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-04T08:03:47.000Z" title="发表于 2022-12-04 16:03:47">2022-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-23T07:21:01.000Z" title="更新于 2022-12-23 15:21:01">2022-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">15.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>48分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="深入理解C指针"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p>本篇文章是《深入理解C指针》的阅读笔记。</p>
 </blockquote>
 <ul>
 <li><code>printf</code>函数的格式</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">格式控制符</th>
-<th align="center">说明</th>
+<th style="text-align:center">格式控制符</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">%d</td>
-<td align="center">按照十进制整型数据实际长度输出</td>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">按照十进制整型数据实际长度输出</td>
 </tr>
 <tr>
-<td align="center">%ld</td>
-<td align="center">输出长整形数据</td>
+<td style="text-align:center">%ld</td>
+<td style="text-align:center">输出长整形数据</td>
 </tr>
 <tr>
-<td align="center">%md</td>
-<td align="center">m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出</td>
+<td style="text-align:center">%md</td>
+<td style="text-align:center">m为指定输出字段宽度，如果数据位数小于m则左端补空格，否则按照实际位数输出</td>
 </tr>
 <tr>
-<td align="center">%u</td>
-<td align="center">输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要</td>
+<td style="text-align:center">%u</td>
+<td style="text-align:center">输出无符号整型数据，输出无符号整型也可以用 %d，这将无符号转换成有符号数，但没必要</td>
 </tr>
 <tr>
-<td align="center">%c</td>
-<td align="center">输出一个字符</td>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">输出一个字符</td>
 </tr>
 <tr>
-<td align="center">%f</td>
-<td align="center">以小数形式输出单精度和双精度浮点数，不指定字段宽度由系统确定，整数部分全部输出，小数部分输出 6 位，超过 6 位的四舍五入</td>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">以小数形式输出单精度和双精度浮点数，不指定字段宽度由系统确定，整数部分全部输出，小数部分输出 6 位，超过 6 位的四舍五入</td>
 </tr>
 <tr>
-<td align="center">%.mf</td>
-<td align="center">保留小数点后m位输出浮点数</td>
+<td style="text-align:center">%.mf</td>
+<td style="text-align:center">保留小数点后m位输出浮点数</td>
 </tr>
 <tr>
-<td align="center">%o</td>
-<td align="center">按照八进制整型数据输出</td>
+<td style="text-align:center">%o</td>
+<td style="text-align:center">按照八进制整型数据输出</td>
 </tr>
 <tr>
-<td align="center">%s</td>
-<td align="center">输出字符串</td>
+<td style="text-align:center">%s</td>
+<td style="text-align:center">输出字符串</td>
 </tr>
 <tr>
-<td align="center">%x</td>
-<td align="center">按照十六进制整型数据输出</td>
+<td style="text-align:center">%x</td>
+<td style="text-align:center">按照十六进制整型数据输出</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>%x、%X、%#x、%#X的区别</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">47</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%x\n&quot;</span>, i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%X\n&quot;</span>, i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%#x\n&quot;</span>, i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%#X\n&quot;</span>, i);</span><br><span class="line">&#125;</span><br><span class="line">------------</span><br><span class="line"><span class="number">2f</span></span><br><span class="line"><span class="number">2F</span></span><br><span class="line"><span class="number">0x2f</span></span><br><span class="line"><span class="number">0X2F</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>输出<code>%d</code>、<code>\</code>和<code>&quot;&quot;</code></p>
 <p>要输出<code>%d</code>只需在前面再加上一个<code>%</code>，要输出<code>\</code>只需在前面再加上一个<code>\</code>，要输出双引号也只需在前面加上一个<code>\</code>即可</p>
 </blockquote>
-<h2 id="1-3-指针操作符"><a href="#1-3-指针操作符" class="headerlink" title="1.3 指针操作符"></a>1.3 指针操作符</h2><table>
+<h2 id="1-3-指针操作符"><a href="#1-3-指针操作符" class="headerlink" title="1.3 指针操作符"></a>1.3 指针操作符</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">操作符</th>
-<th align="center">名称</th>
-<th align="center">含义</th>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">*</td>
-<td align="center">无</td>
-<td align="center">声明指针</td>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">声明指针</td>
 </tr>
 <tr>
-<td align="center">*</td>
-<td align="center">解引</td>
-<td align="center">解引指针</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">解引</td>
+<td style="text-align:center">解引指针</td>
 </tr>
 <tr>
-<td align="center">-&gt;</td>
-<td align="center">指向</td>
-<td align="center">访问指针引用结构的字段</td>
+<td style="text-align:center">-&gt;</td>
+<td style="text-align:center">指向</td>
+<td style="text-align:center">访问指针引用结构的字段</td>
 </tr>
 <tr>
-<td align="center">+</td>
-<td align="center">加</td>
-<td align="center">对指针做加法</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+<td style="text-align:center">对指针做加法</td>
 </tr>
 <tr>
-<td align="center">-</td>
-<td align="center">减</td>
-<td align="center">对指针做减法</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+<td style="text-align:center">对指针做减法</td>
 </tr>
 <tr>
-<td align="center">&#x3D;&#x3D;&#x2F;!&#x3D;</td>
-<td align="center">相等&#x2F;不等于</td>
-<td align="center">比较两个指针</td>
+<td style="text-align:center">==/!=</td>
+<td style="text-align:center">相等/不等于</td>
+<td style="text-align:center">比较两个指针</td>
 </tr>
 <tr>
-<td align="center">&gt;&#x2F;&gt;&#x3D;&#x2F;&lt;&#x2F;&lt;&#x3D;</td>
-<td align="center">大于&#x2F;大于等于&#x2F;小于&#x2F;小于等于</td>
-<td align="center">比较两个指针</td>
+<td style="text-align:center">&gt;/&gt;=/&lt;/&lt;=</td>
+<td style="text-align:center">大于/大于等于/小于/小于等于</td>
+<td style="text-align:center">比较两个指针</td>
 </tr>
 <tr>
-<td align="center">(数据转换)</td>
-<td align="center">转换</td>
-<td align="center">改变指针的类型</td>
+<td style="text-align:center">(数据转换)</td>
+<td style="text-align:center">转换</td>
+<td style="text-align:center">改变指针的类型</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="1-3-1-指针算术运算"><a href="#1-3-1-指针算术运算" class="headerlink" title="1.3.1 指针算术运算"></a>1.3.1 指针算术运算</h3><ul>
 <li>指针加整数</li>
 </ul>
@@ -305,35 +312,39 @@
 <blockquote>
 <p><code>const int *const *p</code></p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">指针类型</th>
-<th align="center">指针是否可以修改</th>
-<th align="center">指向的数据是否可以修改</th>
+<th style="text-align:center">指针类型</th>
+<th style="text-align:center">指针是否可以修改</th>
+<th style="text-align:center">指向的数据是否可以修改</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">指向非常量的指针</td>
-<td align="center">是</td>
-<td align="center">是</td>
+<tbody>
+<tr>
+<td style="text-align:center">指向非常量的指针</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
 </tr>
 <tr>
-<td align="center">指向常量的指针</td>
-<td align="center">是</td>
-<td align="center">否</td>
+<td style="text-align:center">指向常量的指针</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
 </tr>
 <tr>
-<td align="center">指向非常量的常量指针</td>
-<td align="center">否</td>
-<td align="center">是</td>
+<td style="text-align:center">指向非常量的常量指针</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">是</td>
 </tr>
 <tr>
-<td align="center">指向常量的常量指针</td>
-<td align="center">否</td>
-<td align="center">否</td>
+<td style="text-align:center">指向常量的常量指针</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">否</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="第二章-C的动态内存管理"><a href="#第二章-C的动态内存管理" class="headerlink" title="第二章 C的动态内存管理"></a>第二章 C的动态内存管理</h1><blockquote>
 <p>动态内存管理：使用分配和释放函数手动实现</p>
 </blockquote>
@@ -352,40 +363,42 @@
 <li>应该调用<code>free</code>函数却没调用(隐式泄露)</li>
 </ul>
 </blockquote>
-<h2 id="2-2-动态内存分配函数"><a href="#2-2-动态内存分配函数" class="headerlink" title="2.2 动态内存分配函数"></a>2.2 动态内存分配函数</h2><table>
+<h2 id="2-2-动态内存分配函数"><a href="#2-2-动态内存分配函数" class="headerlink" title="2.2 动态内存分配函数"></a>2.2 动态内存分配函数</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">函数</th>
-<th align="center">说明</th>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">malloc</td>
-<td align="center">从堆上分配内存</td>
+<tbody>
+<tr>
+<td style="text-align:center">malloc</td>
+<td style="text-align:center">从堆上分配内存</td>
 </tr>
 <tr>
-<td align="center">realloc</td>
-<td align="center">在之前分配的内存块的基础上，将内存重新分配为更大或者更小的部分</td>
+<td style="text-align:center">realloc</td>
+<td style="text-align:center">在之前分配的内存块的基础上，将内存重新分配为更大或者更小的部分</td>
 </tr>
 <tr>
-<td align="center">calloc</td>
-<td align="center">从堆上分配内存并清零</td>
+<td style="text-align:center">calloc</td>
+<td style="text-align:center">从堆上分配内存并清零</td>
 </tr>
 <tr>
-<td align="center">free</td>
-<td align="center">将内存块返回堆(释放内存)</td>
+<td style="text-align:center">free</td>
+<td style="text-align:center">将内存块返回堆(释放内存)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="2-2-1-malloc函数"><a href="#2-2-1-malloc函数" class="headerlink" title="2.2.1 malloc函数"></a>2.2.1 malloc函数</h3><blockquote>
 <p>malloc函数从堆上分配一块内存，所分配的字节数由该函数唯一的参数指定，返回值是void指针，如果内存不足，就会返回NULL。此函数不会清空或者修改内存，所以我们认为新分配的内存包含垃圾数据</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">malloc</span><span class="params">(<span class="type">size_t</span>)</span>;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>传递参数给这个函数时要小心，因为如果参数是负数就会引发问题。在有些系统中，参数是负数会返回NULL。如果malloc的参数是0，其行为是实现相关的：可能返回NULL指针，也可能返回一个指向分配了0字节区域的指针。如果malloc函数的参数是NULL，那么一般会生成一个警告然后返回0字节</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line"><span class="type">int</span> *pi=(<span class="type">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"><span class="keyword">if</span>(pi!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">	<span class="comment">//指针没有问题，执行后续操作</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">//无效指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>要不要强制类型转换</li>
 </ul>
@@ -429,7 +442,6 @@
 <p>如果numElements或elementSize为0，那么calloc可能返回空指针。如果calloc无法分配内存就会返回空指针，而且全局变量errno会设置为ENOMEM（内存不足），这是POSIX错误码，有的系统上可能没有</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *<span class="title function_">calloc</span><span class="params">(<span class="type">size_t</span> numElements,<span class="type">size_t</span> elementSize)</span>;</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-2-3-recalloc函数"><a href="#2-2-3-recalloc函数" class="headerlink" title="2.2.3 recalloc函数"></a>2.2.3 recalloc函数</h3><blockquote>
 <p>我们可能需要时不时地增加或减少为指针分配的内存，如果需要一个变长数组这种做法尤其有用，realloc函数会重新分配内存并释放掉原来旧的内存</p>
 <p>realloc函数返回指向内存块的指针。该函数接受两个参数，第一个参数是指向原内存块的指针，第二个是请求的大小。重新分配的块大小和第一个参数引用的块大小不同。返回值是指向重新分配的内存的指针</p>
@@ -437,51 +449,50 @@
 <p>如果大小是0而指针非空，那么就释放内存。如果无法分配空间，那么原来的内存块就保持不变，不过返回的指针是空指针，且errno会设置为ENOMEM</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *<span class="title function_">recalloc</span><span class="params">(<span class="type">void</span> *ptr,<span class="type">size_t</span> size)</span>;</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">第一个参数</th>
-<th align="center">第二个参数</th>
-<th align="center">作用</th>
+<th style="text-align:center">第一个参数</th>
+<th style="text-align:center">第二个参数</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">空</td>
-<td align="center">无</td>
-<td align="center">同malloc</td>
+<tbody>
+<tr>
+<td style="text-align:center">空</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">同malloc</td>
 </tr>
 <tr>
-<td align="center">非空</td>
-<td align="center">0</td>
-<td align="center">释放内存</td>
+<td style="text-align:center">非空</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">释放内存</td>
 </tr>
 <tr>
-<td align="center">非空</td>
-<td align="center">小于原内存</td>
-<td align="center">利用当前块分配更小的块</td>
+<td style="text-align:center">非空</td>
+<td style="text-align:center">小于原内存</td>
+<td style="text-align:center">利用当前块分配更小的块</td>
 </tr>
 <tr>
-<td align="center">非空</td>
-<td align="center">大于原内存</td>
-<td align="center">在当前位置或其他位置分配更大的块</td>
+<td style="text-align:center">非空</td>
+<td style="text-align:center">大于原内存</td>
+<td style="text-align:center">在当前位置或其他位置分配更大的块</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="2-2-4-alloca函数和变长数组"><a href="#2-2-4-alloca函数和变长数组" class="headerlink" title="2.2.4 alloca函数和变长数组"></a>2.2.4 alloca函数和变长数组</h3><blockquote>
 <p>alloca函数（微软为malloca）在函数的栈帧上分配内存。函数返回后会自动释放内存。若底层的运行时系统不基于栈，alloca函数会很难实现，所以这个函数是不标准的，如果应用程序需要可移植就尽量避免使用它</p>
 <p>C99引入了变长数组（VLA），允许函数内部声明和创建其长度由变量决定的数组</p>
 </blockquote>
 <h2 id="2-3-使用free函数释放内存"><a href="#2-3-使用free函数释放内存" class="headerlink" title="2.3 使用free函数释放内存"></a>2.3 使用free函数释放内存</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">free</span><span class="params">(<span class="type">void</span> *ptr)</span>;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>指针参数应该指向由malloc类函数分配的内存的地址，这块内存会被返还给堆。尽管指针仍然指向这块区域，但是我们应该将它看成指向垃圾数据。稍后可能重新分配这块区域，并将其装进不同的数据。</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *pi=(<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">...</span><br><span class="line"><span class="built_in">free</span>(p);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>内存释放后仍然有可能包含原值，pi变量仍然指向之前的地址，这种情况称为迷途指针</p>
-</blockquote>
-<blockquote>
 <p>如果传递给free函数的参数是空指针，通常它什么都不做。如果传入的指针所指向的内存不是由malloc类的函数分配，那么该函数的行为将是未定义的</p>
 </blockquote>
 <h3 id="2-3-1-将释放的指针赋值为NULL"><a href="#2-3-1-将释放的指针赋值为NULL" class="headerlink" title="2.3.1 将释放的指针赋值为NULL"></a>2.3.1 将释放的指针赋值为NULL</h3><blockquote>
@@ -492,8 +503,6 @@
 </blockquote>
 <h2 id="2-4-迷途指针"><a href="#2-4-迷途指针" class="headerlink" title="2.4 迷途指针"></a>2.4 迷途指针</h2><blockquote>
 <p>内存已经释放而指针还在引用原始指针，这样的指针就是迷途指针，迷途指针没有指向有效对象，也被称为过早释放</p>
-</blockquote>
-<blockquote>
 <p>使用迷途指针会造成一系列问题：</p>
 <ul>
 <li>如果访问内存，则行为不可预期；</li>
@@ -502,8 +511,7 @@
 </ul>
 </blockquote>
 <h3 id="2-4-1-迷途指针示例"><a href="#2-4-1-迷途指针示例" class="headerlink" title="2.4.1 迷途指针示例"></a>2.4.1 迷途指针示例</h3><ul>
-<li><p>执行free函数后继续访问或修改该内存</p>
-</li>
+<li>执行free函数后继续访问或修改该内存</li>
 <li><p>一个以上指针同时指向同一内存区域而其中一个指针被释放，另外一个指针就是迷途指针</p>
 </li>
 <li><p>指针在块语句中赋值为局部变量地址，该块语句出栈后地址不在有效，此时指针就是迷途指针</p>
@@ -577,7 +585,7 @@
 <p>比如说在函数中定义局部变量数据并返回该地址，此时返回的数据地址无效，因为函数的栈帧从占中弹出了</p>
 </blockquote>
 <h3 id="3-2-6-传递空指针"><a href="#3-2-6-传递空指针" class="headerlink" title="3.2.6 传递空指针"></a>3.2.6 传递空指针</h3><blockquote>
-<p>使用if(arr!&#x3D;&#x3D;NULL)来判断arr指针是否是空指针</p>
+<p>使用if(arr!==NULL)来判断arr指针是否是空指针</p>
 </blockquote>
 <h3 id="3-2-7-传递指针的指针"><a href="#3-2-7-传递指针的指针" class="headerlink" title="3.2.7 传递指针的指针"></a>3.2.7 传递指针的指针</h3><blockquote>
 <p>将指针传递给函数时，传递的是值。如果我们想修改原指针而不是指针的副本，就需要传递指针的指针</p>
@@ -586,38 +594,30 @@
 <p>函数指针是持有函数地址的指针，使用函数指针时要小心，因为C不会检查参数传递是否正确</p>
 </blockquote>
 <h3 id="3-3-1-声明函数指针"><a href="#3-3-1-声明函数指针" class="headerlink" title="3.3.1 声明函数指针"></a>3.3.1 声明函数指针</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (*foo)();</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-2-使用函数指针"><a href="#3-3-2-使用函数指针" class="headerlink" title="3.3.2 使用函数指针"></a>3.3.2 使用函数指针</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> (*fptr)(<span class="type">int</span>);</span><br><span class="line"><span class="type">int</span> <span class="title function_">square</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num*num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fptr=square;</span><br><span class="line"><span class="comment">//ftpr=&amp;square;	//作用同上，在这种上下文环境中编译器会忽略取地址操作符</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;5 square is %d\n&quot;</span>,fptr(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>为函数指针声明类型定义比较方便，类型定义看起来有点奇怪，通常类型定义的名字是声明的最后一个元素</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span> <span class="params">(*funcptr)</span><span class="params">(<span class="type">int</span>)</span>;</span><br><span class="line">...</span><br><span class="line">funcptr fptr2;</span><br><span class="line">fptr2=square;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;8 square is %d\n&quot;</span>,fptr2(<span class="number">8</span>));</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-3-传递函数指针"><a href="#3-3-3-传递函数指针" class="headerlink" title="3.3.3 传递函数指针"></a>3.3.3 传递函数指针</h3><blockquote>
 <p>传递函数指针很简单，只要把函数指针声明作为函数参数即可</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sub</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> num1 - num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span> <span class="params">(*fptrOperation)</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">compute</span><span class="params">(fptrOperation operation, <span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> operation(num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,compute(add,<span class="number">5</span>,<span class="number">6</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,compute(sub,<span class="number">5</span>,<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-4-返回函数指针"><a href="#3-3-4-返回函数指针" class="headerlink" title="3.3.4 返回函数指针"></a>3.3.4 返回函数指针</h3><blockquote>
 <p>返回函数指针需要把函数返回类型声明为函数指针</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fptrOperation <span class="title function_">select</span><span class="params">(<span class="type">char</span> opcode)</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span>(opcode) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>: <span class="keyword">return</span> add;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>: <span class="keyword">return</span> subtract;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">evaluate</span><span class="params">(<span class="type">char</span> opcode, <span class="type">int</span> num1, <span class="type">int</span> num2)</span> &#123;</span><br><span class="line">    fptrOperation operation = select(opcode);</span><br><span class="line">    <span class="keyword">return</span> operation(num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,evaluate(<span class="string">&#x27;+&#x27;</span>, <span class="number">5</span>, <span class="number">6</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,evaluate(<span class="string">&#x27;-&#x27;</span>, <span class="number">5</span>, <span class="number">6</span>));</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-5-使用函数指针数组"><a href="#3-3-5-使用函数指针数组" class="headerlink" title="3.3.5 使用函数指针数组"></a>3.3.5 使用函数指针数组</h3><blockquote>
 <p>函数指针数组可以基于某些条件选择要执行的函数，声明这种数组很简单，只要把函数指针声明为数组的类型即可</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span> <span class="params">(*operation)</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line">operation operations[<span class="number">128</span>]=&#123;<span class="literal">NULL</span>&#125;;</span><br><span class="line">---</span><br><span class="line"><span class="type">int</span> (*operations[<span class="number">128</span>])(<span class="type">int</span>, <span class="type">int</span>)=&#123;<span class="literal">NULL</span>&#125;;<span class="comment">//作用同上</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-6-比较函数指针"><a href="#3-3-6-比较函数指针" class="headerlink" title="3.3.6 比较函数指针"></a>3.3.6 比较函数指针</h3><blockquote>
 <p>使用相等和不等操作符来比较函数指针</p>
 </blockquote>
 <h3 id="3-3-7-转换函数指针"><a href="#3-3-7-转换函数指针" class="headerlink" title="3.3.7 转换函数指针"></a>3.3.7 转换函数指针</h3><blockquote>
 <p>我们可以将指向某个函数的指针转换为其他类型的指针，不过要谨慎使用，因为运行时系统不会验证函数指针所用的参数是否正确。也可以把一种函数指针转换为另一种再转换回来，得到的结果和原指针相同，但函数指针的长度不一定相等</p>
 <p>无法保证函数指针和数据指针相互转换后正常工作</p>
-</blockquote>
-<blockquote>
-<p>void*指针不一定能用在函数指针上，不过在交换函数指针时通常会见到<code>typedef void (*fptrBase)()</code>的”基本”函数指针类型(基本指针)，用做占位符，用来交换函数指针的值</p>
+<p>void<em>指针不一定能用在函数指针上，不过在交换函数指针时通常会见到`typedef void (</em>fptrBase)()`的”基本”函数指针类型(基本指针)，用做占位符，用来交换函数指针的值</p>
 </blockquote>
 <h1 id="第四章-指针和数组"><a href="#第四章-指针和数组" class="headerlink" title="第四章 指针和数组"></a>第四章 指针和数组</h1><blockquote>
 <p>数组和指针表示法紧密关联，在合适的上下文中可以互换</p>
@@ -629,29 +629,24 @@
 <p>一维数组是线性结构，使用一个索引访问成员；数组索引从0开始到声明的长度减1结束</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="built_in">vector</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-1-2-二维数组"><a href="#4-1-2-二维数组" class="headerlink" title="4.1.2 二维数组"></a>4.1.2 二维数组</h3><blockquote>
 <p>二维数组使用行和列来标识数组元素，这类数组需要映射为内存中的一维地址空间。在C中这是通过行–列顺序实现的。先将数组的第一行放进内存，接着是第二行、第三行，直到最后一行。</p>
 <p>我们可以将二维数组当做数组的数组，也就是说，如果只用一个下标访问数组，得到的是对应行的指针</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>]=&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>多维数组具有两个及两个以上维度。对于多维数组，需要多组括号来定义数组的类型和长度</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr3d[<span class="number">3</span>][<span class="number">2</span>][<span class="number">4</span>]=&#123;</span><br><span class="line">	&#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;&#125;,</span><br><span class="line">	&#123;&#123;<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>&#125;,&#123;<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>&#125;&#125;,</span><br><span class="line">	&#123;&#123;<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>&#125;,&#123;<span class="number">21</span>,<span class="number">22</span>,<span class="number">23</span>,<span class="number">24</span>&#125;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-2-指针表示法和数组"><a href="#4-2-指针表示法和数组" class="headerlink" title="4.2 指针表示法和数组"></a>4.2 指针表示法和数组</h2><blockquote>
 <p>指针在处理数组时很有用，我们可以用指针指向已有的数组，也可以从堆上分配内存然后把这块内存当做一个数组使用。数组表示法和指针表示法在某种意义上可以互换。不过，它们并不完全相同</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="built_in">vector</span>[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> *pv=<span class="built_in">vector</span>;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>pv变量是指向数组第一个元素而不是指向数组本身的指针。给pv赋值是把数组的第一个元素的地址赋给pv。</p>
 <p>vector、&amp;vector[0]、pv三者的值相同，都表示数组第一个元素的地址，而&amp;vector表示数组的地址(整个数组的指针)</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pv[i]</span><br><span class="line">*(pv+i)</span><br><span class="line"><span class="comment">//上面两者等价</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>pv指针包含一个内存块的地址，方括号表示法会取出pv中包含的地址，用指针算术运算把索引i加上，然后解引新地址返回其内容</p>
 </blockquote>
@@ -660,7 +655,7 @@
 </ul>
 <blockquote>
 <ul>
-<li><p>vector[i]生成的代码和*(vector+i)生成的不一样，vector[i]表示法生成的机器码从位置vector开始，移动i个位置，取出内容。而*(vector+i)表示法生成的机器码则是从vector开始，在地址上增加i，然后取出这个地址中的内容</p>
+<li><p>vector[i]生成的代码和<em>(vector+i)生成的不一样，vector[i]表示法生成的机器码从位置vector开始，移动i个位置，取出内容。而</em>(vector+i)表示法生成的机器码则是从vector开始，在地址上增加i，然后取出这个地址中的内容</p>
 </li>
 <li><p>sizeof操作符对数组和同一个数组的指针操作也是不同的。对vector调用sizeof操作符会返回20，就是这个数组分配的字节数。对pv调用sizeof操作符会返回4，就是指针的长度</p>
 </li>
@@ -679,14 +674,10 @@
 <p>可以使用两种表示法在函数声明中声明数组：数组表示法和指针表示法</p>
 </blockquote>
 <h3 id="4-5-1-使用数组表示法"><a href="#4-5-1-使用数组表示法" class="headerlink" title="4.5.1 使用数组表示法"></a>4.5.1 使用数组表示法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">displayArray</span><span class="params">(<span class="type">int</span> arr[],<span class="type">int</span> size)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,arr[i]);</span><br><span class="line">        <span class="comment">//printf(&quot;%d\n&quot;,*(arr+i)); 作用同上</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-5-2-使用指针表示法"><a href="#4-5-2-使用指针表示法" class="headerlink" title="4.5.2 使用指针表示法"></a>4.5.2 使用指针表示法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">displayArray</span><span class="params">(<span class="type">int</span>* arr,<span class="type">int</span> size)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,arr[i]);</span><br><span class="line">		<span class="comment">//printf(&quot;%d\n&quot;,*(arr+i)); 作用同上</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-6-使用指针的一维数组"><a href="#4-6-使用指针的一维数组" class="headerlink" title="4.6 使用指针的一维数组"></a>4.6 使用指针的一维数组</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* arr[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">	arr[i] = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));<span class="comment">//表示地址</span></span><br><span class="line">	*arr[i] = i;<span class="comment">//解引指针，得到该地址的内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>下面是等价的指针表示法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(arr+i)=(<span class="type">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">**(arr+i)=i;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>子表达式(arr+i)表示数组的第i个元素的地址，用子表达式*(arr+i)修改这个地址的内容(该内容其实也是地址)。在第一条语句中我们将已分配的内存赋给这个位置。对(arr+i)子表达式做两次解引（如第二条语句所示），会返回所分配内存的位置，然后我们把i赋给它</p>
 </blockquote>
@@ -698,7 +689,6 @@
 <p><code>arr[i][j]</code>的地址为<code>address of arr+(i*size of row)+(j*size of element)</code></p>
 </blockquote>
 <h2 id="4-8-传递多维数组"><a href="#4-8-传递多维数组" class="headerlink" title="4.8 传递多维数组"></a>4.8 传递多维数组</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">display2DArray</span><span class="params">(<span class="type">int</span> arr[][<span class="number">5</span>],<span class="type">int</span> rows)</span>;</span><br><span class="line">---</span><br><span class="line"><span class="type">void</span> <span class="title function_">display2DArray</span><span class="params">(<span class="type">int</span> (*arr)[<span class="number">5</span>],<span class="type">int</span> rows)</span>;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>这两种写法都指明了数组的列数，这很有必要，因为编译器需要知道每行有几个元素。如果没有传递这个信息，编译器就无法计算想<code>arr[0][3]</code>这样的表达式</p>
 <p>在第一种写法中，表达式<code>arr[]</code>是数组指针的一个隐式声明，而第二种写法中的<code>(*arr)</code>表达式则是指针的一个显式声明</p>
@@ -711,18 +701,15 @@
 <p>下面的代码演示了如何创建一个内存可能不连续的二维数组。首先分配“外层”数组，然后分别用malloc语句为每一行分配，因此内存不一定连续，实际分配情况取决于堆管理器和堆的状态，也有可能是连续的</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> rows = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> columns = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> **matrix = (<span class="type">int</span> **) <span class="built_in">malloc</span>(rows * <span class="keyword">sizeof</span>(<span class="type">int</span> *));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">	matrix[i] = (<span class="type">int</span> *) <span class="built_in">malloc</span>(columns * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-9-2-分配连续内存"><a href="#4-9-2-分配连续内存" class="headerlink" title="4.9.2 分配连续内存"></a>4.9.2 分配连续内存</h3><blockquote>
 <p>第一种技术，第一个malloc分配了一个整数指针的数组，一个元素用来存储一行的指针，在for循环中，我们将第二个malloc所分配的内存的一部分赋值给第一个数组的每个元素</p>
 <p>从技术上讲，第一个数组的内存可以和数组“体”的内存分开，为数组“体”分配的内存是连续的</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> rows = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> columns = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> **matrix = (<span class="type">int</span> **) <span class="built_in">malloc</span>(rows * <span class="keyword">sizeof</span>(<span class="type">int</span> *));</span><br><span class="line">matrix[<span class="number">0</span>] = (<span class="type">int</span> *) <span class="built_in">malloc</span>(rows *columns * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; rows; i++)</span><br><span class="line">	matrix[i] = matrix[<span class="number">0</span>] + i *columns;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>第二种技术，数组所需的所有内存是一次性分配的，后面的代码用到这个数组时不能使用下标，必须手动计算索引，每个元素被初始化为其索引的积。不能使用数组下标是因为我们丢失了允许编译器使用下标所需的“形态”信息</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *matrix = (<span class="type">int</span> *)<span class="built_in">malloc</span>(rows *columns * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; columns; j++) &#123;</span><br><span class="line">    	*(matrix + (i*columns) + j) = i*j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-10-不规则数组和指针"><a href="#4-10-不规则数组和指针" class="headerlink" title="4.10 不规则数组和指针"></a>4.10 不规则数组和指针</h2><blockquote>
 <p>不规则数组是每一行的列数不一样的二维数组</p>
 </blockquote>
@@ -733,13 +720,11 @@
 <p>复合字面量是一种C构造，前面看起来像类型转换操作，后面跟着花括号括起来的初始化列表</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="type">const</span> <span class="type">int</span>)&#123;<span class="number">100</span>&#125;</span><br><span class="line">(<span class="type">int</span>[<span class="number">3</span>])&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;</span><br><span class="line">---</span><br><span class="line"><span class="type">int</span> (*(arr[]))=&#123;</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125;,</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>这个数组有3行3列，将数组元素用数字0到8按行–列顺序初始化</p>
 <p>下面使用3个复合字面量声明不规则数组(复合字面量在创建不规则数组时很有用)：</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> (*(arr2[]))=&#123;</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">4</span>,<span class="number">5</span>&#125;,</span><br><span class="line">	(<span class="type">int</span>[])&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h1 id="第五章-指针和字符串"><a href="#第五章-指针和字符串" class="headerlink" title="第五章 指针和字符串"></a>第五章 指针和字符串</h1><h2 id="5-1-字符串基础"><a href="#5-1-字符串基础" class="headerlink" title="5.1 字符串基础"></a>5.1 字符串基础</h2><blockquote>
 <p>字符串是以ASCII字符NUL(即\0)结尾的字符序列。字符串通常存储在数组或者从堆上分配的内存中。不过，并非所有的字符数组都是字符串，字符数组可能没有NUL字符。字符数组也用来表示布尔值等小的整数单元，以节省内存空间</p>
 </blockquote>
@@ -767,12 +752,10 @@
 <li>字符数组声明</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> header[<span class="number">32</span>];</span><br><span class="line"><span class="comment">//实际只能放31个字符，以NUL结尾</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>字符指针声明</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *header;</span><br><span class="line"><span class="comment">//未指明字符串长度和位置(未初始化)</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="5-1-2-字符串字面量池"><a href="#5-1-2-字符串字面量池" class="headerlink" title="5.1.2 字符串字面量池"></a>5.1.2 字符串字面量池</h3><blockquote>
 <ul>
 <li><p>定义字面量时通常会将其分配在字面量池中，这个内存区域保存了组成字符串的字符序列。多次用到同一个字面量时，字面量池中通常只有一份副本。这样会减少应用程序占用的内存。通常认为字面量是不可变的，因此只有一份副本不会有什么问题。不过，认定只有一份副本或者字面量不可变不是一种好做法，大部分编译器有关闭字面量池的选项，一旦关闭，字面量可能生成多个副本，每个副本拥有自己的地址</p>
@@ -791,36 +774,29 @@
 <p>初始化字符串采用的方法取决于变量是被声明为字符数组还是字符指针，字符串所用的内存要么是数组要么是指针指向的一块内存。我们可以用字符串字面量或者一系列字符初始化字符串，或者从别的地方（比如说标准输入）得到字符</p>
 </blockquote>
 <h4 id="1-初始化char数组"><a href="#1-初始化char数组" class="headerlink" title="1.初始化char数组"></a>1.初始化char数组</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cahr header[]=<span class="string">&quot;Meadia Player&quot;</span>;<span class="comment">//初始化操作符初始化char数组</span></span><br><span class="line">---</span><br><span class="line"><span class="type">char</span> header[<span class="number">13</span>];</span><br><span class="line"><span class="built_in">strcpy</span>(header,<span class="string">&quot;Meadia Player&quot;</span>);<span class="comment">//使用strcpy()函数初始化char数组</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="2-初始化char指针"><a href="#2-初始化char指针" class="headerlink" title="2.初始化char指针"></a>2.初始化char指针</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cahr *header=(<span class="type">char</span> *)<span class="built_in">malloc</span>(<span class="built_in">strlen</span>(<span class="string">&quot;Media Player&quot;</span>)+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">strcpy</span>(header,<span class="string">&quot;Media Player&quot;</span>);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>在使用malloc()函数确定字符串长度时：</p>
 <ul>
 <li>记得算上终结符NUL(即\0)</li>
 <li>不能使用sizeof操作符，而采用strlen()函数确定已有字符串长度</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>试图用字符字面量来初始化char指针不会起作用。因为字符字面量是int类型，这其实是尝试把整数赋给字符指针。这样经常会造成应用程序在解引指针时终止：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *prefix=<span class="string">&#x27;+&#x27;</span>;<span class="comment">//不合法</span></span><br><span class="line">---</span><br><span class="line"><span class="comment">//正确做法</span></span><br><span class="line"><span class="type">char</span> *prefix=(<span class="type">char</span> *)<span class="built_in">malloc</span>(<span class="number">2</span>);</span><br><span class="line">*prefix=<span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">*(prefix+<span class="number">1</span>)=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h4 id="3-从标准输入初始化字符串"><a href="#3-从标准输入初始化字符串" class="headerlink" title="3.从标准输入初始化字符串"></a>3.从标准输入初始化字符串</h4><blockquote>
 <p>使用标准输入等外部源初始化字符串</p>
 </blockquote>
-<h4 id="4-字符串位置小结"><a href="#4-字符串位置小结" class="headerlink" title="4.字符串位置小结"></a>4.字符串位置小结</h4><p><img src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/20221126143436.png"></p>
+<h4 id="4-字符串位置小结"><a href="#4-字符串位置小结" class="headerlink" title="4.字符串位置小结"></a>4.字符串位置小结</h4><p><img src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/20221126143436.png" alt=""></p>
 <h2 id="5-2-标准字符串操作"><a href="#5-2-标准字符串操作" class="headerlink" title="5.2 标准字符串操作"></a>5.2 标准字符串操作</h2><h3 id="5-2-1-比较字符串"><a href="#5-2-1-比较字符串" class="headerlink" title="5.2.1 比较字符串"></a>5.2.1 比较字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">strcmp</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *s1,<span class="type">const</span> <span class="type">char</span> *s2)</span>;</span><br><span class="line"><span class="keyword">return</span>:</span><br><span class="line">	负数：按字典序(字母序)s1&lt;s2</span><br><span class="line">    <span class="number">0</span>：s1=s2</span><br><span class="line">   	正数：按字典序(字母序)s1&gt;s2</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>要比较的两个字符串都以指向char常量的指针的形式传递，这让我们可以放心地使用这个函数，而不用担心传入的字符串被修改</p>
 </blockquote>
 <h3 id="5-2-2-赋值字符串"><a href="#5-2-2-赋值字符串" class="headerlink" title="5.2.2 赋值字符串"></a>5.2.2 赋值字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char* strcpy(char *s1,const char *s2);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>两个指针可以引用同一个字符串。两个指针引用同一个地址称为<strong>别名</strong>。尽管通常情况下这不是问题，但要知道，把一个指针赋值给另一个指针不会复制字符串，只是复制了字符串的地址</p>
 </blockquote>
 <h3 id="5-2-3-拼接字符串"><a href="#5-2-3-拼接字符串" class="headerlink" title="5.2.3 拼接字符串"></a>5.2.3 拼接字符串</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char *strcat(char *s1,const char *s2);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>此函数把第二个字符串拼接到第一个的结尾，第二个字符串是以常量char指针的形式传递的。函数不会分配内存，这意味着第一个字符串必须足够长，能容纳拼接后的结果，否则函数可能会越界写入，导致不可预期的行为。函数的返回值的地址跟第一个参数的地址一样</p>
 </blockquote>
@@ -851,7 +827,6 @@
 </ul>
 </blockquote>
 <h3 id="5-4-1-返回字面量的地址"><a href="#5-4-1-返回字面量的地址" class="headerlink" title="5.4.1 返回字面量的地址"></a>5.4.1 返回字面量的地址</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">func</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;hello world!!!&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="5-4-2-返回动态分配内存的地址"><a href="#5-4-2-返回动态分配内存的地址" class="headerlink" title="5.4.2 返回动态分配内存的地址"></a>5.4.2 返回动态分配内存的地址</h3><blockquote>
 <p>如果需要从函数返回字符串，可以在堆上分配字符串内存并返回其地址</p>
 </blockquote>
@@ -869,9 +844,7 @@
 <p>第一种使用struct关键字声明结构体。第二种使用类型定义结构体</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">person</span>&#123;</span></span><br><span class="line">	<span class="type">char</span>* name;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">person</span>&#123;</span></span><br><span class="line">	<span class="type">char</span>* name;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> age;</span><br><span class="line">&#125;Person;</span><br><span class="line">Person person;<span class="comment">//person实例声明</span></span><br><span class="line">person.name = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="built_in">strlen</span>(<span class="string">&quot;Emily&quot;</span>)+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">strcpy</span>(person.name,<span class="string">&quot;Emily&quot;</span>);</span><br><span class="line">person.age = <span class="number">23</span>;</span><br><span class="line">---</span><br><span class="line">Person *ptrPerson;</span><br><span class="line">ptrPerson=(Person*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Person));</span><br><span class="line">ptrPerson-&gt;name = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="built_in">strlen</span>(<span class="string">&quot;Emily&quot;</span>)+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">strcpy</span>(ptrPerson-&gt;name,<span class="string">&quot;Emily&quot;</span>);</span><br><span class="line">ptrPerson-&gt;age = <span class="number">23</span>;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>为结构体分配内存</li>
 </ul>
@@ -889,7 +862,7 @@
 <p>在为结构体分配内存时，运行时系统不会自动为结构体内部的指针分配内存。类似地，当结构体消失时，运行时系统也不会自动释放结构体内部的指针指向的内存</p>
 <p>当我们声明含有指针类型变量的结构体或对其动态分配内存时，相应的指针会包含垃圾数据，需要对其分配内存并把地址赋给每个指针，务必记得最后要手动释放该指针以及动态分配内存的结构体的指针</p>
 </blockquote>
-<h2 id="6-3-避免malloc-x2F-free开销"><a href="#6-3-避免malloc-x2F-free开销" class="headerlink" title="6.3 避免malloc&#x2F;free开销"></a>6.3 避免malloc&#x2F;free开销</h2><blockquote>
+<h2 id="6-3-避免malloc-free开销"><a href="#6-3-避免malloc-free开销" class="headerlink" title="6.3 避免malloc/free开销"></a>6.3 避免malloc/free开销</h2><blockquote>
 <p>重复分配然后释放结构体会产生一些开销，可能导致巨大的性能瓶颈。解决这个问题的一种办法是为分配的结构体单独维护一个表。当用户不再需要某个结构体实例时，将其返回结构体池中。当我们需要某个实例时，从结构体池中获取一个对象。如果池中没有可用的元素，我们就动态分配一个实例。这种方法高效地维护一个结构体池，能按需使用和重复使用内存</p>
 </blockquote>
 <h2 id="6-4-使用指针支持数据结构"><a href="#6-4-使用指针支持数据结构" class="headerlink" title="6.4 使用指针支持数据结构"></a>6.4 使用指针支持数据结构</h2><blockquote>
@@ -914,17 +887,14 @@
 <p>如果代码位于内存的不可执行区域，<strong>数据执行保护</strong>（Data Execution Prevention，DEP）技术会阻止执行这些代码。在有些类型的攻击中，恶意代码会覆写内存的某个区域，然后将控制转移到这个区域。如果这个区域（比如栈或是堆）的代码不可执行，那么恶意代码就无法执行了。这种技术可以用硬件实现，也可以用软件实现</p>
 </blockquote>
 <h2 id="7-1-指针的声明和初始化"><a href="#7-1-指针的声明和初始化" class="headerlink" title="7.1 指针的声明和初始化"></a>7.1 指针的声明和初始化</h2><h3 id="7-1-1-不恰当的指针声明"><a href="#7-1-1-不恰当的指针声明" class="headerlink" title="7.1.1 不恰当的指针声明"></a>7.1.1 不恰当的指针声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>* ptr1, ptr2;	<span class="comment">//ptr1为int指针变量，ptr2为int变量</span></span><br><span class="line"><span class="type">int</span> *ptr1, *ptr2;	<span class="comment">//ptr1和ptr2都是int指针变量</span></span><br><span class="line"><span class="type">int</span> *ptr1;	<span class="comment">//每个变量声明独占一行更好</span></span><br><span class="line"><span class="type">int</span> *ptr2;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>用类型定义代替宏定义是另一个好习惯。类型定义允许编译器检查作用域规则，而宏定义不一定会</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PINT int*</span></span><br><span class="line">PINT ptr1,ptr2;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>这里定义效果同上，ptr1为int指针变量，ptr2为int变量</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span>* PINT;</span><br><span class="line">PINT ptr1,ptr2;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>这里ptr1和ptr2都是int指针变量</p>
 </blockquote>
@@ -960,9 +930,7 @@
 <p>用malloc这类函数时一定要检查返回值，否则可能会导致程序非正常终止</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p=<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"><span class="keyword">if</span>(p==<span class="literal">NULL</span>)&#123;</span><br><span class="line">	<span class="comment">//malloc分配内存失败</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">//进行后续处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="7-2-2-错误使用解引操作"><a href="#7-2-2-错误使用解引操作" class="headerlink" title="7.2.2 错误使用解引操作"></a>7.2.2 错误使用解引操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">int *pi=&amp;num;</span><br><span class="line">---</span><br><span class="line">int num;</span><br><span class="line">int *pi;</span><br><span class="line">pi=&amp;num;</span><br><span class="line">---</span><br><span class="line">int num;</span><br><span class="line">int *pi;</span><br><span class="line">*pi=&amp;num;//错误，不能把地址赋值给int型变量</span><br></pre></td></tr></table></figure>
-
 <h3 id="7-2-3-迷途指针"><a href="#7-2-3-迷途指针" class="headerlink" title="7.2.3 迷途指针"></a>7.2.3 迷途指针</h3><blockquote>
 <p>释放指针后却仍然在引用原来的内存，就会产生迷途指针，这其内容可能已经改变。对这块内存进行写操作可能会损坏内存，而读操作则可能返回无效数据，这两种情况都可能导致程序终止</p>
 </blockquote>
@@ -973,7 +941,6 @@
 <p>将数组传递给函数时，一定要同时传递数组长度。这个信息帮助函数避免越过数组边界</p>
 </blockquote>
 <h3 id="7-2-6-错误使用sizeof操作符"><a href="#7-2-6-错误使用sizeof操作符" class="headerlink" title="7.2.6 错误使用sizeof操作符"></a>7.2.6 错误使用sizeof操作符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int buffer[20];</span><br><span class="line">printf(&quot;%d\n&quot;,sizeof(buffer));//80字节</span><br><span class="line">printf(&quot;%d\n&quot;,sizeof(buffer)/sizeof(int));20个</span><br></pre></td></tr></table></figure>
-
 <h3 id="7-2-7-匹配指针类型"><a href="#7-2-7-匹配指针类型" class="headerlink" title="7.2.7 匹配指针类型"></a>7.2.7 匹配指针类型</h3><blockquote>
 <p>最好使用合适的指针类型来存储数据！</p>
 </blockquote>
@@ -1025,8 +992,6 @@
 <li>线程；</li>
 <li>面向对象技术</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>关于线程，我们对两个方面感兴趣：一是用指针在线程之间共享数据这个基本问题，二是如何用指针支持回调函数。一个操作可能会调用某函数来执行任务，如果实际被调用的函数发生了改变，我们就称之为回调函数。我们可以使用回调函数在线程之间通信</p>
 <p>本章会讲到两种在C中支持面向对象类型的方法：第一种是用不透明指针，这种技术对用户隐藏了数据结构的实现细节；第二种技术说明如何在C中实现多态类型。</p>
 </blockquote>
@@ -1044,8 +1009,6 @@
 </blockquote>
 <h3 id="8-1-2-访问端口"><a href="#8-1-2-访问端口" class="headerlink" title="8.1.2 访问端口"></a>8.1.2 访问端口</h3><blockquote>
 <p>端口既是硬件概念，也是软件概念。服务器用软件端口指明它们要接收发给这台机器的某类消息。硬件端口通常是一个连接到外部设备的物理输入输出系统组件。程序通过读写硬件端口可以处理信息和命令</p>
-</blockquote>
-<blockquote>
 <p>机器用十六进制地址表示端口，将数据作为无符号整数处理。volatile关键字修饰符表示可以在程序以外改变变量。比如说，外部设备可能会向端口写入数据，且可以独立于计算机的处理器执行这个写操作。出于优化目的，编译器有时候会临时使用缓存或是寄存器来持有内存中的值，如果外部的操作修改了这个内存位置，改动并不能反映到缓存或寄存器中。</p>
 <p>用volatile关键字可以阻止运行时系统使用寄存器暂存端口值，每次访问端口都需要系统读写端口，而不是从寄存器中读取一个可能已经过期的值。我们不应该把所有变量都声明为volatile，因为这样会阻碍编译器进行所有类型的优化，用非volatile变量访问volatile内存不是个好主意，这么做会导致未定义的行为</p>
 <p>之后应用程序可以通过解引端口指针来读写端口</p>
@@ -1059,20 +1022,14 @@
 </blockquote>
 <h2 id="8-2-别名、强别名和restrict关键字"><a href="#8-2-别名、强别名和restrict关键字" class="headerlink" title="8.2 别名、强别名和restrict关键字"></a>8.2 别名、强别名和restrict关键字</h2><blockquote>
 <p>如果两个指针引用同一内存地址，则其中一个指针是另一个指针的别名</p>
-<p>当编译器为指针生成代码时，除非特别指定，它必须假设可能会存在别名。使用别名会对编译器生成代码有所限制，如果两个指针引用同一位置，那么任何一个都可能修改这个位置。当编译器生成读写这个位置的代码时，它就不能通过把值放入寄存器来优化性能。对于每次引用，它只能执行机器级别的加载和保存操作。频繁的加载&#x2F;保存会很低效，在某些情况下，编译器还必须关心操作执行的顺序</p>
-</blockquote>
-<blockquote>
+<p>当编译器为指针生成代码时，除非特别指定，它必须假设可能会存在别名。使用别名会对编译器生成代码有所限制，如果两个指针引用同一位置，那么任何一个都可能修改这个位置。当编译器生成读写这个位置的代码时，它就不能通过把值放入寄存器来优化性能。对于每次引用，它只能执行机器级别的加载和保存操作。频繁的加载/保存会很低效，在某些情况下，编译器还必须关心操作执行的顺序</p>
 <p><strong>强别名</strong>是另一种别名，它不允许一种类型的指针成为另一种类型的指针的别名。强别名规则对符号或修饰符不起作用</p>
-</blockquote>
-<blockquote>
 <p>不过，有些情况下，对同样的数据采用不同的表现形式也是有用的，为了避免别名问题，可以采用这几种技术：</p>
 <ul>
 <li>使用联合体</li>
 <li>关闭强别名</li>
 <li>使用char指针</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>编译器总是假定char指针是任意对象的潜在别名，所以，大部分情况下可以安全地使用。不过，把其他数据类型的指针转换成char指针，再把char指针转换成其他数据类型的指针，则会导致未定义的行为，应该避免这么做</p>
 </blockquote>
 <h3 id="8-2-1-使用联合体以多种方式表示值"><a href="#8-2-1-使用联合体以多种方式表示值" class="headerlink" title="8.2.1 使用联合体以多种方式表示值"></a>8.2.1 使用联合体以多种方式表示值</h3><blockquote>
@@ -1098,12 +1055,12 @@
 <p>多态行为可以帮助提高应用程序的可维护性。多态函数的行为取决于它执行的目标对象，这意味着我们可以更容易地为应用程序添加功能</p>
 </blockquote>
 <h3 id="8-4-1-创建和使用不透明指针"><a href="#8-4-1-创建和使用不透明指针" class="headerlink" title="8.4.1 创建和使用不透明指针"></a>8.4.1 创建和使用不透明指针</h3><blockquote>
-<p>不透明指针用来在C中实现数据封装。一种方法是在头文件中声明不包含任何实现细节的结构体，然后在实现文件中定义与数据结构的特定实现配合使用的函数。数据结构的用户可以看到声明和函数原型，但是实现会被隐藏（在.c&#x2F;.obj文件中）。</p>
+<p>不透明指针用来在C中实现数据封装。一种方法是在头文件中声明不包含任何实现细节的结构体，然后在实现文件中定义与数据结构的特定实现配合使用的函数。数据结构的用户可以看到声明和函数原型，但是实现会被隐藏（在.c/.obj文件中）。</p>
 </blockquote>
 <h3 id="8-4-2-C中的多态"><a href="#8-4-2-C中的多态" class="headerlink" title="8.4.2 C中的多态"></a>8.4.2 C中的多态</h3><blockquote>
 <p>C++这类面向对象语言的多态是建立在基类及派生类之间继承关系的基础上的。C不支持继承，所以我们得模拟结构体之间的继承</p>
 </blockquote>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C%E6%8C%87%E9%92%88/">http://example.com/2022/12/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C%E6%8C%87%E9%92%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E6%8C%87%E9%92%88/">C指针</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/13/C-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C:数组指针与指针数组</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Makefile基础学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%8C%87%E9%92%88%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">1.3 指针操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-text">1.3.1 指针算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%AF%94%E8%BE%83%E6%8C%87%E9%92%88"><span class="toc-text">1.3.2 比较指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E6%8C%87%E9%92%88%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="toc-text">1.4 指针常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E5%A4%9A%E5%B1%82%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8"><span class="toc-text">1.4.1 多层间接引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-%E5%B8%B8%E9%87%8F%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text">1.4.2 常量与指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-C%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">第二章 C的动态内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">2.1 动态内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-C%E4%B8%AD%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.C中动态分配内存基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="toc-text">2.内存泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%87%BD%E6%95%B0"><span class="toc-text">2.2 动态内存分配函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-malloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.1 malloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-calloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.2 calloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-recalloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.3 recalloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-alloca%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%95%BF%E6%95%B0%E7%BB%84"><span class="toc-text">2.2.4 alloca函数和变长数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BD%BF%E7%94%A8free%E5%87%BD%E6%95%B0%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="toc-text">2.3 使用free函数释放内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%B0%86%E9%87%8A%E6%94%BE%E7%9A%84%E6%8C%87%E9%92%88%E8%B5%8B%E5%80%BC%E4%B8%BANULL"><span class="toc-text">2.3.1 将释放的指针赋值为NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E9%87%8D%E5%A4%8D%E9%87%8A%E6%94%BE"><span class="toc-text">2.3.2 重复释放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">2.4 迷途指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88%E7%A4%BA%E4%BE%8B"><span class="toc-text">2.4.1 迷途指针示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E5%A4%84%E7%90%86%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">2.4.2 处理迷途指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-%E8%B0%83%E8%AF%95%E5%99%A8%E5%AF%B9%E6%A3%80%E6%B5%8B%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-text">2.4.3 调试器对检测内存泄露的支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8A%80%E6%9C%AF"><span class="toc-text">2.5 动态内存分配技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-C%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">2.5.1 C的垃圾回收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E5%8D%B3%E5%88%9D%E5%A7%8B%E5%8C%96-RAII"><span class="toc-text">2.5.2 资源获取即初始化(RAII)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-3-%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-text">2.5.3 使用异常处理函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E5%87%BD%E6%95%B0"><span class="toc-text">第三章 指针和函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%A0%88%E5%92%8C%E5%A0%86"><span class="toc-text">3.1 程序的栈和堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E7%A8%8B%E5%BA%8F%E6%A0%88"><span class="toc-text">3.1.1 程序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E6%A0%88%E5%B8%A7%E7%9A%84%E7%BB%84%E7%BB%87"><span class="toc-text">3.1.2 栈帧的组织</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2 通过指针传递和返回数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2.1 使用指针传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E4%BD%BF%E7%94%A8%E5%80%BC%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2.2 使用值传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E4%BC%A0%E9%80%92%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">3.2.3 传递指向常量的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88"><span class="toc-text">3.2.4 返回指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-%E5%B1%80%E9%83%A8%E6%95%B0%E6%8D%AE%E6%8C%87%E9%92%88"><span class="toc-text">3.2.5 局部数据指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E4%BC%A0%E9%80%92%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text">3.2.6 传递空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-7-%E4%BC%A0%E9%80%92%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">3.2.7 传递指针的指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3 函数指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.1 声明函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.2 使用函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.3 传递函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E8%BF%94%E5%9B%9E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.4 返回函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-5-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84"><span class="toc-text">3.3.5 使用函数指针数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-6-%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.6 比较函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-7-%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.7 转换函数指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-text">第四章 指针和数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%95%B0%E7%BB%84%E6%A6%82%E8%BF%B0"><span class="toc-text">4.1 数组概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.1.1 一维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.1.2 二维数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%8C%87%E9%92%88%E8%A1%A8%E7%A4%BA%E6%B3%95%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-text">4.2 指针表示法和数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E4%BD%BF%E7%94%A8malloc%E5%88%9B%E5%BB%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.3 使用malloc创建一维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E4%BD%BF%E7%94%A8realloc%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6"><span class="toc-text">4.4 使用realloc调整数组长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E4%BC%A0%E9%80%92%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.5 传递一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-1-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">4.5.1 使用数组表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">4.5.2 使用指针表示法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.6 使用指针的一维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.7 指针和多维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-%E4%BC%A0%E9%80%92%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.8 传递多维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.9 动态分配二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-1-%E5%88%86%E9%85%8D%E5%8F%AF%E8%83%BD%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%86%85%E5%AD%98"><span class="toc-text">4.9.1 分配可能不连续的内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-2-%E5%88%86%E9%85%8D%E8%BF%9E%E7%BB%AD%E5%86%85%E5%AD%98"><span class="toc-text">4.9.2 分配连续内存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-10-%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88"><span class="toc-text">4.10 不规则数组和指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">第五章 指针和字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E7%A1%80"><span class="toc-text">5.1 字符串基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A3%B0%E6%98%8E"><span class="toc-text">5.1.1 字符串声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F%E6%B1%A0"><span class="toc-text">5.1.2 字符串字面量池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">5.1.3 字符串初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96char%E6%95%B0%E7%BB%84"><span class="toc-text">1.初始化char数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96char%E6%8C%87%E9%92%88"><span class="toc-text">2.初始化char指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BB%8E%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">3.从标准输入初始化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BD%8D%E7%BD%AE%E5%B0%8F%E7%BB%93"><span class="toc-text">4.字符串位置小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%A0%87%E5%87%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-text">5.2 标准字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.1 比较字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E8%B5%8B%E5%80%BC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.2 赋值字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-3-%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.3 拼接字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E4%BC%A0%E9%80%92%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3 传递字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-%E4%BC%A0%E9%80%92%E7%AE%80%E5%8D%95%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3.1 传递简单字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-2-%E4%BC%A0%E9%80%92%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">5.3.2 传递字符常量的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-3-%E4%BC%A0%E9%80%92%E9%9C%80%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3.3 传递需要初始化的字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-4-%E7%BB%99%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-text">5.3.4 给应用程序传递参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.4 返回字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-1-%E8%BF%94%E5%9B%9E%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">5.4.1 返回字面量的地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-2-%E8%BF%94%E5%9B%9E%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">5.4.2 返回动态分配内存的地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.5 函数指针和字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">第六章 指针和结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">6.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%BB%93%E6%9E%84%E4%BD%93%E9%87%8A%E6%94%BE%E9%97%AE%E9%A2%98"><span class="toc-text">6.2 结构体释放问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E9%81%BF%E5%85%8Dmalloc-x2F-free%E5%BC%80%E9%94%80"><span class="toc-text">6.3 避免malloc&#x2F;free开销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">6.4 使用指针支持数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-1-%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">6.4.1 单链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E9%98%9F%E5%88%97"><span class="toc-text">6.4.2 使用指针支持队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-3-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%A0%88"><span class="toc-text">6.4.3 使用指针支持栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-4-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%A0%91"><span class="toc-text">6.4.4 使用指针支持树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8C%E6%8C%87%E9%92%88%E8%AF%AF%E7%94%A8"><span class="toc-text">第七章 安全问题和指针误用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%8C%87%E9%92%88%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7.1 指针的声明和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-1-%E4%B8%8D%E6%81%B0%E5%BD%93%E7%9A%84%E6%8C%87%E9%92%88%E5%A3%B0%E6%98%8E"><span class="toc-text">7.1.1 不恰当的指针声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E5%89%8D%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7.1.2 使用指针前未初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-3-%E5%A4%84%E7%90%86%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8C%87%E9%92%88"><span class="toc-text">7.1.3 处理未初始化指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-text">7.2 指针的使用问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-1-%E6%B5%8B%E8%AF%95NULL"><span class="toc-text">7.2.1 测试NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-2-%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8%E8%A7%A3%E5%BC%95%E6%93%8D%E4%BD%9C"><span class="toc-text">7.2.2 错误使用解引操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-3-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">7.2.3 迷途指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-4-%E8%B6%8A%E8%BF%87%E6%95%B0%E7%BB%84%E8%BE%B9%E7%95%8C%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98"><span class="toc-text">7.2.4 越过数组边界访问内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-5-%E9%94%99%E8%AF%AF%E8%AE%A1%E7%AE%97%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6"><span class="toc-text">7.2.5 错误计算数组长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-6-%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8sizeof%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">7.2.6 错误使用sizeof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-7-%E5%8C%B9%E9%85%8D%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">7.2.7 匹配指针类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-8-%E6%9C%89%E7%95%8C%E6%8C%87%E9%92%88"><span class="toc-text">7.2.8 有界指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-9-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">7.2.9 字符串的安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-10-%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">7.2.10 指针算术运算和结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-11-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">7.2.11 函数指针的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E9%97%AE%E9%A2%98"><span class="toc-text">7.3 内存释放问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-1-%E9%87%8D%E5%A4%8D%E9%87%8A%E6%94%BE"><span class="toc-text">7.3.1 重复释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-2-%E6%B8%85%E9%99%A4%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE"><span class="toc-text">7.3.2 清除敏感数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-text">7.4 使用静态分析工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">第八章 其他重要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E8%BD%AC%E6%8D%A2%E6%8C%87%E9%92%88"><span class="toc-text">8.1 转换指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-1-%E8%AE%BF%E9%97%AE%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">8.1.1 访问特殊用途的地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-2-%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3"><span class="toc-text">8.1.2 访问端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-3-%E4%BD%BF%E7%94%A8DMA%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98"><span class="toc-text">8.1.3 使用DMA访问内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-4-%E5%88%A4%E6%96%AD%E6%9C%BA%E5%99%A8%E7%9A%84%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-text">8.1.4 判断机器的字节序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E5%88%AB%E5%90%8D%E3%80%81%E5%BC%BA%E5%88%AB%E5%90%8D%E5%92%8Crestrict%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">8.2 别名、强别名和restrict关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-1-%E4%BD%BF%E7%94%A8%E8%81%94%E5%90%88%E4%BD%93%E4%BB%A5%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%80%BC"><span class="toc-text">8.2.1 使用联合体以多种方式表示值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2-%E5%BC%BA%E5%88%AB%E5%90%8D"><span class="toc-text">8.2.2 强别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-3-%E4%BD%BF%E7%94%A8restrict%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">8.2.3 使用restrict关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E7%BA%BF%E7%A8%8B%E5%92%8C%E6%8C%87%E9%92%88"><span class="toc-text">8.3 线程和指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-1-%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%8C%87%E9%92%88"><span class="toc-text">8.3.1 线程间共享指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-2-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E5%9B%9E%E8%B0%83"><span class="toc-text">8.3.2 使用函数指针支持回调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%8A%80%E6%9C%AF"><span class="toc-text">8.4 面向对象技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-1-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E4%B8%8D%E9%80%8F%E6%98%8E%E6%8C%87%E9%92%88"><span class="toc-text">8.4.1 创建和使用不透明指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-2-C%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81"><span class="toc-text">8.4.2 C中的多态</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C%E6%8C%87%E9%92%88/">http://example.com/2022/12/04/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C%E6%8C%87%E9%92%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E6%8C%87%E9%92%88/">C指针</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/13/C-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C:数组指针与指针数组</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/28/Makefile%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Makefile基础学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%8C%87%E9%92%88%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">1.3 指针操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-text">1.3.1 指针算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%AF%94%E8%BE%83%E6%8C%87%E9%92%88"><span class="toc-text">1.3.2 比较指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E6%8C%87%E9%92%88%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="toc-text">1.4 指针常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E5%A4%9A%E5%B1%82%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8"><span class="toc-text">1.4.1 多层间接引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-%E5%B8%B8%E9%87%8F%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text">1.4.2 常量与指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-C%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">第二章 C的动态内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">2.1 动态内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-C%E4%B8%AD%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.C中动态分配内存基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="toc-text">2.内存泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%87%BD%E6%95%B0"><span class="toc-text">2.2 动态内存分配函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-malloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.1 malloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-calloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.2 calloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-recalloc%E5%87%BD%E6%95%B0"><span class="toc-text">2.2.3 recalloc函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-alloca%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%98%E9%95%BF%E6%95%B0%E7%BB%84"><span class="toc-text">2.2.4 alloca函数和变长数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BD%BF%E7%94%A8free%E5%87%BD%E6%95%B0%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="toc-text">2.3 使用free函数释放内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%B0%86%E9%87%8A%E6%94%BE%E7%9A%84%E6%8C%87%E9%92%88%E8%B5%8B%E5%80%BC%E4%B8%BANULL"><span class="toc-text">2.3.1 将释放的指针赋值为NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E9%87%8D%E5%A4%8D%E9%87%8A%E6%94%BE"><span class="toc-text">2.3.2 重复释放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">2.4 迷途指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88%E7%A4%BA%E4%BE%8B"><span class="toc-text">2.4.1 迷途指针示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E5%A4%84%E7%90%86%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">2.4.2 处理迷途指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-%E8%B0%83%E8%AF%95%E5%99%A8%E5%AF%B9%E6%A3%80%E6%B5%8B%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-text">2.4.3 调试器对检测内存泄露的支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8A%80%E6%9C%AF"><span class="toc-text">2.5 动态内存分配技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-C%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">2.5.1 C的垃圾回收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-%E8%B5%84%E6%BA%90%E8%8E%B7%E5%8F%96%E5%8D%B3%E5%88%9D%E5%A7%8B%E5%8C%96-RAII"><span class="toc-text">2.5.2 资源获取即初始化(RAII)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-3-%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-text">2.5.3 使用异常处理函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E5%87%BD%E6%95%B0"><span class="toc-text">第三章 指针和函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%A0%88%E5%92%8C%E5%A0%86"><span class="toc-text">3.1 程序的栈和堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E7%A8%8B%E5%BA%8F%E6%A0%88"><span class="toc-text">3.1.1 程序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E6%A0%88%E5%B8%A7%E7%9A%84%E7%BB%84%E7%BB%87"><span class="toc-text">3.1.2 栈帧的组织</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E5%92%8C%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2 通过指针传递和返回数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2.1 使用指针传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E4%BD%BF%E7%94%A8%E5%80%BC%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">3.2.2 使用值传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E4%BC%A0%E9%80%92%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">3.2.3 传递指向常量的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E8%BF%94%E5%9B%9E%E6%8C%87%E9%92%88"><span class="toc-text">3.2.4 返回指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-%E5%B1%80%E9%83%A8%E6%95%B0%E6%8D%AE%E6%8C%87%E9%92%88"><span class="toc-text">3.2.5 局部数据指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E4%BC%A0%E9%80%92%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-text">3.2.6 传递空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-7-%E4%BC%A0%E9%80%92%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">3.2.7 传递指针的指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3 函数指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.1 声明函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.2 使用函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.3 传递函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E8%BF%94%E5%9B%9E%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.4 返回函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-5-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84"><span class="toc-text">3.3.5 使用函数指针数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-6-%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.6 比较函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-7-%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-text">3.3.7 转换函数指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-text">第四章 指针和数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%95%B0%E7%BB%84%E6%A6%82%E8%BF%B0"><span class="toc-text">4.1 数组概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.1.1 一维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.1.2 二维数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%8C%87%E9%92%88%E8%A1%A8%E7%A4%BA%E6%B3%95%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-text">4.2 指针表示法和数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E4%BD%BF%E7%94%A8malloc%E5%88%9B%E5%BB%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.3 使用malloc创建一维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E4%BD%BF%E7%94%A8realloc%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6"><span class="toc-text">4.4 使用realloc调整数组长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E4%BC%A0%E9%80%92%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.5 传递一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-1-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">4.5.1 使用数组表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-text">4.5.2 使用指针表示法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.6 使用指针的一维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.7 指针和多维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-%E4%BC%A0%E9%80%92%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.8 传递多维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">4.9 动态分配二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-1-%E5%88%86%E9%85%8D%E5%8F%AF%E8%83%BD%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%86%85%E5%AD%98"><span class="toc-text">4.9.1 分配可能不连续的内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-2-%E5%88%86%E9%85%8D%E8%BF%9E%E7%BB%AD%E5%86%85%E5%AD%98"><span class="toc-text">4.9.2 分配连续内存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-10-%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88"><span class="toc-text">4.10 不规则数组和指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">第五章 指针和字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E7%A1%80"><span class="toc-text">5.1 字符串基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A3%B0%E6%98%8E"><span class="toc-text">5.1.1 字符串声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F%E6%B1%A0"><span class="toc-text">5.1.2 字符串字面量池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">5.1.3 字符串初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96char%E6%95%B0%E7%BB%84"><span class="toc-text">1.初始化char数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96char%E6%8C%87%E9%92%88"><span class="toc-text">2.初始化char指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BB%8E%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">3.从标准输入初始化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BD%8D%E7%BD%AE%E5%B0%8F%E7%BB%93"><span class="toc-text">4.字符串位置小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%A0%87%E5%87%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-text">5.2 标准字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-1-%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.1 比较字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-2-%E8%B5%8B%E5%80%BC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.2 赋值字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-3-%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.2.3 拼接字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E4%BC%A0%E9%80%92%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3 传递字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-%E4%BC%A0%E9%80%92%E7%AE%80%E5%8D%95%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3.1 传递简单字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-2-%E4%BC%A0%E9%80%92%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-text">5.3.2 传递字符常量的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-3-%E4%BC%A0%E9%80%92%E9%9C%80%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.3.3 传递需要初始化的字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-4-%E7%BB%99%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-text">5.3.4 给应用程序传递参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.4 返回字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-1-%E8%BF%94%E5%9B%9E%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">5.4.1 返回字面量的地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-2-%E8%BF%94%E5%9B%9E%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">5.4.2 返回动态分配内存的地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5.5 函数指针和字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%8C%87%E9%92%88%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">第六章 指针和结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">6.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%BB%93%E6%9E%84%E4%BD%93%E9%87%8A%E6%94%BE%E9%97%AE%E9%A2%98"><span class="toc-text">6.2 结构体释放问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E9%81%BF%E5%85%8Dmalloc-free%E5%BC%80%E9%94%80"><span class="toc-text">6.3 避免malloc&#x2F;free开销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">6.4 使用指针支持数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-1-%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">6.4.1 单链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E9%98%9F%E5%88%97"><span class="toc-text">6.4.2 使用指针支持队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-3-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%A0%88"><span class="toc-text">6.4.3 使用指针支持栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-4-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E6%A0%91"><span class="toc-text">6.4.4 使用指针支持树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8C%E6%8C%87%E9%92%88%E8%AF%AF%E7%94%A8"><span class="toc-text">第七章 安全问题和指针误用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%8C%87%E9%92%88%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7.1 指针的声明和初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-1-%E4%B8%8D%E6%81%B0%E5%BD%93%E7%9A%84%E6%8C%87%E9%92%88%E5%A3%B0%E6%98%8E"><span class="toc-text">7.1.1 不恰当的指针声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-2-%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E5%89%8D%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7.1.2 使用指针前未初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-3-%E5%A4%84%E7%90%86%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8C%87%E9%92%88"><span class="toc-text">7.1.3 处理未初始化指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E6%8C%87%E9%92%88%E7%9A%84%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-text">7.2 指针的使用问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-1-%E6%B5%8B%E8%AF%95NULL"><span class="toc-text">7.2.1 测试NULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-2-%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8%E8%A7%A3%E5%BC%95%E6%93%8D%E4%BD%9C"><span class="toc-text">7.2.2 错误使用解引操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-3-%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88"><span class="toc-text">7.2.3 迷途指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-4-%E8%B6%8A%E8%BF%87%E6%95%B0%E7%BB%84%E8%BE%B9%E7%95%8C%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98"><span class="toc-text">7.2.4 越过数组边界访问内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-5-%E9%94%99%E8%AF%AF%E8%AE%A1%E7%AE%97%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6"><span class="toc-text">7.2.5 错误计算数组长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-6-%E9%94%99%E8%AF%AF%E4%BD%BF%E7%94%A8sizeof%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">7.2.6 错误使用sizeof操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-7-%E5%8C%B9%E9%85%8D%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">7.2.7 匹配指针类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-8-%E6%9C%89%E7%95%8C%E6%8C%87%E9%92%88"><span class="toc-text">7.2.8 有界指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-9-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">7.2.9 字符串的安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-10-%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">7.2.10 指针算术运算和结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-11-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">7.2.11 函数指针的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E9%97%AE%E9%A2%98"><span class="toc-text">7.3 内存释放问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-1-%E9%87%8D%E5%A4%8D%E9%87%8A%E6%94%BE"><span class="toc-text">7.3.1 重复释放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-2-%E6%B8%85%E9%99%A4%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE"><span class="toc-text">7.3.2 清除敏感数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-text">7.4 使用静态分析工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">第八章 其他重要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E8%BD%AC%E6%8D%A2%E6%8C%87%E9%92%88"><span class="toc-text">8.1 转换指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-1-%E8%AE%BF%E9%97%AE%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-text">8.1.1 访问特殊用途的地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-2-%E8%AE%BF%E9%97%AE%E7%AB%AF%E5%8F%A3"><span class="toc-text">8.1.2 访问端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-3-%E4%BD%BF%E7%94%A8DMA%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98"><span class="toc-text">8.1.3 使用DMA访问内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-4-%E5%88%A4%E6%96%AD%E6%9C%BA%E5%99%A8%E7%9A%84%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="toc-text">8.1.4 判断机器的字节序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E5%88%AB%E5%90%8D%E3%80%81%E5%BC%BA%E5%88%AB%E5%90%8D%E5%92%8Crestrict%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">8.2 别名、强别名和restrict关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-1-%E4%BD%BF%E7%94%A8%E8%81%94%E5%90%88%E4%BD%93%E4%BB%A5%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%80%BC"><span class="toc-text">8.2.1 使用联合体以多种方式表示值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2-%E5%BC%BA%E5%88%AB%E5%90%8D"><span class="toc-text">8.2.2 强别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-3-%E4%BD%BF%E7%94%A8restrict%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">8.2.3 使用restrict关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E7%BA%BF%E7%A8%8B%E5%92%8C%E6%8C%87%E9%92%88"><span class="toc-text">8.3 线程和指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-1-%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E6%8C%87%E9%92%88"><span class="toc-text">8.3.1 线程间共享指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-2-%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%94%AF%E6%8C%81%E5%9B%9E%E8%B0%83"><span class="toc-text">8.3.2 使用函数指针支持回调</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%8A%80%E6%9C%AF"><span class="toc-text">8.4 面向对象技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-1-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E4%B8%8D%E9%80%8F%E6%98%8E%E6%8C%87%E9%92%88"><span class="toc-text">8.4.1 创建和使用不透明指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-2-C%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81"><span class="toc-text">8.4.2 C中的多态</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
@@ -1188,4 +1145,4 @@ document.addEventListener('pjax:error', (e) => {
   if (e.request.status === 404) {
     pjax.loadUrl('/404.html')
   }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
