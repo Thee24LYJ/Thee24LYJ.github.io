@@ -1,0 +1,427 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>linux 系统设置开机自启脚本方式 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="linux 系统开机自启动脚本执行 参考：Run a Script on Startup in Linux  一、crontab Linux 定时任务 crontab 实现秒级定时以及@reboot 的一些问题 如何查看 crontab 的日志记录 Running a script during booting&#x2F;startup; init.d vs cron @reboot   使用crontab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 系统设置开机自启脚本方式">
+<meta property="og:url" content="http://example.com/2023/06/20/linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="theeの博客 🎉">
+<meta property="og:description" content="linux 系统开机自启动脚本执行 参考：Run a Script on Startup in Linux  一、crontab Linux 定时任务 crontab 实现秒级定时以及@reboot 的一些问题 如何查看 crontab 的日志记录 Running a script during booting&#x2F;startup; init.d vs cron @reboot   使用crontab">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg">
+<meta property="article:published_time" content="2023-06-20T11:11:33.000Z">
+<meta property="article:modified_time" content="2023-08-14T11:10:46.118Z">
+<meta property="article:author" content="thee">
+<meta property="article:tag" content="自启动">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg"><link rel="shortcut icon" href="/assets/img/plane.png"><link rel="canonical" href="http://example.com/2023/06/20/linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC%E6%96%B9%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: thee","link":"链接: ","source":"来源: theeの博客 🎉","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'linux 系统设置开机自启脚本方式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-14 19:10:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">linux 系统设置开机自启脚本方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-20T11:11:33.000Z" title="发表于 2023-06-20 19:11:33">2023-06-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-14T11:10:46.118Z" title="更新于 2023-08-14 19:10:46">2023-08-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="linux 系统设置开机自启脚本方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="linux-系统开机自启动脚本执行"><a href="#linux-系统开机自启动脚本执行" class="headerlink" title="linux 系统开机自启动脚本执行"></a>linux 系统开机自启动脚本执行</h1><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.baeldung.com/linux/run-script-on-startup">Run a Script on Startup in Linux</a></p>
+</blockquote>
+<h1 id="一、crontab"><a href="#一、crontab" class="headerlink" title="一、crontab"></a>一、crontab</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15966109/6082825">Linux 定时任务 crontab 实现秒级定时以及@reboot 的一些问题</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/doseoer/p/5663187.html">如何查看 crontab 的日志记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/188042/running-a-script-during-booting-startup-init-d-vs-cron-reboot">Running a script during booting/startup; init.d vs cron @reboot</a></p>
+</blockquote>
+<ul>
+<li>使用<code>crontab -e</code>命令编辑 crontab 文件，添加如下内容：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@reboot /bin/bash SCRIPT_PATH</span><br></pre></td></tr></table></figure>
+<p>系统重启后会自动执行脚本</p>
+<ul>
+<li>注意：<ul>
+<li>可能得使用 root 权限才能正常自启动执行</li>
+<li>假如说执行脚本中有重定向到某个文件或终端的情况<ul>
+<li>重定向到文件：可能得需要程序执行完才能看到重定向到文件的内容</li>
+<li>重定向到终端：这得需要执行脚本的时候存在该终端，否则可能会因为打不开终端而导致执行失败</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>关于 crontab</p>
+<ul>
+<li>可以执行任何命令或脚本</li>
+<li>任何用户都可以添加，不只局限于 root 用户</li>
+<li>on a Debian system with systemd: cron’s @reboot is executed during <code>multi-user.target</code>. on a Debian system with SysV (not systemd), crontab(5) mention: <em>Please note that startup, as far as @reboot is concerned, is the time when the cron(8) daemon startup. In particular, it may be before some system daemons, or other facilities, were startup. This is due to the boot order sequence of the machine.</em></li>
+</ul>
+</li>
+<li><p>crontab 日志记录</p>
+<p>  文件位置：<code>/var/log/cron.log</code></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">tail</span> -f /var/log/cron.log	<span class="comment"># 查看日志信息</span></span><br><span class="line"><span class="comment"># 注意：有可能会出现没有这个日志文件的情况，我这里就没有这个文件</span></span><br></pre></td></tr></table></figure>
+<p>  另一种方法：</p>
+<p>  文件目录位置：<code>/var/spool/mail/</code>，其中存放着不同用户的 crontab 执行的日志情况</p>
+<p>  使用<code>tail -f /var/spool/mail/root</code> 即可查看 root 用户最近的 crontab 执行情况，其他用户同理</p>
+</li>
+</ul>
+<h1 id="二、rc-local"><a href="#二、rc-local" class="headerlink" title="二、rc.local"></a>二、rc.local</h1><blockquote>
+<p>参考文章：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/kk3909/article/details/105025144">利用 rc.local 开机自启动程序</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wucongzhou/p/12588682.html">Linux 开机启动程序 rc.local</a></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>rc.local 文件</p>
+<blockquote>
+<ul>
+<li>文件位置：<code>/etc/rc.local</code>，在<code>/etc/rc.d/</code>下有它的软连接</li>
+<li>文件原始内容</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</span><br><span class="line">#</span><br><span class="line"># It is highly advisable to create own systemd services or udev rules</span><br><span class="line"># to run scripts during boot instead of using this file.</span><br><span class="line">#</span><br><span class="line"># In contrast to previous versions due to parallel execution during boot</span><br><span class="line"># this script will NOT be run after all other services.</span><br><span class="line">#</span><br><span class="line"># Please note that you must run &#x27;chmod +x /etc/rc.d/rc.local&#x27; to ensure</span><br><span class="line"># that this script will be executed during boot.</span><br></pre></td></tr></table></figure>
+<p>这里推荐我们使用 systemd 服务或 udev 规则而不是直接使用该文件，虽然不推荐直接使用，但是我们也是可以使用的，不过它的缺点是引导期间并行</p>
+</blockquote>
+</li>
+<li><p>配置 rc.local 文件</p>
+<blockquote>
+<p>正常情况下，rc.local 服务应该是开启了的，如果没有开启则使用<code>sudo systemctl enable rc-local</code>打开该服务；除此之外，该文件应该也具有执行权限，若没有则执行<code>sudo chmod +x /etc/rc.local</code>即可</p>
+</blockquote>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/bin/date &gt;&gt; /tmp/date1.log	# 写入当前时间至 date1.log</span><br><span class="line">/bin/sleep 10	# 睡眠 10s</span><br><span class="line">/bin/date &gt;&gt; /tmp/date2.log	# 写入当前时间至 date2.log</span><br></pre></td></tr></table></figure>
+<p>  做完以上步骤后，重启系统时将会自动执行上述命令（当然也可以用自定义脚本替代上述命令）</p>
+</li>
+<li><p>查看脚本执行日志（错误信息）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ journalctl -e -u rc-local.service</span><br><span class="line">$ sudo <span class="built_in">cat</span> /var/log/syslog | grep -i rc.local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意</p>
+<blockquote>
+<p>rc.local 脚本在操作系统启动时只执行一次，执行过程时没有环境变量，需要把命令的完整路径加上才能成功执行</p>
+<p>rc.local 是一个脚本，是按顺序执行的，执行完一个程序后才会执行下一个程序，如果某程序不是后台程序，就应该加&amp;让程序运行在后台，否则 rc.local 会挂起</p>
+<p>在带有 SysV（不是 systemd）的 Debian 系统上：rc.local（几乎）是最后一个启动的服务，但在带有 systemd 的 Debian 系统上：默认情况下 rc.local 在 network.target 之后执行（不是 network-online.target ！）</p>
+<p>该脚本是在系统初始化级别脚本运行之后再执行的，因此可以安全地在里面添加我们想在系统启动之后执行的脚本</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="三、init-d"><a href="#三、init-d" class="headerlink" title="三、init.d"></a>三、init.d</h1><blockquote>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://transformerswsz.github.io/2019/07/01/Linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/">Linux 开机自启动</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.nowcoder.net/n/2b1853a33f2240e481dc7d15a44536f5">Linux 设置开机自启动</a></p>
+<p><a target="_blank" rel="noopener" href="https://codeleading.com/article/15821729029/">linux 服务器开机自启动某个脚本程序（可设定启动优先级的高级启动方式）</a></p>
+</blockquote>
+<ul>
+<li><p>关于 init.d</p>
+<ul>
+<li>init.d 也称为 SysV 脚本，用于在系统初始化和关闭期间启动和停止服务（/etc/init.d/ 脚本也可以在启用 systemd 的系统上运行以实现兼容性）</li>
+<li>默认情况下，该脚本在启动和关闭期间执行</li>
+<li>该 init.d 脚本不仅仅是一个简单的脚本，而应该支持启动和停止等</li>
+</ul>
+</li>
+<li><p>（系统环境是 Ubuntu 18.04)<code>/etc/rc#.d</code>目录下都是到 <code>/etc/init.d/</code> 目录的部分脚本的软链接。每个运行级别要执行哪些服务就在相对应的目录下，比如运行级别 5 要启动的服务就都放在 rc5.d 下，但是放在这个 rc5.d 下的都是一些软链接文件，链接到 <code>/etc/init.d/</code> 中相对应的文件，真正干活的是 <code>/etc/init.d/</code> 里的脚本，#代表一个指定的初始化运行级别，范围为 0~6</p>
+</li>
+<li><p>运行级别</p>
+<blockquote>
+<p>0：系统停机状态，系统默认运行级别不能设为 0，否则不能正常启动</p>
+<p>1：单用户工作状态，root 权限，用于系统维护，禁止远程登陆</p>
+<p>2：多用户状态（没有 NFS)</p>
+<p>3：完全的多用户状态（有 NFS)，登陆后进入控制台命令行模式</p>
+<p>4：系统未使用，保留</p>
+<p>5：X11 控制台，登陆后进入图形 GUI 模式</p>
+<p>6：系统正常关闭并重启，默认运行级别不能设为 6，否则不能正常启动</p>
+</blockquote>
+</li>
+<li><p>在这些目录之下，包含了许多对进程进行控制的脚本。这些脚本要么以 <code>K##</code> 开头，要么以 <code>S##</code> 开头：</p>
+<ul>
+<li>K：kill，系统将终止对应的服务</li>
+<li>S：start，系统将启动对应的服务</li>
+<li><h2 id="：同一运行级别下脚本执行的顺序，数值小的先执行，数值大的后执行。很多时候这些执行顺序是很重要的，比如要启动-Apache-服务，就必须先配置网络接口"><a href="#：同一运行级别下脚本执行的顺序，数值小的先执行，数值大的后执行。很多时候这些执行顺序是很重要的，比如要启动-Apache-服务，就必须先配置网络接口" class="headerlink" title="：同一运行级别下脚本执行的顺序，数值小的先执行，数值大的后执行。很多时候这些执行顺序是很重要的，比如要启动 Apache 服务，就必须先配置网络接口"></a>：同一运行级别下脚本执行的顺序，数值小的先执行，数值大的后执行。很多时候这些执行顺序是很重要的，比如要启动 Apache 服务，就必须先配置网络接口</h2></li>
+</ul>
+</li>
+<li><p>init.d 文件夹下的脚本文件 test 格式如下：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">	start)</span><br><span class="line">		echo &quot;Starting myscript&quot;</span><br><span class="line">		# 执行你的启动代码</span><br><span class="line">		;;</span><br><span class="line">	stop)</span><br><span class="line">		echo &quot;Stopping myscript&quot;</span><br><span class="line">		# 执行你的停止代码</span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		echo &quot;Usage: /etc/init.d/myscript &#123;start|stop&#125;&quot;</span><br><span class="line">		exit 1</span><br><span class="line">		;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+<p>  在上述示例中，你需要将<code>start</code>和<code>stop</code>函数中的代码替换为你自己的启动和停止代码。同时，确保修改脚本文件权限，使其可执行</p>
+</li>
+<li><p>在 Ubuntu/debain 里，可以使用 update-rc.d 命令来把示例脚本安装到各个运行等级中（这里需要将对应脚本文件放到<code>/etc/init.d</code>目录下）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-rc.d <span class="built_in">test</span> defaults 99</span><br></pre></td></tr></table></figure>
+<p>  update-rc.d 后面有三个参数，分别是/etc/init.d 下的脚本名字，默认安装方式，运行的优先级。优先级的数字越大，表示越迟运行，这里我们把自己写的服务放在最后运行</p>
+<p>  如果上述代码不能生效，得手动在<code>/etc/rc#.d</code>(#表示对应的运行等级）目录下建立一个软链接，指向<code>/etc/init.d</code>目录下对应的脚本，命名格式是：开头必须大写 S（表示启动服务），后面跟的数字 99，是我们设定的启动序号，即优先级，后面名字无限定</p>
+<p>  如果要卸载随机启动的服务，执行下面命令即可：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-rc.d -f <span class="built_in">test</span> remove</span><br></pre></td></tr></table></figure>
+<p>  现在，当系统启动时，脚本将自动执行。你可以使用<code>sudo service test start</code>来手动启动它，使用<code>sudo service test stop</code>来停止它，使用<code>sudo service test restart</code>来重启它</p>
+</li>
+</ul>
+<h1 id="四、systemd"><a href="#四、systemd" class="headerlink" title="四、systemd"></a>四、systemd</h1><h2 id="4-1-使用-systemd-管理开机自启脚本"><a href="#4-1-使用-systemd-管理开机自启脚本" class="headerlink" title="4.1 使用 systemd 管理开机自启脚本"></a>4.1 使用 systemd 管理开机自启脚本</h2><blockquote>
+<p>参考文章：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Areas/p/13439000.html">Linux Ubuntu 20.04 —添加开机启动（服务/脚本）</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cshihong.github.io/2018/10/15/Linux%E4%B8%8Bsystemctl%E5%91%BD%E4%BB%A4%E5%92%8Cservice%E3%80%81chkconfig%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/">Linux 下 systemctl 命令和 service、chkconfig 命令的区别</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000038458363">Linux init、service、systemctl 三者区别</a></p>
+</li>
+</ul>
+<p>Systemctl 是一个 systemd 工具，主要负责控制 systemd 系统和服务管理器，systemd 即为 system daemon, 是 linux 下的一种 init 软件</p>
+<p>Systemd 是一个系统管理守护进程、工具和库的集合，用于取代 System V 初始进程。Systemd 的功能是用于集中管理和配置类 UNIX 系统</p>
+<p>在 Ubuntu 18.04 系统中，可以按照以下步骤使用 systemctl 设置开机自启动脚本：</p>
+</blockquote>
+<ol>
+<li><p>创建一个启动脚本文件（例如 <code>startup.sh</code>）并编辑它：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /path/to/startup.sh</span><br></pre></td></tr></table></figure>
+<p> 在脚本文件中添加希望在开机时执行的命令或脚本</p>
+</li>
+<li><p>添加执行权限给脚本文件：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x /path/to/startup.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个 systemd 服务单元文件（例如 <code>myservice.service</code>）并编辑它：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nano /etc/systemd/system/myservice.service</span><br></pre></td></tr></table></figure>
+<p> 在服务单元文件中添加以下内容：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=My Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/path/to/startup.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></table></figure>
+<p> 举例(arp静态绑定):<br> <code>arpfixed.service</code></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=ARP_Fixed Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/home/project_public/arp_fixed.sh</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></table></figure>
+<p> <code>/home/project_public/arp_fixed.sh</code>脚本内容：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">sleep</span> 120 <span class="comment"># 延时2min</span></span><br><span class="line"><span class="comment"># 绑定静态arp</span></span><br><span class="line">arp -s 192.168.1.81 90:2b:34:ab:00:01</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存并关闭服务单元文件</p>
+</li>
+<li><p>启用服务（设置开机自启动）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> myservice.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载 systemd 配置：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p> 做完以上步骤，当重启系统时，<code>startup.sh</code> 脚本将会自动执行</p>
+<blockquote>
+<ul>
+<li>systemctl 常用命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl reboot	<span class="comment"># 重启系统</span></span><br><span class="line">$ sudo systemctl rescue <span class="comment"># 进入救援模式（单用户状态）</span></span><br><span class="line">$ sudo systemctl start nginx	<span class="comment"># 开启 nginx 服务</span></span><br><span class="line">$ sudo systemctl restart nginx	<span class="comment"># 重启</span></span><br><span class="line">$ sudo systemctl stop nginx		<span class="comment"># 停止</span></span><br><span class="line">$ sudo systemctl reload nginx	<span class="comment"># 重新加载</span></span><br><span class="line">$ sudo systemctl status nginx	<span class="comment"># 查询状态</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h2 id="4-2-查看服务启动日志"><a href="#4-2-查看服务启动日志" class="headerlink" title="4.2 查看服务启动日志"></a>4.2 查看服务启动日志</h2><blockquote>
+<p>参考文章：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mikelv01/article/details/108201676?app_version=5.15.6&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22108201676%22%2C%22source%22%3A%22unlogin%22%7D&amp;utm_source=app">查看 systemctl 或 service 启动服务日志</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/leigepython/p/10302056.html">journalctl 日志查看方法</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/8795141.html">linux journalctl 命令</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/105116548#:~:text=Linux%206%E7%A7%8D%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%8D%E4%BC%9A%E7%9C%8B%E6%97%A5%E5%BF%97%E4%BC%9A%E8%A2%AB%E9%84%99%E8%A7%86%E7%9A%84%201%201%E3%80%81tail%20%E8%BF%99%E4%B8%AA%E6%98%AF%E6%88%91%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%96%B9%E5%BC%8F%20%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F%3A%20tail%20%5B%E5%BF%85%E8%A6%81%E5%8F%82%E6%95%B0%5D,less%E5%91%BD%E4%BB%A4%E5%9C%A8%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%97%B6%EF%BC%8C%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84%20...%207%20%E4%B8%80%E8%88%AC%E6%9C%AC%E4%BA%BA%E6%9F%A5%E6%97%A5%E5%BF%97%E9%85%8D%E5%90%88%E5%BA%94%E7%94%A8%E7%9A%84%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4%20...%208%20linux%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E%20">Linux 6 种日志查看方法，不会看日志会被鄙视的</a></p>
+</li>
+</ul>
+<p><code>journalctl</code> 用来查询<code>systemd-journald</code> 服务收集到的日志。<code>systemd-journald</code> 服务是 <code>systemd init</code> 系统提供的收集系统日志的服务</p>
+</blockquote>
+<ul>
+<li><code>journalctl</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ journalctl -u 服务名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>系统日志</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /var/log/message</span><br><span class="line">$ <span class="built_in">cat</span> /var/log/syslog</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>linux</code>常用日志文件</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/var/log/message 系统启动后的信息和错误日志，是 Red Hat Linux 中最常用的日志之一</span><br><span class="line">/var/log/syslog	系统启动日志，Ubuntu 系统</span><br><span class="line">/var/log/secure 与安全相关的日志信息</span><br><span class="line">/var/log/maillog 与邮件相关的日志信息</span><br><span class="line">/var/log/cron 与定时任务相关的日志信息</span><br><span class="line">/var/log/spooler 与 UUCP 和 news 设备相关的日志信息</span><br><span class="line">/var/log/boot.log 守护进程启动和停止相关的日志消息</span><br><span class="line">/var/log/wtmp 该日志文件永久记录每个用户登录、注销及系统的启动、停机的事件</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/06/20/linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC%E6%96%B9%E5%BC%8F/">http://example.com/2023/06/20/linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%87%AA%E5%90%AF%E5%8A%A8/">自启动</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/15/ZYNQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ZYNQ学习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%8B%E9%9D%99%E6%80%81arp%E7%BB%91%E5%AE%9A/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机之静态 arp 绑定</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux-%E7%B3%BB%E7%BB%9F%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C"><span class="toc-text">linux 系统开机自启动脚本执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81crontab"><span class="toc-text">一、crontab</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81rc-local"><span class="toc-text">二、rc.local</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81init-d"><span class="toc-text">三、init.d</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%9A%E5%90%8C%E4%B8%80%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB%E4%B8%8B%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E7%9A%84%E9%A1%BA%E5%BA%8F%EF%BC%8C%E6%95%B0%E5%80%BC%E5%B0%8F%E7%9A%84%E5%85%88%E6%89%A7%E8%A1%8C%EF%BC%8C%E6%95%B0%E5%80%BC%E5%A4%A7%E7%9A%84%E5%90%8E%E6%89%A7%E8%A1%8C%E3%80%82%E5%BE%88%E5%A4%9A%E6%97%B6%E5%80%99%E8%BF%99%E4%BA%9B%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%98%AF%E5%BE%88%E9%87%8D%E8%A6%81%E7%9A%84%EF%BC%8C%E6%AF%94%E5%A6%82%E8%A6%81%E5%90%AF%E5%8A%A8-Apache-%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%B0%B1%E5%BF%85%E9%A1%BB%E5%85%88%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3"><span class="toc-text">：同一运行级别下脚本执行的顺序，数值小的先执行，数值大的后执行。很多时候这些执行顺序是很重要的，比如要启动 Apache 服务，就必须先配置网络接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81systemd"><span class="toc-text">四、systemd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%BD%BF%E7%94%A8-systemd-%E7%AE%A1%E7%90%86%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E8%84%9A%E6%9C%AC"><span class="toc-text">4.1 使用 systemd 管理开机自启脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%97%A5%E5%BF%97"><span class="toc-text">4.2 查看服务启动日志</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/assets/js/cursor.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,1207 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>《linux命令行大全》阅读笔记 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这篇文章是《Linux命令行大全》的阅读笔记，仅供参考，更多详细内容请参见该书。  1.符号链接 软链接(item可以是一个文件或目录)   1$ ln -s item link   一个符号链接指向一个文件，而且这个符号链接本身与其它的符号链接几乎没有区别。例如，如果我们往一个符号链接里面写入东西，那么相关联的文件也被写入。然而，当删除一个符号链接时，只有这个链接被删除，而不是文件自身。如果先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《linux命令行大全》阅读笔记">
+<meta property="og:url" content="http://example.com/2023/08/14/%E3%80%8Alinux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="theeの博客 🎉">
+<meta property="og:description" content="这篇文章是《Linux命令行大全》的阅读笔记，仅供参考，更多详细内容请参见该书。  1.符号链接 软链接(item可以是一个文件或目录)   1$ ln -s item link   一个符号链接指向一个文件，而且这个符号链接本身与其它的符号链接几乎没有区别。例如，如果我们往一个符号链接里面写入东西，那么相关联的文件也被写入。然而，当删除一个符号链接时，只有这个链接被删除，而不是文件自身。如果先">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png">
+<meta property="article:published_time" content="2023-08-14T11:05:32.000Z">
+<meta property="article:modified_time" content="2023-08-14T11:10:22.334Z">
+<meta property="article:author" content="thee">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png"><link rel="shortcut icon" href="/assets/img/plane.png"><link rel="canonical" href="http://example.com/2023/08/14/%E3%80%8Alinux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: thee","link":"链接: ","source":"来源: theeの博客 🎉","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《linux命令行大全》阅读笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-14 19:10:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《linux命令行大全》阅读笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-14T11:05:32.000Z" title="发表于 2023-08-14 19:05:32">2023-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-14T11:10:22.334Z" title="更新于 2023-08-14 19:10:22">2023-08-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《linux命令行大全》阅读笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>这篇文章是《Linux命令行大全》的阅读笔记，仅供参考，更多详细内容请参见该书。</p>
+</blockquote>
+<h3 id="1-符号链接"><a href="#1-符号链接" class="headerlink" title="1.符号链接"></a>1.符号链接</h3><ul>
+<li><p>软链接(item可以是一个文件或目录)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> -s item <span class="built_in">link</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>一个符号链接指向一个文件，而且这个符号链接本身与其它的符号链接几乎没有区别。例如，如果我们往一个符号链接里面写入东西，那么相关联的文件也被写入。然而，当删除一个符号链接时，只有这个链接被删除，而不是文件自身。如果先于符号链接删除文件，这个链接仍然存在，但是不指向任何东西。在这种情况下，这个链接被称为坏链接</p>
+<p>符号链接文件的长度是目标文件字符串所包含的字符数，而不是符号链接所指向的文件长度</p>
+<p>链接所指向的文件长度</p>
+<ul>
+<li><p>硬链接(一个文件至少有一个硬链接)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ln</span> file <span class="built_in">link</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>硬链接的局限性</p>
+<ul>
+<li>一个硬链接不能关联它所在文件系统之外的文件，也就是说一个链接不能关联与链接本身不在同一个磁盘分区上的文件(不同的物理磁盘)</li>
+<li>一个硬链接不能关联一个目录</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>一个硬链接和文件本身没有什么区别。不像符号链接，当你列出一个包含硬链接的目录内容时，你会看到没有特殊的链接指示说明。当一个硬链接被删除时，这个链接被删除，但是文件本身的内容仍然存在（即它所占的磁盘空间不会被重新分配），直到所有关联这个文件的链接都删除掉</p>
+<p>假设文件由两部分组成：包含文件内容的数据部分和持有文件名的名字部分，当我们创建文件硬链接的时候，实际上是为文件创建了额外的名字部分，并且这些名字都关联到相同的数据部分。这时系统会分配一连串的磁盘块给所谓的索引节点，然后索引节点与文件名字部分相关联。因此每一个硬链接都关系到一个具体的包含文件内容的索引节点(<code>ls -li</code>显示文件索引节点信息)</p>
+</blockquote>
+<p>在 GNOME 里面，当拖动文件时，同时按下 Ctrl+Shift 按键会创建一个链接，而不是复制（或移动）文件。在 KDE 中，无论什么时候放下一个文件，会弹出一个小菜单，这个菜单会提供复制，移动，或创建链接文件选项</p>
+<h3 id="2-shell的通配符"><a href="#2-shell的通配符" class="headerlink" title="2.shell的通配符"></a>2.shell的通配符</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">通配符</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">匹配任意多个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">匹配任意一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[characters]</td>
+<td style="text-align:center">匹配任意一个属于字符集中的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[!characters]</td>
+<td style="text-align:center">匹配任意一个不是字符集中的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[[:class:]]</td>
+<td style="text-align:center">匹配任意一个属于指定字符类中的字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>最常用字符类</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符类</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">[:alnum:]</td>
+<td style="text-align:center">匹配任意一个字母或数字</td>
+</tr>
+<tr>
+<td style="text-align:center">[:alpha:]</td>
+<td style="text-align:center">匹配任意一个字母</td>
+</tr>
+<tr>
+<td style="text-align:center">[:gidit:]</td>
+<td style="text-align:center">匹配任意一个数字</td>
+</tr>
+<tr>
+<td style="text-align:center">[:lower:]</td>
+<td style="text-align:center">匹配任意一个小写字母</td>
+</tr>
+<tr>
+<td style="text-align:center">[:upper:]</td>
+<td style="text-align:center">匹配任意一个大写字母</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>g*：文件名以<code>g</code>开头的文件</p>
+<p>[abc]*：文件名以<code>a,b或c</code>开头的文件</p>
+<p>*[[:lower:]123]：文件名以小写字母或以<code>1,2或3</code>结尾的文件</p>
+<p>注意表示法<strong>:</strong> 在描述一个命令时，当有三个圆点跟在一个命令的参数后面，这意味着那个参数可以重复</p>
+</blockquote>
+<h3 id="3-命令"><a href="#3-命令" class="headerlink" title="3.命令"></a>3.命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">显示命令类型</td>
+</tr>
+<tr>
+<td style="text-align:center">which</td>
+<td style="text-align:center">显示<strong>可执行程序</strong>的位置(不包括内建)</td>
+</tr>
+<tr>
+<td style="text-align:center">help</td>
+<td style="text-align:center">显示shell内建命令帮助文档</td>
+</tr>
+<tr>
+<td style="text-align:center">—help</td>
+<td style="text-align:center">显示用法信息</td>
+</tr>
+<tr>
+<td style="text-align:center">man</td>
+<td style="text-align:center">显示程序手册页</td>
+</tr>
+<tr>
+<td style="text-align:center">apropos</td>
+<td style="text-align:center">显示适当的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">whatis</td>
+<td style="text-align:center">显示非常简洁的命令说明</td>
+</tr>
+<tr>
+<td style="text-align:center">info</td>
+<td style="text-align:center">显示程序的info页</td>
+</tr>
+<tr>
+<td style="text-align:center">alias</td>
+<td style="text-align:center">创建我们自己的命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>alias name=&#39;string&#39;</code>：给命令创建别名    <code>unalias</code>：删除别名</li>
+<li>要查看所有定义在系统环境中的别名，使用不带参数的 <code>alias</code> 命令</li>
+<li><p>命令行小技巧：把多个命令放在同一行上，命令之间用<code>;</code>分开</p>
+</li>
+<li><p>相关命令</p>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">cat</td>
+<td style="text-align:center">连接文件</td>
+</tr>
+<tr>
+<td style="text-align:center">sort</td>
+<td style="text-align:center">排序文本行</td>
+</tr>
+<tr>
+<td style="text-align:center">uniq</td>
+<td style="text-align:center">报道或省略重复行</td>
+</tr>
+<tr>
+<td style="text-align:center">grep</td>
+<td style="text-align:center">打印匹配行</td>
+</tr>
+<tr>
+<td style="text-align:center">wc</td>
+<td style="text-align:center">打印文件中换行符、字和字节个数</td>
+</tr>
+<tr>
+<td style="text-align:center">head</td>
+<td style="text-align:center">输出文件的第一部分(默认10行)</td>
+</tr>
+<tr>
+<td style="text-align:center">tail</td>
+<td style="text-align:center">输出文件的最后一部分(默认10行)</td>
+</tr>
+<tr>
+<td style="text-align:center">tee</td>
+<td style="text-align:center">从标准输入读取数据并同时写到标准输出和文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="4-重定向"><a href="#4-重定向" class="headerlink" title="4.重定向"></a>4.重定向</h3><ul>
+<li>标准输入(stdin)    标准输入重定向<code>&lt;</code></li>
+<li>标准输出(stdout)    标准输出重定向<code>&gt;/&gt;&gt;</code>：<code>&gt;</code>表示开头重写文件 <code>&gt;&gt;</code>表示追加重定向结果到文件内容之后</li>
+<li>标准错误(stderr)    标准错误重定向</li>
+</ul>
+<blockquote>
+<p>当我们使用<code>&gt;</code>重定向符来重定向输出结果时，目标文件总是从开头被重写。若<code>ls</code>命令没有产生运行结果，只有错误信息，重定向操作开始重写文件，然后由于错误而停止，导致文件内容清空。事实上，如果我们需要清空一个文件内容（或者创建一个新的空文件），可以使用这样的技巧：<code>&gt; ls-output,txt</code></p>
+<p>标准错误重定向没有专用的重定向操作符。为了重定向标准错误，我们必须参考其文件描述符。虽然我们已经将这些文件流的前三个称作标准输入、输出和错误，shell 内部分别将其称为文件描述符 0、1 和 2。shell 使用文件描述符提供了一种表示法来重定向文件。因为标准错误被称为文件描述符 2，因此可以用这种表示法来重定向标准错误，例如：<code>ls -l /bin/usr 2&gt; ls-error.txt</code>，其中文件描述符 “2”，紧挨着放在重定向操作符之前，来执行重定向标准错误到文件的任务</p>
+<p>重定向标准输出和错误到同一文件：</p>
+<ul>
+<li><p>传统方法(旧版bash)：<code>ls -l /bin/usr &gt; ls-output.txt 2&gt;&amp;1</code></p>
+<p>   首先重定向标准输出到文件 ls-output.txt，然后重定向文件描述符 2（标准错误）到文件描述符 1（标准输出）使用表示法 2&gt;&amp;1，注意重定向的顺序安排非常重要。标准错误的重定向必须总是出现在标准输出重定向之后，要不然它不起作用</p>
+</li>
+<li><p>现代方法(新版bash)：<code>ls -l /bin/usr &amp;&gt; ls-output.txt</code></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>管道线</li>
+</ul>
+<blockquote>
+<p>命令从标准输入读取数据并输送到标准输出的能力被一个称为管道线的 shell 特性所利用。使用管道操作符 “|”（竖杠），一个命令的标准输出可以通过管道送至另一个命令的标准输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command1 | command2</span><br></pre></td></tr></table></figure>
+<p>有时有可能会把几个命令放在一起组成一个管道线。通常，以这种方式使用的命令被称为过滤器</p>
+<p>uniq 命令经常和 sort 命令结合在一起使用。uniq 从标准输入或单个文件名参数接受数据有序列表，默认情况下，从数据列表中删除任何重复行</p>
+</blockquote>
+<h3 id="5-echo"><a href="#5-echo" class="headerlink" title="5.echo"></a>5.echo</h3><ul>
+<li>字符展开</li>
+</ul>
+<blockquote>
+<p>每当我们输入一个命令并按下 enter 键，bash 会在执行你的命令之前对输入的字符完成几个步骤的处理。这背后的过程叫做（字符）展开。通过展开，我们输入的字符，在 shell 对它起作用之前，会展开成为别的字符</p>
+<p>波浪线字符 (“<em>∼</em>”) 有特殊的含义。当它用在一个单词的开头时(没有空格)，它会展开成指定用户的家目录名，如果没有指定用户名，则展开成当前用户的家目录</p>
+</blockquote>
+<ul>
+<li>算术表达式展开</li>
+</ul>
+<blockquote>
+<p>格式：<code>$((expression))</code></p>
+<p>算术表达式只支持整数（全部是数字，不带小数点），在算术表达式中空格并不重要，并且表达式可以嵌套</p>
+</blockquote>
+<ul>
+<li>花括号展开</li>
+</ul>
+<blockquote>
+<p>从一个包含花括号的模式中创建多个文本字符串，花括号表达式本身可能包含一个由逗号分开的字符串列表，或者一个整数区间，或者单个的字符的区间。这种模式不能嵌入空白字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> Front-&#123;A,B,C&#125;-Back</span><br><span class="line">	Front-A-Back Front-B-Back Front-C-Back</span><br><span class="line">$ <span class="built_in">echo</span> Number_&#123;1..5&#125;</span><br><span class="line">	Number_1 Number_2 Number_3 Number_4 Number_5</span><br><span class="line">$  <span class="built_in">echo</span> a&#123;A&#123;1,2&#125;,B&#123;3,4&#125;&#125;b</span><br><span class="line">	aA1b aA2b aB3b aB4b</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看有效的变量列表</span></span><br><span class="line">$ <span class="built_in">printenv</span> | less</span><br><span class="line"><span class="comment"># 命令替换</span></span><br><span class="line">$ <span class="built_in">echo</span> $(<span class="built_in">ls</span>)	<span class="comment"># 把一个命令的输出作为一个展开模式来使用</span></span><br><span class="line"><span class="comment"># 在旧版 shell 程序中，bash 也支持命令替换。它使用倒引号来代替美元符号和括号</span></span><br><span class="line">$ <span class="built_in">echo</span> `<span class="built_in">ls</span>`</span><br></pre></td></tr></table></figure>
+<p>shell 提供了一种叫做引用的机制，来有选择地禁止不需要的展开</p>
+</blockquote>
+<ul>
+<li>双引号</li>
+</ul>
+<blockquote>
+<p>把文本放在双引号中，shell 使用的特殊字符，都失去它们的特殊含义，被当作普通字符来看待。有几个例外：<code>$、\</code> (反斜杠）和 `（倒引号），但参数展开、算术展开和命令替换仍然执行</p>
+<p>在默认情况下，单词分割机制会在单词中寻找空格，制表符，和换行符，并把它们看作单词之间的界定符。这意味着无引用的空格，制表符和换行符都不是文本的一部分，它们只作为分隔符使用；但加上双引号，单词分割被禁止，内嵌空格也不会被当做界定符</p>
+</blockquote>
+<ul>
+<li>单引号</li>
+</ul>
+<blockquote>
+<p>如果需要禁止所有的展开，我们要使用单引号</p>
+</blockquote>
+<ul>
+<li>转义字符</li>
+</ul>
+<blockquote>
+<p>阻止单个字符的展开</p>
+<p>echo命令带上<code>-e</code>选项，能够解释转义序列，若不用<code>-e</code>选项则把转义序列放在<code>$&#39;&#39;</code>中也能解释转义序列</p>
+</blockquote>
+<h3 id="6-键盘高级操作技巧"><a href="#6-键盘高级操作技巧" class="headerlink" title="6.键盘高级操作技巧"></a>6.键盘高级操作技巧</h3><ul>
+<li>移动光标</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl-d</td>
+<td style="text-align:center">删除光标位置的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-e</td>
+<td style="text-align:center">移动光标到行尾</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-f</td>
+<td style="text-align:center">光标前移一个字符，和左箭头作用一样</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-b</td>
+<td style="text-align:center">光标后移一个字符，和右箭头作用一样</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-f</td>
+<td style="text-align:center">光标前移一个字</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-b</td>
+<td style="text-align:center">光标后移一个字</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-l</td>
+<td style="text-align:center">清空屏幕并移动光标到左上角，与clear作用相同</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>修改文本</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl-a</td>
+<td style="text-align:center">移动光标到行首</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-t</td>
+<td style="text-align:center">光标位置字符和光标前面字符互换</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-t</td>
+<td style="text-align:center">光标位置的字和其前面的字互换位置</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-l</td>
+<td style="text-align:center">把从光标位置到字尾的字符转换为小写字母</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-u</td>
+<td style="text-align:center">把从光标位置到字尾的字符转换为大写字母</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>剪切/粘贴文本</li>
+</ul>
+<blockquote>
+<p>Readline 的文档使用术语 killing 和 yanking 来指我们平常所说的剪切和粘贴。剪切下来的本文被存储在一个叫做剪切环 (kill-ring) 的缓冲区中</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl-k</td>
+<td style="text-align:center">剪切从光标位置到行尾的文本</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-u</td>
+<td style="text-align:center">剪切从光标位置到行首的文本</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-d</td>
+<td style="text-align:center">剪切从光标位置到词尾的文本</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt-Backspace</td>
+<td style="text-align:center">剪切从光标位置到词头的文本。如果光标在一个单词的开头，剪切前一个单词</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl-y</td>
+<td style="text-align:center">把剪切环中的文本粘贴到光标位置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>历史命令展开：<code>!88</code>：bash会把<code>!88</code>展开成为历史列表中88行的内容</p>
+<p><code>!!</code>：重复最后一次执行的命令</p>
+<p><code>!number</code>：重复历史列表中第 number 行的命令</p>
+<p><code>!string</code>：重复最近历史列表中，以这个字符串开头的命令</p>
+<p><code>!?string</code>：重复最近历史列表中，包含这个字符串的命令</p>
+</blockquote>
+<h3 id="7-权限"><a href="#7-权限" class="headerlink" title="7.权限"></a>7.权限</h3><ul>
+<li>拥有者、组成员和其他人</li>
+</ul>
+<blockquote>
+<p><code>-rw-rw-r--</code>：文件所有者(rw-)、文件组所有者(rw-)和其他人(r—)的读、写和执行权限</p>
+<p>掩码：掩码的二进制形式中，出现数字 1 的位置，相应地关掉一个文件模式属性 <code>umask</code>设置默认权限</p>
+</blockquote>
+<p>权限属性：(w属性是针对内容的修改，不过，对于文件来说，w属性指是否可以修改文件中的内容；而对于目录来说，w属性指是否可以修改目录下的文件本身而不是其中的内容)</p>
+<p>其他特殊权限参照<code>《Linux命令行大全》P112</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">文件</th>
+<th style="text-align:center">目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">允许打开并读取文件内容</td>
+<td style="text-align:center">允许列出目录内容(前提是目录具有可执行属性)</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">允许写入/截断文件，但不允许对文件进行重命名或删除操作</td>
+<td style="text-align:center">允许在目录下新建、删除或重命名文件(前提是目录具有可执行属性)</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">运行程序(前提是该文件可读)</td>
+<td style="text-align:center">允许进入目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>su -</code>：启动超级用户的shell</li>
+<li><code>sudo</code>命令不要求超级用户的密码而是使用当前用户的密码来认证</li>
+</ul>
+<p>su 和 sudo 之间的一个重要区别是 sudo 不会重新启动一个 shell，也不会加载另一个用户的 shell 运行环境，需要执行的命令也不需要用单引号引起来</p>
+<ul>
+<li><code>chown</code></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">thee</td>
+<td style="text-align:center">把文件所有者从当前属主更改为用户thee</td>
+</tr>
+<tr>
+<td style="text-align:center">thee:users</td>
+<td style="text-align:center">把文件所有者改为用户 thee，文件用户组改为用户组 users</td>
+</tr>
+<tr>
+<td style="text-align:center">:admins</td>
+<td style="text-align:center">把文件用户组改为组 admins，文件所有者不变</td>
+</tr>
+<tr>
+<td style="text-align:center">thee:</td>
+<td style="text-align:center">文件所有者改为用户 thee，文件用户组改为用户 thee 登录系统时所属的用户组</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>练习：如何设置一个共享目录(参见《Linux命令行大全》P117)</p>
+<ul>
+<li><code>passwd</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ passwd [user]</span><br></pre></td></tr></table></figure>
+<h3 id="8-进程"><a href="#8-进程" class="headerlink" title="8.进程"></a>8.进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  ps 命令能够展示许多计算机运行状态的信息，但是它只是提供 ps 命令执行时刻的机器状态快照</span></span><br><span class="line">$ ps x	<span class="comment"># 展示所有进程</span></span><br><span class="line">$ ps aux <span class="comment"># 展示所有进程的更多信息</span></span><br><span class="line"><span class="comment"># top 程序以进程活动顺序显示连续更新的系统进程列表</span></span><br><span class="line"><span class="comment"># 一个在后台运行的进程对一切来自键盘的输入都免疫，也不能用 Ctrl-c 来中断它</span></span><br><span class="line"><span class="comment">#  Ctrl-z，可以停止一个前台进程(不是终止进程)</span></span><br><span class="line"><span class="comment"># jobs 可以列出从终端中启动了的任务的方法</span></span><br><span class="line">$ <span class="built_in">jobs</span></span><br><span class="line"><span class="comment"># fg将进程返回到前台 bg把程序移动到后台</span></span><br><span class="line">$ <span class="built_in">fg</span> %1</span><br><span class="line"><span class="comment"># fg 命令之后，跟随着一个百分号和任务序号（叫做 jobspec, 如此处的%1）就可以了。如果我们只有一个后台任务，那么 jobspec(job specification) 是可有可无的</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 Ctrl-c 的情况下，会发送一个叫做 INT（Interrupt, 中断）的信号；当使用 Ctrl-z 时，则发送一个叫做 TSTP（Terminal Stop, 终端停止）的信号</p>
+<p>可以通过kill命令来给程序发送信号，常见信号参见《Linux命令行大全》P131</p>
+<p><code>kill -l</code>可以得到一个完整的信号列表，<code>killall</code>命令，可以给匹配特定程序或用户名的多个进程发送信号</p>
+</blockquote>
+<ul>
+<li>正常来说，我们对于文件.bashrc 的修改不会生效，直到关闭终端会话，再重新启动一个新的会话，因为.bashrc 文件只是在刚开始启动终端会话时读取，但是可以通过执行<code>source .bashrc</code>来强制激活修改</li>
+</ul>
+<h3 id="9-vi-vim"><a href="#9-vi-vim" class="headerlink" title="9.vi/vim"></a>9.vi/vim</h3><blockquote>
+<ul>
+<li>移动光标：参见《Linux命令行大全》P151</li>
+<li>删除文本：参见《Linux命令行大全》P154</li>
+<li>剪切、复制和粘贴文本：参见《Linux命令行大全》P155</li>
+<li>文件间切换ex命令：<code>:n</code>切换下一个文件 <code>:N</code>返回先前的文件  </li>
+<li>多文件操作：<code>:buffers</code>显示文件列表 <code>:buffer 2</code>切换文件缓冲区 <code>:e new.txt</code>打开(新建)文件并编辑</li>
+<li>插入整个文件内容到其他文件中：<code>:r new.txt</code>(把new.txt文件插入到光标位置之前)</li>
+<li>保存文件：ex命令<code>:w</code>    命令模式下的<code>ZZ</code>(保存并退出文件) ex命令<code>:wq</code>(保存并退出) ex命令<code>:w filename.txt</code>(另存为filename.txt但不会更改当前的文件为filename.txt)</li>
+</ul>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令按键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">命令模式下，撤销最后一次修改</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">命令模式下，插入文本</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">命令模式下，进入插入模式且光标后移一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">光标移动到行尾，同时进入插入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">在当前行的下方插入一个空白行且进入到插入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">O</td>
+<td style="text-align:center">在当前行的上方插入一个空白行且进入到插入模式</td>
+</tr>
+<tr>
+<td style="text-align:center">dd</td>
+<td style="text-align:center">删除光标所在的当前行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="10-软件包管理"><a href="#10-软件包管理" class="headerlink" title="10.软件包管理"></a>10.软件包管理</h3><ul>
+<li>查找资源库中的软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">apt-get update; apt-cache search search_string</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">yum search search_string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>安装资源库中的软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">apt-get update; apt-get install package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">yum install package_name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>通过软件包文件安装软件(非资源库)</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">dpkg —install package_file</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">rpm -i package_file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>卸载软件</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">apt-get remove package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">yum erase package_name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>更新软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">apt-get update; apt-get upgrade</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">yum update</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>通过软件包文件升级软件(非资源库)</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">dpkg —install package_file</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">rpm -U package_file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>列出所安装的软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">dpkg —list</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">rpm -qa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>确定是否安装某个软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">dpkg —status package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">rpm -q package_name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>显示安装软件包的信息</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">apt-cache show package_name</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">yum info package_name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>查找安装某个文件的软件包</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">风格</th>
+<th style="text-align:center">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:center">dpkg —search file_name</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:center">rpm -qf file_name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="11-存储媒介"><a href="#11-存储媒介" class="headerlink" title="11.存储媒介"></a>11.存储媒介</h3><blockquote>
+<p>管理存储设备的第一步是把设备连接到文件系统树中。这个叫做 “挂载” 的过程允许设备连接到操作系统中</p>
+<p><code>/etc/fstab</code> 文件中可以查看系统启动时要挂载的设备，其中字段参见《Linux命令行大全》P184</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mount <span class="comment"># 不带参数会显示一系列当前挂载的文件系统(输出格式:设备 on 挂载点 type 文件系统类型（选项）)，带参数则挂载文件系统</span></span><br><span class="line">$ mount -t <span class="built_in">type</span> /dev/sdb2 /mnt/test	<span class="comment"># 挂载文件系统 -t选项指定文件系统类型</span></span><br><span class="line">$ umount /dev/sdb2	<span class="comment"># 卸载硬件设备</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>fdisk</code>命令操作分区，参见《Linux命令行大全》P191</li>
+<li>使用<code>mkfs</code>命令创建一个新的文件系统，参见《Linux命令行大全》P193</li>
+<li><code>fsck</code>命令除检查文件系统完整性之外，还能修复受损的文件系统，其成功度依赖于损坏的数量</li>
+</ul>
+<h3 id="12-文件查找"><a href="#12-文件查找" class="headerlink" title="12.文件查找"></a>12.文件查找</h3><blockquote>
+<p>locate 程序只能依据文件名来查找文件，而 find 程序能基于各种各样的属性搜索一个给定目录（以及它的子目录）来查找文件</p>
+<p>locate和find命令较为详细说明请参见《Linux命令行大全》P220</p>
+</blockquote>
+<ul>
+<li>locate：通过名字查找文件</li>
+<li>find：在一个目录层次结构中搜索文件</li>
+</ul>
+<h3 id="13-归档和备份"><a href="#13-归档和备份" class="headerlink" title="13.归档和备份"></a>13.归档和备份</h3><blockquote>
+<p>gzip 程序被用来压缩一个或多个文件。当执行 gzip 命令时，则原始文件的压缩版会替代原始文件。相对应的gunzip 程序被用来把压缩文件复原为没有被压缩的版本</p>
+<p>zip/unzip 压缩/解压缩文件包</p>
+<p>同步文件和目录(rsync)：<code>rsync options source destination</code>，更多请参见《Linux命令行大全》P244</p>
+</blockquote>
+<h3 id="14-正则表达式"><a href="#14-正则表达式" class="headerlink" title="14.正则表达式"></a>14.正则表达式</h3><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep [options] regex [file...]</span><br></pre></td></tr></table></figure>
+<p>grep选项列表参见《Linux命令行大全》P249</p>
+<p>元字符(<code>^ $ . [ ] &#123; &#125; - ? * + ( ) | \</code>)和原义字符(除元字符外的其他所有字符)</p>
+<p>锚点：插入符号<code>^</code>和美元符号<code>$</code>，意味着正则表达式只有在文本行的开头或末尾被找到时，才算发生一次匹配</p>
+<p>正则表达式<code>ˆ$</code>（行首和行尾之间没有字符）会匹配空行</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>.</code>(圆点字符)</td>
+<td style="text-align:center">匹配任意一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>?</code></td>
+<td style="text-align:center">匹配零个或一个元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>*</code></td>
+<td style="text-align:center">匹配零个或多个元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td style="text-align:center">匹配一个或多个元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&#123;&#125;</code></td>
+<td style="text-align:center">匹配特定个数的元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>中括号表达式和字符类</li>
+</ul>
+<blockquote>
+<p>中括号表达式能从一个指定的字符集合中匹配单个字符。通过中括号表达式，我们能够指定一个待匹配字符集合（包含在不加中括号的情况下会被解释为元字符的字符）</p>
+<p>一个字符集合可能包含任意多个字符，并且元字符被放置到中括号里面后会失去了它们的特殊含义。然而，在两种情况下，会在中括号表达式中使用元字符，并且有着不同的含义。第一个元字符是插入字符（ˆ），其被用来表示否定(必须是中括号表达式的第一个字符才具有否定的功能)；第二个是连字符字符（-），其被用来表示一个字符范围</p>
+<p>若要在正则表达式中包含一个连字符，则需要使连字符成为表达式中的第一个字符</p>
+</blockquote>
+<ul>
+<li>转换MS-DOS文本文件为Unix风格文本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">tr</span> -d <span class="string">&#x27;\r&#x27;</span> &lt; dos_file &gt; unix_file</span><br></pre></td></tr></table></figure>
+<p><code>tr</code>命令可以执行ROT13文本编码(简易加密类型) (两次执行恢复原来的文本)</p>
+<h3 id="15-格式化输出"><a href="#15-格式化输出" class="headerlink" title="15.格式化输出"></a>15.格式化输出</h3><ul>
+<li>nl：添加行号</li>
+<li>fold：限制文件行宽</li>
+<li>fmt：填充和连接文本行，同时保留空白符和缩进</li>
+<li>pr：格式化打印文本(给文本分页)</li>
+<li>printf：格式化打印，较为详细请参见《Linux命令行大全》P320</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 常用构建源码包命令</span></span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<h3 id="16-bash脚本"><a href="#16-bash脚本" class="headerlink" title="16.bash脚本"></a>16.bash脚本</h3><blockquote>
+<p>对于脚本文件，有两个常见的权限设置；权限为 755 的脚本，则每个人都能执行；权限为700 的脚本，只有文件所有者能够执行。注意为了能够执行脚本，脚本必须是可读的</p>
+</blockquote>
+<ul>
+<li>添加PATH变量的目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PATH=~/bin:<span class="string">&quot;<span class="variable">$PATH</span>&quot;</span></span><br><span class="line">$ . .bashrc	<span class="comment"># 点(.)命令是 source 命令的同义词，一个 shell 内建命令，用来读取一个指定的 shell命令文件，并把它看作是从键盘中输入的一样</span></span><br></pre></td></tr></table></figure>
+<p>注意：shell在赋值过程中，变量名、等号和变量值之间<strong>必须没有空格</strong></p>
+<ul>
+<li>shell函数的两种语法形式</li>
+</ul>
+<blockquote>
+<p>为使函数调用被识别出是 shell函数而不是被解释为外部程序的名字，在脚本中 shell 函数的定义必须出现在函数调用之前</p>
+<p>在变量名之前加上单词 local，来定义局部变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># name为函数名 commands为命令</span></span><br><span class="line"><span class="keyword">function</span> name &#123;</span><br><span class="line">    commands</span><br><span class="line">    <span class="built_in">return</span></span><br><span class="line">&#125;</span><br><span class="line">---</span><br><span class="line"><span class="function"><span class="title">name</span></span> () &#123;</span><br><span class="line">    commands</span><br><span class="line">    <span class="built_in">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if分支结构</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> commands; <span class="keyword">then</span></span><br><span class="line">	commands</span><br><span class="line">[<span class="keyword">elif</span> commands; <span class="keyword">then</span></span><br><span class="line">	commands...]</span><br><span class="line">[<span class="keyword">else</span></span><br><span class="line">	commands]</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当命令执行完毕后，命令（包括我们编写的脚本和 shell 函数）会给系统发送一个值，叫做退出状态。这个值是一个 0 到 255 之间的整数，说明命令执行成功或是失败。按照惯例，一个零值说明成功，其它所有值说明失败。Shell 提供了一个参数<code>$?</code>，我们可以用它检查退出状态</p>
+<p>如果 if 之后跟随一系列命令，则将计算列表中的最后一个命令，到目前为止，经常与 if 一块使用的命令是 test。这个 test 命令执行各种各样的检查与比较。它有如下两种等价模式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> expression</span><br><span class="line">---</span><br><span class="line">[ expression ]	<span class="comment"># 更为流行</span></span><br></pre></td></tr></table></figure>
+<p>这里的 expression 是一个表达式，其执行结果是 true 或者是 false。当表达式为真时，这个test 命令返回一个零退出状态，当表达式为假时，test 命令退出状态为 1；当与 test 一块使用的时候，&gt; 和 &lt; 表达式操作符必须用引号引起来（或者是用反斜杠转义）。如果不这样，它们会被 shell 解释为重定向操作符，造成潜在的破坏结果</p>
+<p>计算文件状态的文件表达式，详细请参见《Linux命令行大全》P387</p>
+<p>计算字符串表达式，详细请参见《Linux命令行大全》P390</p>
+<p>计算整型表达式，详细请参见《Linux命令行大全》P391</p>
+</blockquote>
+<ul>
+<li>操作控制符</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">command1 &amp;&amp; command2</span><br><span class="line">command2 || command2</span><br></pre></td></tr></table></figure>
+<p>对于 &amp;&amp; 操作符，先执行 command1，并且只有 command1执行成功后，才会执行 command2</p>
+<p>对于 || 操作符，先执行 command1，并且只有command1 执行失败后，才会执行 command2</p>
+<ul>
+<li>读取键盘输入</li>
+</ul>
+<blockquote>
+<p>read: 从标准输入读取单行数据。这个命令可以用来读取键盘输入，当使用重定向的时候，读取文件中的一行数据，详细选项参数请参加《Linux命令行大全》P403</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> [-options] [variable...]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>while/until循环</li>
+</ul>
+<blockquote>
+<p>和 if 一样，while 计算一系列命令的退出状态。只要退出状态为零，它就执行循环内的命令；而 until 循环会继续执行直到它接受了一个退出状态零</p>
+<p><strong>跳出循环</strong>：</p>
+<p>break 命令立即终止一个循环，且程序继续执行循环之后的语句</p>
+<p>continue 命令导致程序跳过循环中剩余的语句，且程序继续执行下一次循环</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># while命令语法</span></span><br><span class="line"><span class="keyword">while</span> commands; <span class="keyword">do</span> commands; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>case分支</li>
+</ul>
+<blockquote>
+<p>早于 4.0的 bash，对于 case 语法绝不能匹配多个测试条件。现在的 bash 版本，添加“;;&amp;”表达式来终止每个行动，其允许 case 语句继续执行下一条测试，而不是简单地终止运行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> word <span class="keyword">in</span></span><br><span class="line">	[pattern [| pattern]...) commands ;;]...</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>for循环</li>
+</ul>
+<blockquote>
+<p>传统shell格式的for循环中，variable 是一个变量的名字，这个变量在循环执行期间会增加，words 是一个可选的条目列表，其值会按顺序赋值给 variable，commands 是在每次循环迭代中要执行的命令</p>
+<p>C语言格式的for循环中，expression1 用来初始化循环条件，expression2 用来决定循环结束的时间，还有在每次循环迭代的末尾会执行 expression3</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传统shell格式</span></span><br><span class="line"><span class="keyword">for</span> variable [<span class="keyword">in</span> words]; <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># C语言格式(最新版本bash)</span></span><br><span class="line"><span class="keyword">for</span> (( expression1; expression2; expression3 )); <span class="keyword">do</span></span><br><span class="line">	commands</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h3 id="17-位置参数"><a href="#17-位置参数" class="headerlink" title="17.位置参数"></a>17.位置参数</h3><ul>
+<li>命令行访问</li>
+</ul>
+<blockquote>
+<p>shell 提供了一个称为位置参数的变量集合，这个集合包含了命令行中所有独立的单词。这些变量按照从 0 到 9 给予命名，实际上通过参数展开方式你可以访问的参数个数多于 9 个。只要指定一个大于 9 的数字，用花括号把该数字括起来就可以。例如 <code>$&#123;10&#125;、$&#123;55&#125;、$&#123;211&#125;</code>等等</p>
+<p>确定命令行参数个数：<code>$#</code></p>
+<p>访问多个命令行参数：<code>shift</code>，执行一次 shift 命令，就会导致所有的位置参数“向下移动一个位置”。事实上，用 shift 命令也可以处理只有一个参数的情况（除了其值永远不会改变的变量 $0）</p>
+</blockquote>
+<h3 id="18-字符串和数字"><a href="#18-字符串和数字" class="headerlink" title="18.字符串和数字"></a>18.字符串和数字</h3><ul>
+<li>管理空变量的展开</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;parameter:-word&#125;</span>(若 parameter 没有设置（例如，不存在）或者为空，展开结果是 word 的值。若 parameter不为空，则展开结果是 parameter 的值)</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter:=word&#125;</span>(若 parameter 没有设置（例如，不存在）或者为空，展开结果是 word 的值并且word的值会赋值给parameter。若 parameter不为空，则展开结果是 parameter 的值)</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter:?word&#125;</span>(若 parameter 没有设置（例如，不存在）或者为空，展开会导致脚本带有错误退出且word的内容会发送到标准错误。若 parameter不为空，则展开结果是 parameter 的值)</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter:+word&#125;</span>(若 parameter 没有设置（例如，不存在）或者为空，展开结果为空。若 parameter不为空，则展开结果会用word的值替换掉 parameter 的值但parameter的值本身不会改变)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回变量名的参数展开</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;!prefix*&#125;</span></span><br><span class="line"><span class="variable">$&#123;!prefix@&#125;</span></span><br><span class="line"><span class="comment"># 这种展开会返回以 prefix 开头的已有变量名</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>字符串展开</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;#parameter&#125;</span> 展开成由 parameter 所包含的字符串的长度，通常，parameter 是一个字符串；然而，如果</span><br><span class="line">parameter 是 @ 或者是 * 的话，则展开结果是位置参数的个数</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter:offset&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter:offset:length&#125;</span></span><br><span class="line">上面两个展开用来从 parameter 所包含的字符串中提取一部分字符。提取的字符始于第 offset个字符（从字符串开头算起）直到字符串的末尾，除非指定提取的长度；若 offset 的值为负数，则认为 offset 值是从字符串的末尾开始算起，而不是从开头。注意负数前面必须有一个空格，为防止与 <span class="variable">$&#123;parameter:-word&#125;</span> 展开形式混淆。length，若出现，则必须不能小于零。如果 parameter 是 @，展开结果是 length 个位置参数，从第 offset 个位置参数开始</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter#pattern&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter##pattern&#125;</span></span><br><span class="line">这些展开会从 paramter 所包含的字符串中清除开头一部分文本，这些字符要匹配定义的pattern。pattern 是通配符模式，就如那些用在路径名展开中的模式。这两种形式的差异之处是该 <span class="string">&#x27;#&#x27;</span> 形式清除最短的匹配结果，而该 <span class="string">&#x27;##&#x27;</span> 模式清除最长的匹配结果(贪心和非贪心匹配)</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter%pattern&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter%%pattern&#125;</span></span><br><span class="line">这些展开和上面的 <span class="string">&#x27;#&#x27;</span> 和 <span class="string">&#x27;##&#x27;</span> 展开一样，除了它们清除的文本从 parameter 所包含字符串的末尾开始，而不是开头</span><br><span class="line"></span><br><span class="line"><span class="variable">$&#123;parameter/pattern/string&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter//pattern/string&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter/#pattern/string&#125;</span></span><br><span class="line"><span class="variable">$&#123;parameter/%pattern/string&#125;</span></span><br><span class="line">这种形式的展开对 parameter 的内容执行查找和替换操作。如果找到了匹配通配符 pattern的文本，则string 的内容替换它。在正常形式下，只有第一个匹配项会被替换掉。在该 //形式下，所有的匹配项都会被替换掉。该 <span class="string">&#x27;/#&#x27;</span> 要求匹配项出现在字符串的开头，而 /% 要求匹配项出现在字符串的末尾。/string 可能会省略掉，这样会导致删除匹配的文本</span><br><span class="line"></span><br><span class="line">大小写参数转换，详细请参见《Linux命令行大全》P468</span><br><span class="line"></span><br><span class="line">数基，详情参见《Linux命令行大全》P469</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> shell 算术只操作整型，所以除法运算的结果总是整数</p>
+<p>常用赋值运算符及位运算符请参见《Linux命令行大全》P472~P473</p>
+</blockquote>
+<ul>
+<li>bc 一种高精度计算器语言</li>
+</ul>
+<h3 id="19-数组"><a href="#19-数组" class="headerlink" title="19.数组"></a>19.数组</h3><ul>
+<li>创建数组</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ a[1]=abc <span class="comment"># 访问时自动创建</span></span><br><span class="line">$ <span class="built_in">declare</span> -a abc <span class="comment"># 创建数组abc(使用 -a 选项，declare 命令可以创建数组 abc)</span></span><br><span class="line"><span class="comment"># 数组第一个元素的下标是 0，而不是 1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>数组赋值</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ name[subscript]=value	<span class="comment"># 单个数组元素赋值</span></span><br><span class="line">$ name=(value1 value2 ...)	<span class="comment"># 多个值赋值</span></span><br><span class="line">$ name=([num1]=value1 [num2]=value2 [num3]=value3 ...)	<span class="comment"># 指定下标把值赋给数组中的特定元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出整个数组的内容：下标 * 和 @ 可以被用来访问数组中的每一个元素。与位置参数一样，@ 表示法在两者之中更有用处</p>
+<p>使用参数展开，我们能够确定数组元素的个数，与计算字符串长度的方式几乎相同；任何没有下标的对数组变量的引用都指向数组元素 0即第一个数组元素</p>
+<p>其他数组操作请详见《Linux命令行大全》P486</p>
+</blockquote>
+<ul>
+<li>组命令和子shell (将命令组合在一起，用来管理重定向)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 组命令</span></span><br><span class="line">&#123; command1; command2; [command3; ...] &#125;</span><br><span class="line"><span class="comment"># 子shell</span></span><br><span class="line">(command1; command2; [command3; ...])</span><br><span class="line"><span class="comment"># 这两种形式的不同之处在于，组命令用花括号把它的命令包裹起来，而子 shell 用括号。值得注意的是，鉴于 bash 实现组命令的方式，花括号与命令之间必须有一个空格，并且最后一个命令必须用一个分号或者一个换行符终止</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个组命令在当前 shell 中执行它的所有命令，而一个子 shell（顾名思义）在当前 shell 的一个子副本中执行它的命令。这意味着运行环境被复制给了一个新的shell 实例。当这个子 shell 退出时，环境副本会消失，所以在子 shell 环境（包括变量赋值）中的任何更改也会消失。因此，在大多数情况下，除非脚本要求一个子 shell，组命令比子 shell更受欢迎。组命令运行很快并且占用的内存也少</p>
+</blockquote>
+<ul>
+<li>进程替换</li>
+</ul>
+<blockquote>
+<p>管道线中的命令总是在子 shell 中执行，任何给变量赋值的命令都会遭遇这样的问题(子shell的任何变量赋值都不能传递给当前shell)。幸运地是，shell 提供了一种奇异的展开方式，叫做进程替换，它可以用来解决这种麻烦</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 适用于产生标准输出的进程</span></span><br><span class="line">&lt;(list)</span><br><span class="line"><span class="comment"># 适用于接收标准输入的进程</span></span><br><span class="line">&gt;(list)</span><br><span class="line"><span class="comment"># list为命令列表</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>陷阱(当脚本接收到该程序即将提前终止的信号，此时让脚本执行如删除创建的临时文件等代码)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">trap</span> argument signal [signal...]</span><br><span class="line"><span class="comment"># 这里的 argument 是一个字符串，它被读取并被当作一个命令，signal 是一个信号的说明，它会触发执行所要解释的命令</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>异步执行(wait命令导致一个父脚本暂停运行直到特定进程运行结束)</p>
+</li>
+<li><p>命名管道</p>
+</li>
+</ul>
+<blockquote>
+<p>当在管道的另一端没有任何对象来接收数据时相关命令会挂起，这种现象被称为管道阻塞。一旦我们绑定一个进程到管道的另一端，该进程开始从管道中读取输入的时候，管道阻塞则会结束</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/08/14/%E3%80%8Alinux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">http://example.com/2023/08/14/%E3%80%8Alinux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/10/C-C-%E4%B9%8Bsocket%E7%BC%96%E7%A8%8B/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C/C++之socket编程</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/14/json%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/wallpaper.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">json学习笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5"><span class="toc-text">1.符号链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-shell%E7%9A%84%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">2.shell的通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%91%BD%E4%BB%A4"><span class="toc-text">3.命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">4.重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-echo"><span class="toc-text">5.echo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%94%AE%E7%9B%98%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7"><span class="toc-text">6.键盘高级操作技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%9D%83%E9%99%90"><span class="toc-text">7.权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%BF%9B%E7%A8%8B"><span class="toc-text">8.进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-vi-vim"><span class="toc-text">9.vi&#x2F;vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">10.软件包管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%AD%98%E5%82%A8%E5%AA%92%E4%BB%8B"><span class="toc-text">11.存储媒介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE"><span class="toc-text">12.文件查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%BD%92%E6%A1%A3%E5%92%8C%E5%A4%87%E4%BB%BD"><span class="toc-text">13.归档和备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">14.正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-text">15.格式化输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-bash%E8%84%9A%E6%9C%AC"><span class="toc-text">16.bash脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-text">17.位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97"><span class="toc-text">18.字符串和数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-%E6%95%B0%E7%BB%84"><span class="toc-text">19.数组</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/assets/js/cursor.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

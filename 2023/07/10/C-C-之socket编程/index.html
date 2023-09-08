@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>C/C++之socket编程 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考文章： 1.socket编程基础知识 2.socket编程UDP程序 3.socket编程TCP程序 4.unix domain socket 编程 5.Unix Domain Socket 实现原理 6.Linux C Socket UDP编程详解及实例分享 7.Linux编程之UDP SOCKET全攻略 8.udp 超时设置（select函数的一种用法）  前言 socket通信本质上就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++之socket编程">
+<meta property="og:url" content="http://example.com/2023/07/10/C-C-%E4%B9%8Bsocket%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="theeの博客 🎉">
+<meta property="og:description" content="参考文章： 1.socket编程基础知识 2.socket编程UDP程序 3.socket编程TCP程序 4.unix domain socket 编程 5.Unix Domain Socket 实现原理 6.Linux C Socket UDP编程详解及实例分享 7.Linux编程之UDP SOCKET全攻略 8.udp 超时设置（select函数的一种用法）  前言 socket通信本质上就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png">
+<meta property="article:published_time" content="2023-07-10T12:02:37.000Z">
+<meta property="article:modified_time" content="2023-07-11T12:02:23.722Z">
+<meta property="article:author" content="thee">
+<meta property="article:tag" content="socket编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png"><link rel="shortcut icon" href="/assets/img/plane.png"><link rel="canonical" href="http://example.com/2023/07/10/C-C-%E4%B9%8Bsocket%E7%BC%96%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: thee","link":"链接: ","source":"来源: theeの博客 🎉","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C/C++之socket编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-11 20:02:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C/C++之socket编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-10T12:02:37.000Z" title="发表于 2023-07-10 20:02:37">2023-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T12:02:23.722Z" title="更新于 2023-07-11 20:02:23">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C/C++之socket编程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>参考文章：</p>
+<p>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52169086/article/details/125687577?spm=1001.2014.3001.5506">socket编程基础知识</a></p>
+<p>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52169086/article/details/125691474?spm=1001.2014.3001.5506">socket编程UDP程序</a></p>
+<p>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52169086/article/details/125698902?spm=1001.2014.3001.5506">socket编程TCP程序</a></p>
+<p>4.<a target="_blank" rel="noopener" href="https://juejin.cn/s/unix%20domain%20socket%20%E7%BC%96%E7%A8%8B">unix domain socket 编程</a></p>
+<p>5.<a target="_blank" rel="noopener" href="https://github.com/linalalala/linux/blob/master/socket_unix.md">Unix Domain Socket 实现原理</a></p>
+<p>6.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/131402832">Linux C Socket UDP编程详解及实例分享</a></p>
+<p>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/skyfsm/p/6287787.html">Linux编程之UDP SOCKET全攻略</a></p>
+<p>8.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liang-hk/archive/2012/04/28/2475199.html">udp 超时设置（select函数的一种用法）</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li><p><code>socket</code>通信本质上就是两个进程间的通信(<strong>跨网络的进程间通信</strong>)</p>
+</li>
+<li><p><code>IP</code>地址能够唯一标识公网内的一台主机，而端口号能够唯一标识一台主机上的一个进程，因此<code>IP</code>地址+端口号就能够唯一标识网络上的某一台主机的某一个进程</p>
+</li>
+<li><p>或者这样说：<code>IP</code>地址就像是某个快递点的位置，端口号就是其中快递包裹的编号，而进程是收或寄快递的人</p>
+</li>
+<li><p><code>TCP</code>协议：面向连接、可靠、基于字节流的传输层通信协议</p>
+</li>
+<li><code>UDP</code>协议：无需建立连接的、不可靠的、面向数据报的传输层通信协议</li>
+<li>计算机存储策略：<ul>
+<li>大端模式：数据高字节保存到内存低字节，数据低字节保存到内存高字节(大对小，小对大/==低地址高字节==) -&gt; 网络数据流采用<strong>大端模式</strong></li>
+<li>小端模式：数据高字节保存到内存高字节，数据低字节保存到内存低字节(大对大，小对小/==低地址低字节==)</li>
+</ul>
+</li>
+<li>网络字节序和主机字节序之间的转换函数：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">htonl</span><span class="params">(<span class="type">uint32_t</span> hostlong)</span>;	<span class="comment">//主机字节序转换为网络字节序 32位</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">htons</span><span class="params">(<span class="type">uint16_t</span> hostshort)</span>;	<span class="comment">//主机字节序转换为网络字节序 16位</span></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">ntohl</span><span class="params">(<span class="type">uint32_t</span> netlong)</span>;	<span class="comment">//网络字节序转换为主机字节序 32位</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">ntohs</span><span class="params">(<span class="type">uint16_t</span> netshort)</span>;	<span class="comment">//网络字节序转换为主机字节序 16位</span></span><br><span class="line"><span class="comment">// h: host	n: network</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>sockaddr</code>结构(跨网络通信：<code>sockaddr_in</code>和本地通信：<code>sockaddr_un</code>)：统一套接字的网络通信和本地通信，使之能使用同一套函数；设置参数时通过设置协议家族(<code>16</code>位地址类型)这个字段，来表明我们是要进行网络通信还是本地通信；实际进行网络通信时，定义的还是<code>sockaddr_in</code>结构体，在传参时将该结构体的地址类型强制转换为<code>sockaddr*</code> </li>
+<li><code>UDP</code>通信流程框架图<ul>
+<li><code>server</code>(服务器)接收请求步骤：<code>socket()-&gt;bind()-&gt;recvfrom()</code></li>
+<li><code>client</code>(客户端)发送请求步骤：<code>socket()-&gt;sendto()</code></li>
+<li>实际上<code>UDP</code>没有严格区分<code>server</code>端和<code>client</code>端，唯一的区别是绑不绑定（<code>bind</code>）端口</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/1093303-20170115195937619-2089905370.jpg" alt="1093303-20170115195937619-2089905370"></p>
+<h1 id="套接字相关函数"><a href="#套接字相关函数" class="headerlink" title="套接字相关函数"></a>套接字相关函数</h1><h3 id="1-socket"><a href="#1-socket" class="headerlink" title="1.socket()"></a>1.socket()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;sys/types.h&gt;</span><br><span class="line">#include&lt;sys/socket.h&gt;</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">int socket(int domain, int type, int protocol);</span><br><span class="line">作用: 建立套接字文件描述符</span><br><span class="line">参数:</span><br><span class="line">(1) domain(以下列出常用网络通信域)</span><br><span class="line">	AF_INET: 常用协议，使用TCP或UDP传输(用于IPV4)</span><br><span class="line">	AF_INET6: 同上，区别在于是用于IPV6</span><br><span class="line">	AF_UNIX: 本地协议，用于Unix和LInux系统(是同一台主机内进程间通信的机制，使用文件系统路径名作为地址来建立连接，比传统的网络Socket更加高效)</span><br><span class="line">(2) type</span><br><span class="line">	SOCK_STREAM: TCP传输</span><br><span class="line">	SOCK_DGRAM: UDP传输</span><br><span class="line">	SOCK_RAW: 原始网络访问</span><br><span class="line">(3) protocol</span><br><span class="line">	传0即可，使用默认协议</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回指向新创建的socket的文件描述符</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="2-bind"><a href="#2-bind" class="headerlink" title="2.bind()"></a>2.bind()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;sys/types.h&gt;</span><br><span class="line">#include&lt;sys/socket.h&gt;</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</span><br><span class="line">作用: 将套接字文件描述符和一个地址类型变量进行绑定</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	socket文件描述符(监听端口的套接字文件描述符)，即调用socket()函数返回的文件描述符</span><br><span class="line">(2) addr</span><br><span class="line">	与网络相关的属性信息，包括协议家族、ip地址和端口号等(需要绑定的ip和端口)</span><br><span class="line">(3) addrlen</span><br><span class="line">	addr结构体的长度</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回0</span><br><span class="line">	失败: 返回-1，设置errno</span><br><span class="line">备注:</span><br><span class="line">	使用socket()创建完套接字后只是在系统层面打开了一个文件，但并没有将该文件与网络关联起来，需要调用bind()进行文件和网络的绑定和关联</span><br><span class="line">	服务器需要绑定监听的网络地址和端口号，而客服端不需要</span><br><span class="line">	INADDR_ANY表示绑定</span><br></pre></td></tr></table></figure>
+<h3 id="3-recvfrom"><a href="#3-recvfrom" class="headerlink" title="3.recvfrom()"></a>3.recvfrom()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;sys/types.h&gt;</span><br><span class="line">#include&lt;sys/socket.h&gt;</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr *src_addr, socklen_t *addrlen);</span><br><span class="line">作用: 通过套接字接收数据</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	socket文件描述符(监听端口的套接字文件描述符)，即调用socket()函数返回的文件描述符</span><br><span class="line">(2) buf</span><br><span class="line">	接收的数据存放的缓冲区</span><br><span class="line">(3) len</span><br><span class="line">	接收数据字节数</span><br><span class="line">(4) flags</span><br><span class="line">	接收方式，一般设置为0，表示阻塞接收</span><br><span class="line">(5) src_addr</span><br><span class="line">	与对端网络相关的属性信息，包括协议家族、ip地址和端口号等</span><br><span class="line">	指向发送数据的主机地址信息的结构体，即可以从该参数获取到数据是谁发出的</span><br><span class="line">(6) addrlen</span><br><span class="line">	src_addr结构体长度</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回实际接收的字节数</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="4-sendto"><a href="#4-sendto" class="headerlink" title="4.sendto()"></a>4.sendto()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;sys/types.h&gt;</span><br><span class="line">#include&lt;sys/socket.h&gt;</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);</span><br><span class="line">作用: 通过套接字发送数据</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	socket文件描述符(监听端口的套接字文件描述符)，即调用socket()函数返回的文件描述符</span><br><span class="line">(2) buf</span><br><span class="line">	待发送数据存放的缓冲区</span><br><span class="line">(3) len</span><br><span class="line">	待发送数据字节数</span><br><span class="line">(4) flags</span><br><span class="line">	发送方式，一般设置为0，表示阻塞发送</span><br><span class="line">(5) dest_addr</span><br><span class="line">	与对端网络相关的属性信息，包括协议家族、ip地址和端口号等</span><br><span class="line">	指向接收数据的主机地址信息的结构体，即指定数据要发送到哪个主机的哪个进程</span><br><span class="line">(6) addrlen</span><br><span class="line">	dest_addr结构体长度</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回实际发送的字节数</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="5-close"><a href="#5-close" class="headerlink" title="5.close()"></a>5.close()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">int close(int fd);</span><br><span class="line">作用: 关闭创建的socket</span><br><span class="line">参数:</span><br><span class="line">	fd</span><br><span class="line">	socket()函数返回的fd</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回0</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="6-inet-addr-inet-ntoa"><a href="#6-inet-addr-inet-ntoa" class="headerlink" title="6.inet_addr()/inet_ntoa()"></a>6.inet_addr()/inet_ntoa()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">in_addr_t inet_addr(const char *cp);</span><br><span class="line">类似于inet_aton()函数</span><br><span class="line">参数:</span><br><span class="line">cp: 待转换字符串ip</span><br><span class="line">返回值:</span><br><span class="line">	转换后的整数ip</span><br><span class="line"></span><br><span class="line">函数原型:</span><br><span class="line">char *inet_ntoa(struct in_addr in);</span><br><span class="line">参数:</span><br><span class="line">in: 待转换整数ip</span><br><span class="line">返回值:</span><br><span class="line">	转换后的字符串ip</span><br></pre></td></tr></table></figure>
+<h3 id="7-connect"><a href="#7-connect" class="headerlink" title="7.connect()"></a>7.connect()</h3><blockquote>
+<p><code>udp</code>套接字也可以使用，因而<code>udp</code>套接字可以分为已连接的<code>udp</code>套接字和未连接的<code>udp</code>套接字</p>
+<p>已连接的<code>udp</code>套接字，必须先经过<code>connect()</code>来向目标服务器进行指定，然后调用<code>read/write</code>进行信息的收发，目标主机的<code>IP</code>和端口是在<code>connect()</code>时确定的，也就是说，一旦<code>conenct()</code>成功，我们就只能收发该主机的信息</p>
+<p>当知道目的地址和端口时，采用连接的<code>udp</code>套接字效率更高</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/1093303-20170115202743119-1345209901.jpg" alt="1093303-20170115202743119-1345209901"></p>
+<p>参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52169086/article/details/125698902?spm=1001.2014.3001.5506">socket编程TCP程序</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/socket-programming-cc/">Socket Programming in C/C++</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/StatediagramforserverandclientmodelofSocketdrawio2-448x660.png" alt="StatediagramforserverandclientmodelofSocketdrawio2-448x660"></p>
+<h3 id="1-listen"><a href="#1-listen" class="headerlink" title="1.listen()"></a>1.listen()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">int listen(int sockfd, int backlog);</span><br><span class="line">作用: It puts the server socket in a passive mode, where it waits for the client to approach the server to make a connection.</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	需要监听套接字对应的文件描述符</span><br><span class="line">(2) backlog</span><br><span class="line">	全连接队列的最大长度。如果有多个客户端同时发来连接请求，此时未被服务器处理的连接就会放入连接队列(超出的连接请求会被忽略)，该参数代表的就是这个全连接队列的最大长度，一般不要设置太大，设置为5或10即可</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回0</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="2-accept"><a href="#2-accept" class="headerlink" title="2.accept()"></a>2.accept()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);</span><br><span class="line">作用: It extracts the first connection request on the queue of pending connections for the listening socket, sockfd, creates a new connected socket, and returns a new file descriptor referring to that socket. At this point, the connection is established between client and server, and they are ready to transfer data.</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	需要监听套接字对应的文件描述符(监听套接字)</span><br><span class="line">(2) addr</span><br><span class="line">	对端网络相关属性信息，包括协议家族、ip和端口等</span><br><span class="line">(3) addrlen</span><br><span class="line">	addr结构体长度，返回实际读取到的addr结构体长度(输入输出型参数)</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回一个新的socket文件描述符(服务套接字)，用于和客户端通信</span><br><span class="line">	失败: 返回-1，设置errno</span><br><span class="line">1.监听套接字：用于获取客户端发来的连接请求。accept函数会不断从监听套接字当中获取新连接。</span><br><span class="line">2.accept函数返回的套接字：用于为本次accept获取到的连接提供服务。监听套接字的任务只是不断获取新连接，而真正为这些连接提供服务的套接字是accept函数返回的套接字</span><br></pre></td></tr></table></figure>
+<h3 id="3-connect"><a href="#3-connect" class="headerlink" title="3.connect()"></a>3.connect()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);</span><br><span class="line">作用:  The connect() system call connects the socket referred to by the file descriptor sockfd to the address specified by addr. Server&#x27;s address and port is specified in addr.</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	需要连接套接字对应的文件描述符(通过该套接字发起连接请求)</span><br><span class="line">(2) addr</span><br><span class="line">	对端网络相关属性信息，包括协议家族、ip和端口等</span><br><span class="line">(3) addrlen</span><br><span class="line">	addr结构体长度</span><br><span class="line">返回值:</span><br><span class="line">	成功: 连接成功</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="4-read"><a href="#4-read" class="headerlink" title="4.read()"></a>4.read()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">ssize_t read(int fd, void *buf, size_t count);</span><br><span class="line">作用: 从连接的套接字中读取数据</span><br><span class="line">参数:</span><br><span class="line">(1) fd</span><br><span class="line">	对应套接字的文件描述符</span><br><span class="line">(2) buf</span><br><span class="line">	读取到的数据存储位置</span><br><span class="line">(3) count</span><br><span class="line">	读取数据字节数</span><br><span class="line">返回值:</span><br><span class="line">	成功: 实际读取的字节数</span><br><span class="line">	失败: 返回0(文件结束/对端关闭连接)或-1(读取错误)，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="5-write"><a href="#5-write" class="headerlink" title="5.write()"></a>5.write()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">函数原型:</span><br><span class="line">ssize_t write(int fd, const void *buf, size_t count);</span><br><span class="line">作用: 从连接的套接字中读取数据</span><br><span class="line">参数:</span><br><span class="line">(1) fd</span><br><span class="line">	对应套接字的文件描述符</span><br><span class="line">(2) buf</span><br><span class="line">	需要写入数据的位置</span><br><span class="line">(3) count</span><br><span class="line">	写入数据字节数</span><br><span class="line">返回值:</span><br><span class="line">	成功: 实际写入的字节数</span><br><span class="line">	失败: 返回-1，设置errno</span><br></pre></td></tr></table></figure>
+<h3 id="6-setsockopt"><a href="#6-setsockopt" class="headerlink" title="6.setsockopt()"></a>6.setsockopt()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">函数原型:</span><br><span class="line">int setsockopt(int sockfd, int level, int optname,  const void *optval, socklen_t optlen);</span><br><span class="line">作用:</span><br><span class="line">	This helps in manipulating options for the socket referred by the file descriptor sockfd. This is completely optional, but it helps in reuse of address and port. Prevents error such as: &quot;address already in use&quot;</span><br><span class="line">参数:</span><br><span class="line">(1) sockfd</span><br><span class="line">	套接字描述符</span><br><span class="line">(2) level</span><br><span class="line">	设置选项的级别，如果想要在套接字级别上设置选项，就必须把level设置为 SOL_SOCKET</span><br><span class="line">(3) optname</span><br><span class="line">	需要设置的选项</span><br><span class="line">(4) optval</span><br><span class="line">	指向存放选项值的缓冲区</span><br><span class="line">(5) optlen</span><br><span class="line">	optval 缓冲区的长度</span><br><span class="line">返回值:</span><br><span class="line">	成功: 返回0</span><br><span class="line">	失败: 返回-1, 设置errno</span><br></pre></td></tr></table></figure>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cthon/p/9270778.html">setsockopt函数功能及参数详解</a></p>
+<ul>
+<li>阻塞接收时避免永久阻塞</li>
+</ul>
+<p>传统的recvfrom是阻塞进行的，即调用recvfrom之后程序就会阻塞，等待数据包的到来，如果没有数据包，程序就永远等待</p>
+<p>解决方法：给客户端调用的<code>recvfrom()</code>函数设置超时处理，超时之后没有接收到数据就直接返回</p>
+<p>（1）select()函数+recvfrom()函数</p>
+<p>对于select()函数，可参考: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyepeng/p/9745573.html">select函数及fd_set介绍</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">timeval</span> tv;</span><br><span class="line">    fd_set readfds;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> buf_n=<span class="number">1024</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">FD_ZERO</span>(&amp;readfds);	<span class="comment">// 清空</span></span><br><span class="line">        <span class="built_in">FD_SET</span>(fd,&amp;readfds);	<span class="comment">// 置位fd，将需要处理的sock加入到上一步清空后的集合中</span></span><br><span class="line">        <span class="comment">// 设置超时参数 sec和usec</span></span><br><span class="line">        tv.tv_sec=sec;</span><br><span class="line">        tv.tv_usec=usec;</span><br><span class="line">        <span class="comment">// 以非阻塞方式调用select()函数，设置时间内有数据则返回并设置readfds中fd对应位为1，否则返回并设置readfds中对应位为0</span></span><br><span class="line">        <span class="built_in">select</span>(fd+<span class="number">1</span>,&amp;readfds,<span class="literal">NULL</span>,<span class="literal">NULL</span>,&amp;tv);</span><br><span class="line">        <span class="comment">// 测试readfds中fd对应位有没有置1，如果置1则返回成功，否则返回失败</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">FD_ISSET</span>(fd,&amp;readfds))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>((n=<span class="built_in">recvfrom</span>(fd,buf,buf_n,<span class="number">0</span>,&amp;addr,&amp;len))&gt;=<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 成功接收处理代码</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="comment">// 超时处理代码</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li><p>如果设定时间内没有数据到来还想继续等待N次，那么一定要注意重新设置readfds，因为它已经被select破坏了，如果不重新设置的话，你的select语句会返回-1，strerr时会打印出参数设置出错，主要是由于readfds中全部为零，select不知道该去监视哪个sock</p>
+</li>
+<li><p>重复等待时不只是要重新设置readfds，同时还要重新设置一下tv的值，因为select同时也破坏了tv的值（select在返回时会改变tv，改变的公式是tv=tv-等待的时间，所以如果tv时间内没有数据到达的话，select返回时tv会变成0）</p>
+</li>
+</ul>
+<p>（2）<a target="_blank" rel="noopener" href="https://blog.csdn.net/daiyudong2020/article/details/70039409">UDP服务recvfrom函数设置非阻塞</a></p>
+<p>（3）<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/612347070">Linux Socket 网络编程 阻塞与非阻塞 断线重连机制</a></p>
+<p>（4）使用信号中断处理超时</p>
+<h1 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h1><blockquote>
+<p>Linux系统下关于使用socket进行UDP和TCP通信的代码已放到如下链接中：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Thee24LYJ/LearningCode/tree/main/tcp%26udp%20socket%20code">https://github.com/Thee24LYJ/LearningCode/tree/main/tcp%26udp%20socket%20code</a></p>
+<p>该文件夹下子文件夹对应的代码解释如下：</p>
+<ul>
+<li>udp_test -&gt; udp通信</li>
+<li>tcp_test -&gt; tcp通信</li>
+<li>tcp_test_SIGCHLD -&gt; tcp通信(多进程之捕捉SIGCHLD信号)</li>
+<li>tcp_test_son -&gt; tcp通信(多进程之孙子进程)</li>
+<li>tcp_test_thread -&gt; tcp通信(多线程)</li>
+<li>tcp_test_threadpool -&gt; tcp通信(线程池)</li>
+</ul>
+</blockquote>
+<h2 id="一、UDP"><a href="#一、UDP" class="headerlink" title="一、UDP"></a>一、UDP</h2><ul>
+<li>本地不同进程间进行通信：<a target="_blank" rel="noopener" href="https://juejin.cn/s/unix%20domain%20socket%20%E7%BC%96%E7%A8%8B">unix domain socket 编程</a></li>
+</ul>
+<h2 id="二、TCP"><a href="#二、TCP" class="headerlink" title="二、TCP"></a>二、TCP</h2><blockquote>
+<p>单进程版本：一个server同一时刻只能响应一个client的请求</p>
+<p>多进程的tcp示例</p>
+<ul>
+<li><p>子进程继承父进程的文件描述符表: 即父进程打开的文件描述符是3，此时父进程创建的子进程的3号文件描述符也会指向这个打开的文件，而如果子进程再创建一个子进程，那么子进程创建的子进程的3号文件描述符也同样会指向这个打开的文件</p>
+</li>
+<li><p>子进程等待: 父进程创建子进程后，需要等待子进程退出(否则子进程会变成僵尸进程)</p>
+<p>  阻塞等待/非阻塞等待</p>
+<p>  不等待子进程退出: </p>
+<ul>
+<li>捕捉SIGCHLD信号，将其处理动作设置为忽略。</li>
+<li>让祖父进程创建父进程，父进程再创建孙子进程，最后让孙子进程为客户端提供服务(孙子进程由系统回收)(不推荐)</li>
+</ul>
+</li>
+</ul>
+<p>多线程的tcp示例</p>
+<ul>
+<li>当服务进程调用accept函数获取到一个新连接后，就可以直接创建一个线程，让该线程为对应客户端提供服务。主线程（服务进程）创建出新线程后，也是需要等待新线程退出的，否则也会造成类似于僵尸进程这样的问题。但对于线程来说，如果不想让主线程等待新线程退出，可以让创建出来的新线程调用pthread_detach函数进行线程分离，当这个线程退出时系统会自动回收该线程所对应的资源。此时主线程（服务进程）就可以继续调用accept函数获取新连接，而让新线程去服务对应的客户端。</li>
+<li>文件描述符表维护的是进程与文件之间的对应关系，因此一个进程对应一张文件描述符表。而主线程创建出来的新线程依旧属于这个进程，因此创建线程时并不会为该线程创建独立的文件描述符表，所有的线程看到的都是同一张文件描述符表。</li>
+<li><p>当服务进程（主线程）调用accept函数获取到一个文件描述符后，其他创建的新线程是能够直接访问这个文件描述符的。虽然新线程能够直接访问主线程accept上来的文件描述符，但此时新线程并不知道它所服务的客户端对应的是哪一个文件描述符，因此主线程创建新线程后需要告诉新线程对应应该访问的文件描述符的值，也就是告诉每个新线程在服务客户端时，应该对哪一个套接字进行操作</p>
+</li>
+<li><p>由于代码当中用到了多线程，因此编译时需要携带上 -l pthread 选项。此外，由于我们现在要监测的是一个个的线程，因此在监控时使用的不再是ps -axj 命令，而是 ps -aL 命令。</p>
+</li>
+<li>当一个客户端连接到服务端后，此时主线程就会为该客户端构建一个参数结构体，然后创建一个新线程，将该参数结构体的地址作为参数传递给这个新线程，此时该新线程就能够从这个参数结构体当中提取出对应的参数，然后调用Service函数为该客户端提供服务</li>
+</ul>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/07/10/C-C-%E4%B9%8Bsocket%E7%BC%96%E7%A8%8B/">http://example.com/2023/07/10/C-C-%E4%B9%8Bsocket%E7%BC%96%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/socket%E7%BC%96%E7%A8%8B/">socket编程</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%8B%E9%9D%99%E6%80%81arp%E7%BB%91%E5%AE%9A/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机之静态 arp 绑定</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/14/%E3%80%8Alinux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%A7%E5%85%A8%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《linux命令行大全》阅读笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%97%E6%8E%A5%E5%AD%97%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">套接字相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-socket"><span class="toc-text">1.socket()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-bind"><span class="toc-text">2.bind()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-recvfrom"><span class="toc-text">3.recvfrom()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-sendto"><span class="toc-text">4.sendto()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-close"><span class="toc-text">5.close()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-inet-addr-inet-ntoa"><span class="toc-text">6.inet_addr()&#x2F;inet_ntoa()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-connect"><span class="toc-text">7.connect()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-listen"><span class="toc-text">1.listen()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-accept"><span class="toc-text">2.accept()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-connect"><span class="toc-text">3.connect()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-read"><span class="toc-text">4.read()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-write"><span class="toc-text">5.write()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-setsockopt"><span class="toc-text">6.setsockopt()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="toc-text">Linux系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81UDP"><span class="toc-text">一、UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81TCP"><span class="toc-text">二、TCP</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/022c23204ba7816e279cc352e332b74b6f656da2.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/assets/js/cursor.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
