@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>windows系统常用cmd命令 | theeの博客 🎉</title><meta name="author" content="thee"><meta name="copyright" content="thee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="windows系统常用cmd命令 参考视频教程: 合集·电脑cmd命令  1.ipconfig ipconfig：显示IP地址信息 ipconfig &#x2F;all：显示IP地址详细信息(包括DNS等) ipconfig &#x2F;all | findstr DNS：筛选关于DNS的信息(findstr用于查找特定字符) ipconfig &#x2F;release：释放所有接口IP地址(即断开网络无法上网) ipcon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows系统常用cmd命令">
+<meta property="og:url" content="https://thee24lyj.github.io/2023/11/27/windows%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8cmd%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="theeの博客 🎉">
+<meta property="og:description" content="windows系统常用cmd命令 参考视频教程: 合集·电脑cmd命令  1.ipconfig ipconfig：显示IP地址信息 ipconfig &#x2F;all：显示IP地址详细信息(包括DNS等) ipconfig &#x2F;all | findstr DNS：筛选关于DNS的信息(findstr用于查找特定字符) ipconfig &#x2F;release：释放所有接口IP地址(即断开网络无法上网) ipcon">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png">
+<meta property="article:published_time" content="2023-11-27T13:18:02.000Z">
+<meta property="article:modified_time" content="2023-11-27T13:19:05.632Z">
+<meta property="article:author" content="thee">
+<meta property="article:tag" content="windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png"><link rel="shortcut icon" href="/assets/img/plane.png"><link rel="canonical" href="https://thee24lyj.github.io/2023/11/27/windows%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8cmd%E5%91%BD%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: thee","link":"链接: ","source":"来源: theeの博客 🎉","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'windows系统常用cmd命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-27 21:19:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/assets/css/custom.css"><link rel="stylesheet" href="/assets/css/progress_bar.css" media="defer" onload="this.media='all'"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/img/test.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">theeの博客 🎉</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/changes/"><i class="fa-fw fas fa-calendar-alt"></i><span> 更新记录</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">windows系统常用cmd命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-27T13:18:02.000Z" title="发表于 2023-11-27 21:18:02">2023-11-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-27T13:19:05.632Z" title="更新于 2023-11-27 21:19:05">2023-11-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">890</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="windows系统常用cmd命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="windows系统常用cmd命令"><a href="#windows系统常用cmd命令" class="headerlink" title="windows系统常用cmd命令"></a>windows系统常用cmd命令</h1><blockquote>
+<p>参考视频教程:</p>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/525687153/channel/collectiondetail?sid=1749238">合集·电脑cmd命令</a></p>
+</blockquote>
+<h3 id="1-ipconfig"><a href="#1-ipconfig" class="headerlink" title="1.ipconfig"></a>1.ipconfig</h3><ul>
+<li><code>ipconfig</code>：显示<code>IP</code>地址信息</li>
+<li><code>ipconfig /all</code>：显示<code>IP</code>地址详细信息(包括<code>DNS</code>等)</li>
+<li><code>ipconfig /all | findstr DNS</code>：筛选关于<code>DNS</code>的信息(<code>findstr</code>用于查找特定字符)</li>
+<li><code>ipconfig /release</code>：释放所有接口<code>IP</code>地址(即断开网络无法上网)</li>
+<li><code>ipconfig /release &quot;WLAN&quot;</code>：释放<code>WLAN</code>接口的<code>IP</code>地址</li>
+<li><code>ipconfig /renew</code>：重新获取<code>IP</code>地址(连接网络正常上网)</li>
+<li><code>ipconfig /displaydns</code>：显示<code>DNS</code>解析缓存结果(用于网络<code>DNS</code>故障排查)</li>
+<li><code>ipconfig /displaydns | clip</code>：复制<code>DNS</code>解析缓存结果到剪贴板中</li>
+<li><code>ipconfig /flushdns</code>：刷新<code>DNS</code>解析缓存</li>
+</ul>
+<h3 id="2-nslookup"><a href="#2-nslookup" class="headerlink" title="2.nslookup"></a>2.nslookup</h3><ul>
+<li><code>nslookup www.baidu.com</code>：显示解析该域名的<code>DNS</code>服务器地址信息及其对应<code>IP</code>地址</li>
+<li><code>nslookup www.baidu.com 114.114.114.114</code>：指定访问该域名的<code>DNS</code>地址</li>
+<li><code>nslookup -qt=type www.baidu.com</code>：查询域名指定类型的解析记录</li>
+</ul>
+<p><code>type</code>类型如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A地址记录（道接查询默认类型）</th>
+<th style="text-align:center">AAAA地址记录</th>
+<th style="text-align:center">AFSDB Andrew文件系统数据库服务器记录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ATMA ATM地址记录</td>
+<td style="text-align:center">CNAME别名记录</td>
+<td style="text-align:center">HINFO硬件配置记录，包括CPU、操作系统信息</td>
+</tr>
+<tr>
+<td style="text-align:center">ISDN域名对应的ISDN号码</td>
+<td style="text-align:center">MB存放指定邮箱的服务器</td>
+<td style="text-align:center">MG邮件组记录</td>
+</tr>
+<tr>
+<td style="text-align:center">MINFO邮件组和邮箱的信息记录</td>
+<td style="text-align:center">MR改名的邮箱记录</td>
+<td style="text-align:center">MX邮件服务器记录</td>
+</tr>
+<tr>
+<td style="text-align:center">NS名字服务器记录</td>
+<td style="text-align:center">PTR反向记录</td>
+<td style="text-align:center">RP负责人记录</td>
+</tr>
+<tr>
+<td style="text-align:center">RT路由穿透记录</td>
+<td style="text-align:center">SRV TCP服务器信息记录</td>
+<td style="text-align:center">TXT域名对应的文本信息等</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-cls"><a href="#3-cls" class="headerlink" title="3.cls"></a>3.cls</h3><p>清除屏幕上显示的信息</p>
+<h3 id="4-getmac"><a href="#4-getmac" class="headerlink" title="4.getmac"></a>4.getmac</h3><ul>
+<li><code>getmac /v</code>：快速查看<code>mac</code>地址</li>
+</ul>
+<h3 id="5-powercfg"><a href="#5-powercfg" class="headerlink" title="5.powercfg"></a>5.powercfg</h3><ul>
+<li><code>powercfg /energy</code>：跟踪电脑系统<code>60</code>秒内的使用行为并生成电源效率诊断报告</li>
+<li><code>powercfg /batteryreport</code>：生成电池使用报告</li>
+</ul>
+<h3 id="6-assoc"><a href="#6-assoc" class="headerlink" title="6.assoc"></a>6.assoc</h3><p>显示所有系统文件扩展名的关联信息(打开方式)</p>
+<h3 id="7-chkdsk"><a href="#7-chkdsk" class="headerlink" title="7.chkdsk"></a>7.chkdsk</h3><ul>
+<li><code>chkdsk /f</code>：检查并修复硬盘</li>
+<li><code>chkdsk /r</code>：检查并修复物理扇区</li>
+</ul>
+<h3 id="8-sfc"><a href="#8-sfc" class="headerlink" title="8.sfc"></a>8.sfc</h3><ul>
+<li><code>sfc /scannow</code>：检查系统文件完整性并尽可能修复损坏文件</li>
+</ul>
+<h3 id="9-Dism"><a href="#9-Dism" class="headerlink" title="9.Dism"></a>9.Dism</h3><ul>
+<li><code>Dism /online /Cleanup-Image /ScanHealth</code>：扫描映像是否损坏但不做任何修复</li>
+<li><code>Dism /online /Cleanup-Image /CheckHealth</code>：检查映像是否损坏及是否能修复</li>
+<li><code>Dism /online /Cleanup-Image /RestoreHealth</code>：修复映像(在可以修复的前提下)</li>
+</ul>
+<h3 id="10-tasklist"><a href="#10-tasklist" class="headerlink" title="10.tasklist"></a>10.tasklist</h3><ul>
+<li><code>tasklist</code>：列出系统中正在运行的进程及其详细信息</li>
+<li><code>tasklist | findstr explorer</code>：列出系统中关于<code>explorer</code>进程的详细信息</li>
+</ul>
+<h3 id="11-taskkill"><a href="#11-taskkill" class="headerlink" title="11.taskkill"></a>11.taskkill</h3><ul>
+<li><code>taskkill /f /pid 12345</code>：终止某个进程</li>
+</ul>
+<h3 id="12-netsh"><a href="#12-netsh" class="headerlink" title="12.netsh"></a>12.netsh</h3><ul>
+<li><code>netsh wlan show wlanreport</code>：生成关于无线网络的报告</li>
+<li><code>netsh interface show interface</code>：显示所有网络适配器相关信息</li>
+<li><code>netsh interface ip show address</code>：快速查找电脑<code>IP</code>地址信息</li>
+<li><code>netsh interface ip show dnsserver</code>：显示<code>DNS</code>服务器相关信息</li>
+<li><code>netsh advfirewall set allprofiles state off/on</code>：关闭/打开<code>windows</code>防火墙</li>
+</ul>
+<h3 id="13-ping"><a href="#13-ping" class="headerlink" title="13.ping"></a>13.ping</h3><ul>
+<li><p><code>ping www.baidu.com</code>：<code>ping</code>该域名</p>
+</li>
+<li><p><code>ping www.baidu.com -t</code>：一直<code>ping</code>该域名</p>
+</li>
+</ul>
+<h3 id="14-tracert"><a href="#14-tracert" class="headerlink" title="14.tracert"></a>14.tracert</h3><ul>
+<li><code>tracert www.baidu.com</code>：查询访问某主机所通过的网络路径</li>
+</ul>
+<h3 id="15-netstat"><a href="#15-netstat" class="headerlink" title="15.netstat"></a>15.netstat</h3><ul>
+<li><code>netstat</code>：显示网络连接信息</li>
+<li><code>netstat -af</code>：显示所有网络连接及侦听端口</li>
+<li><code>netstat -o</code>：显示拥有的与每个连接关联的进程<code>ID</code></li>
+<li><code>netstat -e -t 5</code>：每<code>5</code>秒钟获取一次以太网统计数据</li>
+</ul>
+<h3 id="16-route"><a href="#16-route" class="headerlink" title="16.route"></a>16.route</h3><ul>
+<li><p><code>route /?</code>或<code>route --help</code>或<code>route -h</code>等命令：打印<code>route</code>帮助信息</p>
+</li>
+<li><p><code>route print</code>：查看电脑网络的路由表信息</p>
+</li>
+<li><code>route ADD 157.0.0.0 MASK 255.0.0.0  157.55.80.1 METRIC 3 IF 2</code>：添加静态路由</li>
+<li><code>route DELETE 157.0.0.0</code>：删除静态路由</li>
+</ul>
+<h3 id="17-shutdown"><a href="#17-shutdown" class="headerlink" title="17.shutdown"></a>17.shutdown</h3><p>关机命令</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://thee24lyj.github.io">thee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://thee24lyj.github.io/2023/11/27/windows%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8cmd%E5%91%BD%E4%BB%A4/">https://thee24lyj.github.io/2023/11/27/windows%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8cmd%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://thee24lyj.github.io" target="_blank">theeの博客 🎉</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/windows/">windows</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/03/%E3%80%8A%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E7%AE%97%E6%B3%95%E4%B9%A6%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/e0a9f20fcdf2977dadef521f02b0465004cafee6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《我的第一本算法书》阅读笔记</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E8%8A%82%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0-python/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">字符串和字节转换函数-python</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8cmd%E5%91%BD%E4%BB%A4"><span class="toc-text">windows系统常用cmd命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ipconfig"><span class="toc-text">1.ipconfig</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-nslookup"><span class="toc-text">2.nslookup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-cls"><span class="toc-text">3.cls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-getmac"><span class="toc-text">4.getmac</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-powercfg"><span class="toc-text">5.powercfg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-assoc"><span class="toc-text">6.assoc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-chkdsk"><span class="toc-text">7.chkdsk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-sfc"><span class="toc-text">8.sfc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Dism"><span class="toc-text">9.Dism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-tasklist"><span class="toc-text">10.tasklist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-taskkill"><span class="toc-text">11.taskkill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-netsh"><span class="toc-text">12.netsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-ping"><span class="toc-text">13.ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-tracert"><span class="toc-text">14.tracert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-netstat"><span class="toc-text">15.netstat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-route"><span class="toc-text">16.route</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-shutdown"><span class="toc-text">17.shutdown</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Thee24LYJ/Pic_Image/images/3b25bf5db28d008fb341b2955c5b9fd5cde8e738.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By thee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/assets/js/cursor.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
